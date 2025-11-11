@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Esplora il mondo delle mascotte sportive, dalla storia alle stelle NBA">
+  <title>Mascot - Where life is better in a mascot suit</title>
+  <link rel="stylesheet" href="https://use.typekit.net/vgg0ait.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Checkbox nascosto per controllare il menu mobile (CSS-only) -->
+  <input type="checkbox" id="menu-toggle" hidden>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#hero" class="navbar-logo">
+        <img src="assets/simbolo.svg" alt="Mascot Logo">
+      </a>
+      
+      <!-- Hamburger trasformato in label per il checkbox -->
+      <label for="menu-toggle" class="hamburger" role="button" tabindex="0" aria-label="Apri menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      
+      <ul class="menu">
+        <li><a href="#storia">Storia</a></li>
+        <li><a href="#vita">Vita da Mascot</a></li>
+        <li><a href="#nba">NBA Mascot</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Menu Mobile -->
+  <div class="menu-popup" id="menuPopup">
+    <ul class="menu-popup-list">
+      <li><a href="#storia">Storia</a></li>
+      <li><a href="#vita">Vita da Mascot</a></li>
+      <li><a href="#nba">NBA Mascot</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero con Background SVG -->
+  <header id="hero">
+    <!-- Background SVG personalizzato -->
+    <div class="hero-background">
+      <img src="assets/BG01.svg" alt="" aria-hidden="true" class="hero-bg-image">
+    </div>
+    
+    <!-- Contenuto Hero -->
+    <div class="hero-content">
+      <img src="assets/logo.svg" alt="Mascot Logo">
+      <h1><span class="tagline">where life is better in a mascot suit.</span></h1>
+    </div>
+  </header>
+
+  <hr>
+  
+  <!-- About Me -->
+  <section id="about-me">
+    <article class="contenitore-testo">
+      <h3>Chi sono</h3>
+      <p>Mi chiamo <span class="important-text">Genrev Christian Gamiao</span>. Sono nato nelle Filippine, ma sono cresciuto in Italia e mi sento ormai italiano. Amo la lasagna, la carbonara, il design, lo sport e la corsa.</p>
+    </article>
+
+    <article class="contenitore-testo">
+      <h3>La mia passione per le mascotte</h3>
+      <p>Negli ultimi mesi ho iniziato a interessarmi alle mascotte. Sono personaggi simpatici e colorati, usati spesso nello sport. Mi piacciono perché raccontano storie, emozioni e identità.</p>
+    </article>
+
+    <article class="contenitore-testo">
+      <h3>Un invito a te!</h3>
+      <p>Se ti piace il <span class="important-text">design</span>, lo <span class="important-text">sport</span> o le <span class="important-text">mascotte</span>, sei nel posto giusto. Qui scopri come nascono e perché piacciono. Le mascotte non sono solo costumi, ma emozioni e festa.</p>
+    </article>
+
+    <article class="contenitore-testo">
+      <h3>Perché questo sito</h3>
+      <p>Questo spazio è nato per unire le mie passioni. Qui esploro, analizzo e racconto le mascotte da una prospettiva creativa, mettendo in luce il loro stile, il loro impatto nel mondo dello sport e il loro valore comunicativo.</p>
+    </article>
+  </section>
+
+  <hr>
+
+  <!-- Storia -->
+  <section id="storia">
+    <h2>Dal passato a oggi: l'evoluzione delle mascot</h2>
+
+   <div class="card-container">
+  <article class="card">
+    <h3>The Totem Era</h3>
+    <time class="card-year">Prima del 1800</time>
+  </article>
+
+  <article class="card">
+    <h3>The Name Drop</h3>
+    <time datetime="1800" class="card-year">Anno: 1800</time>
+  </article>
+
+  <article class="card">
+    <h3>Mascots emerge</h3>
+    <time datetime="1900" class="card-year">Gli inizi del 1900</time>
+  </article>
+
+  <article class="card">
+    <h3>Mr. Met (MLB)</h3>
+    <time datetime="1964" class="card-year">Anno: 1964</time>
+  </article>
+
+  <article class="card">
+    <h3>Phillie Phanatic</h3>
+    <time datetime="1974" class="card-year">Anno: 1974</time>
+  </article>
+
+  <article class="card">
+    <h3>Mascot Boom US</h3>
+    <time datetime="1980" class="card-year">Anno: 1980</time>
+  </article>
+
+  <article class="card">
+    <h3>Brand Mascot</h3>
+    <time datetime="1990" class="card-year">Anno: 1990</time>
+  </article>
+
+  <article class="card">
+    <h3>Tech Upgrade</h3>
+    <time datetime="2000" class="card-year">Anni 2000</time>
+  </article>
+
+  <article class="card">
+    <h3>Trending</h3>
+    <time datetime="2010" class="card-year">Anno: 2010</time>
+  </article>
+
+  <article class="card">
+    <h3>Virtual Mascot</h3>
+    <time datetime="2020" class="card-year">Anno: 2020</time>
+  </article>
+</div>
+  
+    <dl class="accordion">
+      <div class="accordion-item">
+        <dt tabindex="0">Le origini fino al 1800</dt>
+        <dd>
+          <p>Tanto tempo fa, le persone usavano simboli speciali. Servivano per raccontare storie, spaventare i nemici o proteggere il proprio gruppo. Questi simboli avevano un significato profondo e venivano rispettati da tutti. Con il passare degli anni, quei simboli sono cambiati. Ma la loro forza è rimasta. Oggi li vediamo anche nel mondo dello sport. Le squadre li usano per mostrare forza, coraggio e identità. Vogliono ispirare i tifosi e unire le persone sotto gli stessi colori. Così, poco a poco, sono nate le prime mascotte. All'inizio erano semplici costumi. Poi sono diventate personaggi veri e propri, pieni di energia e fantasia. Oggi le mascotte fanno parte dello <span class="important-text">spettacolo</span>. Fanno ridere, ballano e danno vita alle partite. Ma nel profondo, portano ancora con sé l'antico potere dei simboli.</p>
+        </dd>
+      </div>
+
+      <div class="accordion-item">
+        <dt tabindex="0">L'evoluzione nel tempo</dt>
+        <dd>
+          <p>Poi sono arrivate le aziende. Anche loro volevano un personaggio che potesse parlare al pubblico, ma senza usare le parole. Un volto simpatico, facile da ricordare, capace di trasmettere emozioni. Così le mascotte sono uscite dagli stadi e hanno cominciato a vivere in tanti altri luoghi: nei negozi, nelle pubblicità, nei parchi a tema, e perfino online. Oggi le mascotte sono ovunque. Le vediamo nei video, sulle magliette, nei giochi e negli eventi. Ma non sono solo costumi o pupazzi. Sono veri personaggi, con una storia da raccontare. Ogni mascotte rappresenta qualcosa: un'idea, un'emozione, un'identità. Può far sorridere, far riflettere o far sentire parte di un gruppo. E proprio per questo continuano a essere amate da grandi e piccoli, in tutto il mondo.</p>
+        </dd>
+      </div>
+
+      <div class="accordion-item">
+        <dt tabindex="0">Il presente</dt>
+        <dd>
+          <p>Le mascotte hanno fatto un lungo viaggio nel tempo. Ogni epoca ha lasciato un segno, ogni momento ha raccontato una storia. Dal passato fino a oggi, ogni passo ha contribuito a costruire ciò che sono diventate. Non sono solo costumi colorati, sono anche personaggi con un'anima, che rappresentano qualcosa di più grande. Sono parte di storie vere, legate alla cultura, allo sport e alla fantasia. Attraverso di loro possiamo vedere come la creatività unisce le persone. Le mascotte mostrano che anche nei momenti di gioco ci sono emozioni profonde, simboli importanti e identità condivise.</p>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <hr>
+
+  <!-- Vita da mascot -->
+  <section id="vita">
+    <h2>C'è molto di più dietro quel costume</h2>
+
+    <article class="contenitore-testo">
+      <h4>Un ruolo che conta</h4>
+      <p>Le mascot non sono solo vestiti colorati. Non stanno lì per bellezza. Sono parte dello spettacolo. Fanno ridere, coinvolgono il pubblico e creano emozione.</p>
+    </article>
+
+    <article class="contenitore-testo">
+      <h4>Un momento di gioia</h4>
+      <p>Le mascot uniscono le persone. Fanno divertire adulti e bambini. Rendono ogni evento più allegro e più vivo. Con loro, lo sport diventa anche una festa.</p>
+    </article>
+
+    <article class="contenitore-testo">
+      <h4>Fanno molto di più</h4>
+      <p>Le mascot sono artisti. Raccontano storie con i gesti. Ballano, saltano, sorprendono. A volte cadono in modo buffo. Altre volte fanno acrobazie incredibili.</p>
+    </article>
+
+    <article class="contenitore-testo">
+      <h4>Prima di incontrarle</h4>
+      <p>Hai mai visto un gorilla che schiaccia a canestro? O un dinosauro che balla davanti a migliaia di persone? Se non lo hai ancora fatto, non preoccuparti: sta per iniziare il tuo viaggio nel mondo delle mascotte NBA!</p>
+    </article>
+
+    <div class="video-container">
+      <h5>Guarda il video!</h5>
+      <iframe 
+        class="video-player"
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/bNRVYi37V54?si=xT27Tkm9JEQ8zxZv" 
+        title="YouTube video player" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <hr>
+ 
+  <!-- NBA Mascot -->
+  <section id="nba">
+    <h2>Le mascot NBA: la top 5</h2>
+
+    <div class="card-slider">
+      <article class="card" id="rocky" tabindex="0">
+        <img src="https://via.placeholder.com/300x200" alt="Rocky - Denver Nuggets">
+        <h3>Rocky</h3>
+        <p>Denver Nuggets</p>
+        <img src="https://via.placeholder.com/40x40" alt="Logo Denver Nuggets" class="team-logo">
+      </article>
+
+      <article class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Benny - Chicago Bulls">
+        <h3>Benny</h3>
+        <p>Chicago Bulls</p>
+        <img src="https://via.placeholder.com/40x40" alt="Logo Chicago Bulls" class="team-logo">
+      </article>
+
+      <article class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Coyote - San Antonio Spurs">
+        <h3>Coyote</h3>
+        <p>San Antonio Spurs</p>
+        <img src="https://via.placeholder.com/40x40" alt="Logo San Antonio Spurs" class="team-logo">
+      </article>
+
+      <article class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Go - Phoenix Suns">
+        <h3>Go</h3>
+        <p>Phoenix Suns</p>
+        <img src="https://via.placeholder.com/40x40" alt="Logo Phoenix Suns" class="team-logo">
+      </article>
+
+      <article class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Clutch - Houston Rockets">
+        <h3>Clutch</h3>
+        <p>Houston Rockets</p>
+        <img src="https://via.placeholder.com/40x40" alt="Logo Houston Rockets" class="team-logo">
+      </article>
+    </div>
+
+    <!-- Popup Rocky -->
+    <div id="popup-rocky" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup-rocky-title">
+      <div class="popup-content">
+        <button class="popup-close" aria-label="Chiudi popup">&times;</button>
+
+        <img src="https://via.placeholder.com/300x200" alt="Rocky - Denver Nuggets">
+
+        <div class="popup-main-info">
+          <h2 id="popup-rocky-title">Rocky</h2>
+          <h3>The Mountain Lion</h3>
+          <p><span class="important-text">Denver Nuggets</span></p>
+          <img src="https://via.placeholder.com/40x40" alt="Logo Denver Nuggets" class="team-logo">
+
+          <p><span class="important-text">Debut:</span> 1990</p>
+          <p><span class="important-text">Esordio:</span> 1990</p>
+          <p><span class="important-text">Artista originale:</span> Kenn Solomon</p>
+          <p>Guadagno annuo: <span class="important-text">$625,000</span></p>
+
+          <div class="rating-info">
+            <img src="https://via.placeholder.com/20" alt="Rating" class="icon-rating">
+            <p>Popolarità: 5/5</p>
+          </div>
+        </div>
+
+        <div class="video-links">
+          <button class="video-btn">
+            <img src="https://via.placeholder.com/24" alt="" aria-hidden="true">
+            <span>Le acrobazie di Rocky</span>
+          </button>
+
+          <button class="video-btn">
+            <img src="https://via.placeholder.com/24" alt="" aria-hidden="true">
+            <span>Rocky in azione</span>
+          </button>
+
+          <button class="video-btn">
+            <img src="https://via.placeholder.com/24" alt="" aria-hidden="true">
+            <span>I momenti migliori</span>
+          </button>
+        </div>
+
+        <section class="curiosita">
+          <h3>Curiosità su Rocky</h3>
+
+          <article>
+            <h4>Un'emblema</h4>
+            <p>Rocky è stata la prima mascotte NBA a entrare nella <span class="important-text">Mascot Hall of Fame.</span> Ma non è solo intrattenimento.</p>
+            <p>
+              Rocky è un atleta, un artista e un simbolo per la squadra dei <span class="important-text">Denver Nuggets</span>. 
+              In ogni partita dà energia e lascia un ricordo speciale.</p>
+          </article>
+
+          <article>
+            <h4>Una mascot da record</h4>
+            <p>Rocky è una delle mascotte più famose dell'NBA. 
+            È anche quella che guadagna di più: circa <span class="important-text">625.000</span> dollari all'anno.</p> 
+           <p>
+            È nato nel 1990. Da subito ha colpito tutti con le sue acrobazie e le sue entrate spettacolari. 
+            A volte scende persino dal soffitto con una corda.
+            Fa ridere il pubblico con sketch semplici e divertenti.</p>
+          </article>
+        </section>
+      </div>
+    </div>
+
+    <article class="contenitore-testo">
+      <h4>Uno show nello show</h4>
+      <p>Durante le pause, le mascotte entrano in campo. Ballano, saltano e fanno ridere tutti. Rendono lo spettacolo più <span class="important-text">divertente</span>. Il pubblico si rilassa e si diverte. Oggi, quasi tutte le squadre NBA hanno una mascotte.
+Questi personaggi piacciono a grandi e piccoli. Creano allegria e fanno parte dell'esperienza del basket.
+
+Solo quattro squadre non hanno una mascotte: <span class="important-text">i Lakers, i Knicks, i Warriors e i Nets.</span></p>
+    </article>
+
+    <article class="contenitore-testo">
+      <h4>Personaggi a bordo campo</h4>
+      <p>Sono parte dello spettacolo, proprio come le cheerleader. Fanno balli, acrobazie, scherzi e numeri divertenti. Fanno ridere il pubblico e tengono alta l'energia durante la partita. Giocano con i tifosi, lanciano gadget e si fanno fotografare con i bambini.</p>
+    </article>
+
+    <article class="contenitore-testo">
+      <h4>Fanno molto di più</h4>
+      <p>Oggi le mascotte sono <span class="important-text">vere star</span>. Non sono comparse: sono atleti, attori e simboli delle squadre. Aiutano a creare entusiasmo, promuovono il marchio e attirano fan di tutte le età. Ogni squadra NBA investe su di loro: una mascotte può costare <span class="important-text">50.000 dollari</span> all'anno. Le più famose guadagnano molto di più, grazie a eventi e merchandising.</p>
+    </article>
+
+    <article class="contenitore-testo">
+      <h4>Prima di incontrarle</h4>
+      <p>Hai mai visto un gorilla che schiaccia a canestro? O un dinosauro che balla davanti a migliaia di persone? Se non lo hai ancora fatto, non preoccuparti: sta per iniziare il tuo viaggio nel mondo delle mascotte NBA!</p>
+    </article>
+
+    <a href="#hero" class="back-to-top"><span class="anchor-up-text">Torna su</span></a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-image-bg">
+      <img src="assets/illustration.png" alt="Snaky Illustration" class="footer-illustration">
+      
+      <div class="footer-content">
+        <p>&copy; 2025 Website designed by Genrev G.</p>
+        <p><a href="#">Privacy &amp; Terms</a></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
