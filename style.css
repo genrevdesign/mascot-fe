@@ -210,7 +210,7 @@ a {
    ===================================================== */
 
 #hero {
-  position: relative; /* Già presente, perfetto come "punto di riferimento" */
+  position: relative; 
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -241,6 +241,7 @@ a {
   max-width: 800px;
   padding: var(--spacing-xl) 0;
 }
+
 
 /* =====================================================
    MEDIA ELEMENTS
