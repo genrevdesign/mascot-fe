@@ -86,6 +86,49 @@ a {
 }
 
 /* =====================================================
+   GRID CONTAINER (BASATO SU FIGMA)
+   ===================================================== */
+
+.container {
+  /* 1. Impostazioni comuni */
+  width: 100%;
+  max-width: 1440px; /* Larghezza massima del tuo design Desktop */
+  margin-left: auto;
+  margin-right: auto;
+  
+  /* 2. Logica CSS Grid */
+  display: grid;
+  
+  /* 3. Mobile (375px) - Default */
+  grid-template-columns: repeat(4, 1fr); /* 4 colonne */
+  gap: 16px;                     /* Gutter: 16px */
+  padding-left: 16px;            /* Margin: 16px */
+  padding-right: 16px;           /* Margin: 16px */
+}
+
+/* Tablet (>= 768px) */
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: repeat(8, 1fr); /* 8 colonne */
+    gap: 20px;                     /* Gutter: 20px */
+    padding-left: 32px;            /* Margin: 32px */
+    padding-right: 32px;           /* Margin: 32px */
+  }
+}
+
+/* Desktop (>= 1024px) */
+/* Usiamo 1024px come breakpoint per attivare la griglia desktop, 
+   che si applicherà fino al max-width di 1440px */
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(12, 1fr); /* 12 colonne */
+    gap: 24px;                      /* Gutter: 24px */
+    padding-left: 80px;             /* Margin: 80px */
+    padding-right: 80px;            /* Margin: 80px */
+  }
+}
+
+/* =====================================================
    NAVBAR - SOLUZIONE CSS PURA
    ===================================================== */
 
@@ -102,13 +145,35 @@ a {
 }
 
 .navbar-container {
-  display: flex;
+ display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  max-width: var(--max-width);
+  /* padding: var(--spacing-sm) var(--spacing-lg); <-- Rimuovi/sostituisci questo */
+  max-width: var(--max-width); /* Già presente, ottimo (usa 1440px) */
   margin: 0 auto;
   height: var(--navbar-height);
+
+  /* Applica i 'margin' di Figma come 'padding' responsivi
+     per allineare questo contenitore alla griglia generale 
+  */
+  padding-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  padding-left: 16px;  /* Mobile margin */
+  padding-right: 16px; /* Mobile margin */
+}
+
+@media (min-width: 768px) {
+  .navbar-container {
+    padding-left: 32px;  /* Tablet margin */
+    padding-right: 32px; /* Tablet margin */
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar-container {
+    padding-left: 80px;  /* Desktop margin */
+    padding-right: 80px; /* Desktop margin */
+  }
 }
 
 .navbar-logo img {
@@ -334,5 +399,318 @@ a {
 @media (max-width: 1024px) {
   .navbar-container {
     padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
+
+
+/* Esempio di posizionamento in #about-me */
+#about-me .contenitore-testo {
+  /* Mobile: occupa tutte e 4 le colonne (default) */
+  grid-column: 1 / -1; 
+}
+
+@media (min-width: 768px) {
+  #about-me .contenitore-testo {
+    /* Tablet: occupa 4 delle 8 colonne (quindi 2 articoli per riga) */
+    grid-column: span 4;
+  }
+}
+
+@media (min-width: 1024px) {
+  #about-me .contenitore-testo {
+    /* Desktop: occupa 3 delle 12 colonne (quindi 4 articoli per riga) */
+    grid-column: span 3;
+  }
+}
+
+/* =====================================================
+   STORIA SECTION
+   ===================================================== */
+
+/* 1. Posiziona gli elementi principali della sezione 
+      all'interno del .container */
+
+#storia h2 {
+  grid-column: 1 / -1; /* Occupa tutta la larghezza */
+  margin-bottom: var(--spacing-lg); /* Spazio sotto il titolo */
+}
+
+#storia .card-container {
+  grid-column: 1 / -1; /* Occupa tutta la larghezza */
+  margin-bottom: var(--spacing-xl); /* Spazio sotto le card */
+}
+
+#storia .accordion {
+  grid-column: 1 / -1; /* Occupa tutta la larghezza */
+}
+
+
+/* 2. Trasforma .card-container in una GRIGLIA ANNIDATA 
+      per disporre le card al suo interno */
+
+#storia .card-container {
+  display: grid;
+
+  /* Mobile: 2 card per riga (su 4 colonne totali) */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px; /* Gutter mobile */
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  #storia .card-container {
+    /* Tablet: 4 card per riga (su 8 colonne totali) */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px; /* Gutter tablet */
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  #storia .card-container {
+    /* Desktop: 5 card per riga (su 12 colonne totali) */
+    /* Visto che hai 10 card, 'repeat(5, 1fr)' crea 2 righe perfette */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px; /* Gutter desktop */
+  }
+}
+
+/* 3. Stile base per le card (opzionale, ma migliora l'aspetto) */
+
+#storia .card {
+  /* Puoi dare uno stile alle card se non l'hai già fatto */
+  background: #2a2a2a; /* Un colore di sfondo scuro, es. */
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  text-align: center;
+  border: 1px solid var(--primary-color);
+}
+
+#storia .card h3 {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  line-height: 1.3;
+}
+
+#storia .card .card-year {
+  font-family: var(--font-body);
+  color: var(--text-color);
+  font-weight: var(--weight-medium);
+  margin-top: var(--spacing-xs);
+  display: block;
+  font-size: 0.9rem;
+}
+
+
+
+/* =====================================================
+   VITA SECTION
+   ===================================================== */
+
+/* 1. Posiziona gli elementi principali della sezione 
+      all'interno del .container */
+
+#vita h2 {
+  grid-column: 1 / -1; /* Occupa tutta la larghezza */
+  text-align: center; /* Mi sembra più adatto per questo titolo */
+  margin-bottom: var(--spacing-lg);
+}
+
+#vita .contenitore-testo {
+  /* Mobile (default): occupa 4 colonne (1 per riga) */
+  grid-column: 1 / -1;
+  margin-bottom: var(--spacing-lg); /* Spazio tra i blocchi di testo */
+}
+
+#vita .video-container {
+  /* Mobile (default): occupa 4 colonne */
+  grid-column: 1 / -1;
+  margin-top: var(--spacing-lg); /* Spazio sopra il video */
+}
+
+/* 2. Regole per Tablet */
+@media (min-width: 768px) {
+  #vita .contenitore-testo {
+    /* Tablet: 2 articoli per riga (4 colonne ciascuno su 8 totali) */
+    grid-column: span 4;
+  }
+
+  #vita .video-container {
+    /* Tablet: occupa tutte le 8 colonne */
+    grid-column: 1 / -1;
+  }
+}
+
+/* 3. Regole per Desktop */
+@media (min-width: 1024px) {
+  #vita .contenitore-testo {
+    /* Desktop: 4 articoli per riga (3 colonne ciascuno su 12 totali) */
+    grid-column: span 3;
+  }
+
+  #vita .video-container {
+    /* Desktop: Centrato, occupa 8 colonne (dalla 3 alla 10) */
+    /* Inizia sulla 3a linea, finisce sulla 11a (3, 4, 5, 6, 7, 8, 9, 10) */
+    grid-column: 3 / 11; 
+  }
+}
+
+/* 4. Stile per il titolo del video */
+#vita .video-container h4 {
+  font-size: 1.5rem; /* Esempio di dimensione */
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+/* =====================================================
+   NBA SECTION
+   ===================================================== */
+
+/* 1. Posiziona gli elementi principali della sezione 
+      all'interno del .container */
+
+#nba h2 {
+  grid-column: 1 / -1; /* Occupa tutta la larghezza */
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+#nba .card-slider {
+  grid-column: 1 / -1; /* Occupa tutta la larghezza */
+  margin-bottom: var(--spacing-xl);
+}
+
+#nba .contenitore-testo {
+  /* Mobile (default): occupa 4 colonne (1 per riga) */
+  grid-column: 1 / -1;
+  margin-bottom: var(--spacing-lg);
+}
+
+#nba .back-to-top {
+  grid-column: 1 / -1;
+  text-align: right;
+  margin-top: var(--spacing-lg);
+}
+
+/* NOTA: Non serve CSS per #popup-rocky 
+   perché è già posizionato (fixed/absolute) 
+   e si toglie da solo dal flusso della griglia. */
+
+
+/* 2. Trasforma .card-slider in una GRIGLIA ANNIDATA 
+      per disporre le 5 card al suo interno */
+
+#nba .card-slider {
+  display: grid;
+
+  /* Mobile: 2 card per riga (la 5a andrà a capo) */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px; /* Gutter mobile */
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  #nba .card-slider {
+    /* Tablet: 3 card per riga (3 + 2) */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Gutter tablet */
+  }
+
+  #nba .contenitore-testo {
+    /* Tablet: li lasciamo impilati per una migliore leggibilità */
+    grid-column: 1 / -1;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  #nba .card-slider {
+    /* Desktop: 5 card per riga (perfetto!) */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px; /* Gutter desktop */
+  }
+
+  #nba .contenitore-testo {
+    /* Desktop: 3 articoli, 4 colonne ciascuno (4*3 = 12) */
+    grid-column: span 4;
+  }
+}
+
+/* 3. Stile base per le card (opzionale, ma migliora l'aspetto) */
+/* Assicurati che lo stile delle card non sia in conflitto */
+
+#nba .card {
+  /* Esempio di stile se non già presente */
+  background: #2a2a2a; 
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  border: 1px solid #333;
+}
+
+/* =====================================================
+   FOOTER SECTION
+   ===================================================== */
+
+/* 1. Stile del wrapper principale (.site-footer) */
+.site-footer {
+  /* Aggiunge spazio verticale all'intera sezione del footer */
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  position: relative; /* Utile per gestire sfondi come .footer-image-bg */
+}
+
+/* 2. Elementi posizionati sulla griglia (.container) */
+
+.site-footer .footer-illustration {
+  /* Occupa l'intera larghezza della griglia */
+  grid-column: 1 / -1;
+  margin-bottom: var(--spacing-md);
+  /* Aggiungo 'width: 100%' per sicurezza, 
+     anche se 'max-width' e 'margin: auto' dovrebbero già esserci */
+  width: 100%;
+}
+
+.site-footer .footer-content {
+  /* Occupa l'intera larghezza della griglia */
+  grid-column: 1 / -1;
+  
+  /* Layout Flex per Desktop/Tablet */
+  display: flex;
+  justify-content: space-between; /* Allinea ai lati opposti */
+  align-items: center;
+  flex-wrap: wrap; /* Permette di andare a capo se lo schermo è stretto */
+  
+  /* Stili aggiuntivi */
+  gap: var(--spacing-sm); /* Spazio tra gli elementi se vanno a capo */
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--primary-color);
+}
+
+/* 3. Stili per il contenuto interno (paragrafi e link) */
+
+.site-footer .footer-content p {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.site-footer .footer-content a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* 4. Responsive (Mobile) */
+
+@media (max-width: 767px) {
+  .site-footer .footer-content {
+    /* Cambia la direzione di flex: da riga a colonna */
+    flex-direction: column; 
+    
+    /* Centra gli elementi (ora in colonna) */
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
   }
 }
