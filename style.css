@@ -147,8 +147,7 @@ a {
 }
 
 .navbar {
-  position: sticky;
-  top: 0;
+  position: relative;
   width: 100%;
   background: var(--primary-color);
   z-index: 1000;
