@@ -104,7 +104,7 @@ a {
    GRID CONTAINER 
    ===================================================== */
 
-.container {
+.layout-grid {
   width: 100%;
   max-width: var(--max-width);
   margin-left: auto;
@@ -120,7 +120,7 @@ a {
 
 /* Tablet (>= 768px) */
 @media (min-width: 768px) {
-  .container {
+  .layout-grid {
     grid-template-columns: repeat(8, 1fr);
     gap: 20px;
     padding-left: 32px;
@@ -130,7 +130,7 @@ a {
 
 /* Desktop (>= 1024px) */
 @media (min-width: 1024px) {
-  .container {
+  .layout-grid {
     grid-template-columns: repeat(12, 1fr);
     gap: 24px;
     padding-left: 80px;
@@ -382,7 +382,6 @@ a {
 
 #storia .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(255, 207, 87, 0.3);
 }
 
 #storia .card h3 {
