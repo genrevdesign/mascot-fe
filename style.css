@@ -138,10 +138,8 @@ a {
   }
 }
 
-/* =====================================================
-   NAVBAR
-   ===================================================== */
-
+/* NAVBAR */
+/* Checkbox nascosto: gestisce lo stato aperto/chiuso del menu */
 #menu-toggle {
   display: none;
 }
@@ -160,11 +158,7 @@ a {
   max-width: var(--max-width);
   margin: 0 auto;
   height: var(--navbar-height);
-  
-  padding-top: var(--spacing-sm);
-  padding-bottom: var(--spacing-sm);
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: var(--spacing-sm) 16px;
 }
 
 @media (min-width: 768px) {
@@ -187,7 +181,7 @@ a {
   display: block;
 }
 
-/* Menu Desktop */
+/* MENU DESKTOP */
 .menu {
   display: flex;
   list-style: none;
@@ -196,32 +190,80 @@ a {
   padding: 0;
 }
 
-.menu a {
+/* Stile base pulsante: sfondo nero, bordi arrotondati, layout flex */
+.menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
+  font-size: 1rem;
+  color: var(--text-color); 
+  background: #1a1a1a;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+/* Icona SVG: dimensioni fisse, colore ereditato */
+.menu-btn .btn-icon {
+  width: 24px;
+  height: 24px;
   color: var(--text-light);
-  padding: var(--spacing-xs);
+  flex-shrink: 0; /* Previene il restringimento dell'icona */
   transition: color var(--transition-speed) ease;
 }
 
-.menu a:hover,
-.menu a:focus {
-  color: var(--secondary-color);
+/* Hover: sfondo più chiaro, sollevamento, ombra */
+.menu-btn:hover {
+  background: #2a2a2a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Hamburger Button */
+/* Icona cambia colore al hover */
+.menu-btn:hover .btn-icon {
+  color: var(--primary-color);
+}
+
+/* Active: rimuove il sollevamento quando premuto */
+.menu-btn:active {
+  transform: translateY(0);
+}
+
+/* Focus visibile: outline solo quando si naviga con tastiera */
+.menu-btn:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+/* Disabled: opacità ridotta, nessuna interazione */
+.menu-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Rimuove effetti hover quando disabled */
+.menu-btn:disabled:hover {
+  background: #1a1a1a;
+  transform: none;
+  box-shadow: none;
+}
+
+/* HAMBURGER */
+/* Icona hamburger: nascosta su desktop, visibile su mobile */
 .hamburger {
   display: none;
   flex-direction: column;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: var(--spacing-xs);
   gap: 4px;
+  padding: var(--spacing-xs);
+  cursor: pointer;
   z-index: 1001;
-  position: relative;
 }
 
+/* Le 3 linee dell'hamburger */
 .hamburger span {
   display: block;
   width: 25px;
@@ -231,24 +273,41 @@ a {
   transition: all var(--transition-speed) ease;
 }
 
-/* =====================================================
-   MENU POPUP MOBILE
-   ===================================================== */
+/* Animazione X quando menu è aperto: linea superiore ruota */
+#menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
 
+/* Linea centrale scompare */
+#menu-toggle:checked ~ .navbar .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+/* Linea inferiore ruota in direzione opposta */
+#menu-toggle:checked ~ .navbar .hamburger span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* MENU MOBILE */
+/* Overlay fullscreen: inset: 0 = top/right/bottom/left: 0 */
 .menu-popup {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0, 0, 0, 0.95);
   z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-speed) ease, 
+              visibility var(--transition-speed) ease;
+}
+
+/* Mostra menu quando checkbox è checked */
+#menu-toggle:checked ~ .menu-popup {
+  opacity: 1;
+  visibility: visible;
 }
 
 .menu-popup-list {
@@ -262,19 +321,73 @@ a {
   margin: var(--spacing-md) 0;
 }
 
-.menu-popup-list a {
+/* Pulsanti menu mobile: più grandi rispetto al desktop */
+.menu-popup-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   font-size: 1.5rem;
-  color: var(--text-color);
-  display: inline-block;
-  padding: var(--spacing-xs);
+  color: var(--text-light);
+  background: #1a1a1a;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+.menu-popup-btn .btn-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--text-light);
+  flex-shrink: 0;
   transition: color var(--transition-speed) ease;
 }
 
-.menu-popup-list a:hover,
-.menu-popup-list a:focus {
+/* Hover mobile: ingrandimento invece di sollevamento */
+.menu-popup-btn:hover {
+  background: #2a2a2a;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.menu-popup-btn:hover .btn-icon {
   color: var(--primary-color);
+}
+
+/* Active: leggero rimpicciolimento */
+.menu-popup-btn:active {
+  transform: scale(0.98);
+}
+
+.menu-popup-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+.menu-popup-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.menu-popup-btn:disabled:hover {
+  background: #1a1a1a;
+  transform: none;
+  box-shadow: none;
+}
+
+/* RESPONSIVE */
+/* Su mobile: nascondi menu desktop, mostra hamburger */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
 }
 
 /* =====================================================

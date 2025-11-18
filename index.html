@@ -11,38 +11,97 @@
 <body>
 
   <!-- Checkbox nascosto per controllare il menu mobile (CSS-only) -->
-  <input type="checkbox" id="menu-toggle" aria-hidden="true">
+ <!-- Checkbox nascosto per gestire apertura/chiusura menu mobile -->
+<input type="checkbox" id="menu-toggle">
 
-  <!-- Navbar -->
-  <nav class="navbar" role="navigation" aria-label="Navigazione principale">
-    <div class="navbar-container">
-      <a href="#hero" class="navbar-logo" aria-label="Torna alla homepage">
-        <img src="assets/simbolo.svg" alt="Mascot Logo">
-      </a>
-      
-      <!-- Hamburger trasformato in label per il checkbox -->
-      <label for="menu-toggle" class="hamburger" role="button" tabindex="0" aria-label="Apri menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-      
-      <ul class="menu">
-        <li><a href="#storia">Storia</a></li>
-        <li><a href="#vita">Vita da Mascot</a></li>
-        <li><a href="#nba-mascot-top5">NBA Mascot</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Menu Mobile -->
-  <aside class="menu-popup" role="dialog" aria-modal="true" aria-label="Menu mobile">
-    <ul class="menu-popup-list">
-      <li><a href="#storia">Storia</a></li>
-      <li><a href="#vita">Vita da Mascot</a></li>
-      <li><a href="#nba-mascot-top5">NBA Mascot</a></li>
+<nav class="navbar">
+  <div class="navbar-container">
+    <a href="#hero" class="navbar-logo">
+      <img src="assets/simbolo.svg" alt="Mascot Logo">
+    </a>
+    
+    <!-- Label collegata al checkbox: apre/chiude il menu mobile -->
+    <label for="menu-toggle" class="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    
+    <!-- Menu desktop: visibile solo su schermi grandi -->
+    <ul class="menu">
+      <li>
+        <!-- Button con data-href per la navigazione tramite JS -->
+        <button class="menu-btn" data-href="#storia">
+          <!-- SVG inline per l'icona, usa currentColor per ereditare il colore -->
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="currentColor"/>
+            <circle cx="8" cy="10" r="1.5" fill="#1a1a1a"/>
+            <circle cx="16" cy="10" r="1.5" fill="#1a1a1a"/>
+            <path d="M8 14 Q12 16 16 14" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Storia
+        </button>
+      </li>
+      <li>
+        <button class="menu-btn" data-href="#vita">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="currentColor"/>
+            <circle cx="9" cy="10" r="2" fill="#1a1a1a"/>
+            <circle cx="15" cy="10" r="2" fill="#1a1a1a"/>
+            <ellipse cx="12" cy="15" rx="3" ry="2" fill="#1a1a1a"/>
+          </svg>
+          Vita da Mascot
+        </button>
+      </li>
+      <li>
+        <button class="menu-btn" data-href="#nba-mascot-top5">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="currentColor"/>
+            <path d="M12 6 L12 18 M6 12 L18 12 M8 8 L16 16 M16 8 L8 16" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          NBA Mascot
+        </button>
+      </li>
     </ul>
-  </aside>
+  </div>
+</nav>
+
+<!-- Menu mobile fullscreen: visibile solo quando checkbox è checked -->
+<aside class="menu-popup">
+  <ul class="menu-popup-list">
+    <li>
+      <button class="menu-popup-btn" data-href="#storia">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" fill="currentColor"/>
+          <circle cx="8" cy="10" r="1.5" fill="#1a1a1a"/>
+          <circle cx="16" cy="10" r="1.5" fill="#1a1a1a"/>
+          <path d="M8 14 Q12 16 16 14" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Storia
+      </button>
+    </li>
+    <li>
+      <button class="menu-popup-btn" data-href="#vita">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" fill="currentColor"/>
+          <circle cx="9" cy="10" r="2" fill="#1a1a1a"/>
+          <circle cx="15" cy="10" r="2" fill="#1a1a1a"/>
+          <ellipse cx="12" cy="15" rx="3" ry="2" fill="#1a1a1a"/>
+        </svg>
+        Vita da Mascot
+      </button>
+    </li>
+    <li>
+      <button class="menu-popup-btn" data-href="#nba-mascot-top5">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" fill="currentColor"/>
+          <path d="M12 6 L12 18 M6 12 L18 12 M8 8 L16 16 M16 8 L8 16" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        NBA Mascot
+      </button>
+    </li>
+  </ul>
+</aside>
 
   <!-- Hero Section -->
   <header id="hero">
@@ -362,6 +421,6 @@
       </div>
     </div>
   </footer>
-
+<script src="assets/js/script.js"></script>
 </body>
 </html>
