@@ -198,8 +198,8 @@ a {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   font-size: 1rem;
-  color: var(--text-color); 
-  background: #1a1a1a;
+  color: var(--text-color);
+  background: var(--secondary-color);
   border: none;
   border-radius: 50px;
   padding: 12px 24px;
@@ -211,26 +211,28 @@ a {
 .menu-btn .btn-icon {
   width: 24px;
   height: 24px;
-  color: var(--text-light);
   flex-shrink: 0; /* Previene il restringimento dell'icona */
-  transition: color var(--transition-speed) ease;
+  transition: all var(--transition-speed) ease;
+  /* Filtro per rendere l'icona bianca */
 }
 
-/* Hover: sfondo più chiaro, sollevamento, ombra */
+/* Hover */
 .menu-btn:hover {
-  background: #2a2a2a;
+  background:var(--bg-light);
+  color: var(--text-light);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Icona cambia colore al hover */
+/* Icona mostra colore originale al hover */
 .menu-btn:hover .btn-icon {
-  color: var(--primary-color);
+  filter: none;
 }
 
 /* Active: rimuove il sollevamento quando premuto */
 .menu-btn:active {
   transform: translateY(0);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 /* Focus visibile: outline solo quando si naviga con tastiera */
@@ -247,7 +249,7 @@ a {
 
 /* Rimuove effetti hover quando disabled */
 .menu-btn:disabled:hover {
-  background: #1a1a1a;
+  background: var(--secondary-color);
   transform: none;
   box-shadow: none;
 }
@@ -293,7 +295,7 @@ a {
 .menu-popup {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.95);
+  background: var(--secondary-color);
   z-index: 999;
   display: flex;
   align-items: center;
@@ -329,8 +331,8 @@ a {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   font-size: 1.5rem;
-  color: var(--text-light);
-  background: #1a1a1a;
+  color: var(--text-color);
+  background: var(--secondary-color);
   border: none;
   border-radius: 50px;
   padding: 16px 32px;
@@ -341,20 +343,21 @@ a {
 .menu-popup-btn .btn-icon {
   width: 32px;
   height: 32px;
-  color: var(--text-light);
   flex-shrink: 0;
-  transition: color var(--transition-speed) ease;
+  transition: all var(--transition-speed) ease;
+  /* Filtro per rendere l'icona bianca */
+  filter: brightness(0) invert(1);
 }
 
 /* Hover mobile: ingrandimento invece di sollevamento */
 .menu-popup-btn:hover {
   background: #2a2a2a;
   transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
+/* Icona mostra colore originale al hover */
 .menu-popup-btn:hover .btn-icon {
-  color: var(--primary-color);
+  filter: none;
 }
 
 /* Active: leggero rimpicciolimento */
@@ -373,7 +376,7 @@ a {
 }
 
 .menu-popup-btn:disabled:hover {
-  background: #1a1a1a;
+  background: var(--secondary-color);
   transform: none;
   box-shadow: none;
 }

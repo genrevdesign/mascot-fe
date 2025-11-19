@@ -10,7 +10,6 @@
 </head>
 <body>
 
-  <!-- Checkbox nascosto per controllare il menu mobile (CSS-only) -->
  <!-- Checkbox nascosto per gestire apertura/chiusura menu mobile -->
 <input type="checkbox" id="menu-toggle">
 
@@ -32,33 +31,20 @@
       <li>
         <!-- Button con data-href per la navigazione tramite JS -->
         <button class="menu-btn" data-href="#storia">
-          <!-- SVG inline per l'icona, usa currentColor per ereditare il colore -->
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="currentColor"/>
-            <circle cx="8" cy="10" r="1.5" fill="#1a1a1a"/>
-            <circle cx="16" cy="10" r="1.5" fill="#1a1a1a"/>
-            <path d="M8 14 Q12 16 16 14" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+          <!-- Sostituisci "icona-storia.svg" con il percorso della tua icona -->
+          <img src="assets/icon-storia-normal.svg" alt="icona sezione storia" class="btn-icon">
           Storia
         </button>
       </li>
       <li>
         <button class="menu-btn" data-href="#vita">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="currentColor"/>
-            <circle cx="9" cy="10" r="2" fill="#1a1a1a"/>
-            <circle cx="15" cy="10" r="2" fill="#1a1a1a"/>
-            <ellipse cx="12" cy="15" rx="3" ry="2" fill="#1a1a1a"/>
-          </svg>
+          <img src="assets/icon-vita-normal.svg" alt="icona sezione vita" class="btn-icon">
           Vita da Mascot
         </button>
       </li>
       <li>
         <button class="menu-btn" data-href="#nba-mascot-top5">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="currentColor"/>
-            <path d="M12 6 L12 18 M6 12 L18 12 M8 8 L16 16 M16 8 L8 16" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+          <img src="assets/icon-nba-normal.svg" alt="icona sezione NBA" class="btn-icon">
           NBA Mascot
         </button>
       </li>
@@ -71,32 +57,19 @@
   <ul class="menu-popup-list">
     <li>
       <button class="menu-popup-btn" data-href="#storia">
-        <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="10" fill="currentColor"/>
-          <circle cx="8" cy="10" r="1.5" fill="#1a1a1a"/>
-          <circle cx="16" cy="10" r="1.5" fill="#1a1a1a"/>
-          <path d="M8 14 Q12 16 16 14" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
+        <img src="assets/icon-storia-normal.svg" alt="" class="btn-icon">
         Storia
       </button>
     </li>
     <li>
       <button class="menu-popup-btn" data-href="#vita">
-        <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="10" fill="currentColor"/>
-          <circle cx="9" cy="10" r="2" fill="#1a1a1a"/>
-          <circle cx="15" cy="10" r="2" fill="#1a1a1a"/>
-          <ellipse cx="12" cy="15" rx="3" ry="2" fill="#1a1a1a"/>
-        </svg>
+        <img src="assets/icon-vita-normal.svg" alt="" class="btn-icon">
         Vita da Mascot
       </button>
     </li>
     <li>
       <button class="menu-popup-btn" data-href="#nba-mascot-top5">
-        <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="10" fill="currentColor"/>
-          <path d="M12 6 L12 18 M6 12 L18 12 M8 8 L16 16 M16 8 L8 16" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
+        <img src="assets/icon-nba-normal.svg" alt="" class="btn-icon">
         NBA Mascot
       </button>
     </li>
