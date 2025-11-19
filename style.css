@@ -1,6 +1,15 @@
 /* =====================================================
    BASE & RESET
    ===================================================== */
+.sbr {
+  border: 1px solid red;
+}
+.sbb {
+  border: 1px solid blue;
+}
+.sbg {
+  border: 1px solid green;
+}
 
 * {
   margin: 0;
