@@ -147,6 +147,32 @@ a {
   }
 }
 
+/* Adattamento del carosello al grid system */
+.storia-carousel-container {
+  /* Mobile: occupa tutte le 4 colonne */
+  grid-column: 1 / -1;
+}
+
+/* Tablet (>= 768px) */
+@media (min-width: 768px) {
+  .storia-carousel-container {
+    /* Occupa tutte le 8 colonne */
+    grid-column: 1 / -1;
+    /* Oppure centrato su 6 colonne: */
+    /* grid-column: 2 / 8; */
+  }
+}
+
+/* Desktop (>= 1024px) */
+@media (min-width: 1024px) {
+  .storia-carousel-container {
+    /* Occupa tutte le 12 colonne */
+    grid-column: 1 / -1;
+    /* Oppure centrato su 10 colonne: */
+    /* grid-column: 2 / 12; */
+  }
+}
+
 /* NAVBAR */
 /* Checkbox nascosto: gestisce lo stato aperto/chiuso del menu */
 #menu-toggle {
@@ -468,7 +494,7 @@ a {
   padding: var(--spacing-2xl) 0;
 }
 
-#storia h2 {
+#storia-title {
   grid-column: 1 / -1;
   margin-bottom: var(--spacing-lg);
   text-align: center;
