@@ -23,67 +23,126 @@ const OPTIONS = {
     return;
   }
 
-  // TROVA GLI ELEMENTI INTERNI
   const prevBtn = emblaNode.querySelector(".embla__button--prev");
   const nextBtn = emblaNode.querySelector(".embla__button--next");
 
   // INIZIALIZZA L'API EMBLA
   const emblaApi = EmblaCarousel(viewportNode, OPTIONS);
   
-  // AGGIUNGI I LISTENER DEI PULSANTI DI NAVIGAZIONE
   const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
     emblaApi,
     prevBtn,
     nextBtn
   );
 
-  // --- 3. LOGICA PERSONALIZZATA DI SCROLL (CON OTTIMIZZAZIONE) ---
-  let lastScrollY = window.scrollY; 
-  const SCROLL_THRESHOLD = 10; 
-  let isScrolling = false; // Flag per il throttling
+  // --- 3. GESTIONE DEL BLOCCO SCROLL ---
+  let isCarouselActive = false;
+  let wheelTimeout = null;
 
-  const handleScrollLogic = () => {
-    const currentScrollY = window.scrollY;
-    const scrollDelta = currentScrollY - lastScrollY;
-    
-    // Controlla se il carosello è in vista
+  // Funzione per verificare se il carosello è centrato nella viewport
+  const isCarouselCentered = () => {
     const emblaRect = emblaNode.getBoundingClientRect();
-    const isVisible = emblaRect.top < window.innerHeight && emblaRect.bottom > 0;
+    const windowHeight = window.innerHeight;
+    const emblaCenter = emblaRect.top + emblaRect.height / 2;
+    const viewportCenter = windowHeight / 2;
     
-    // Aggiorna la posizione qui
-    lastScrollY = currentScrollY; 
-    isScrolling = false; // Resetta il flag per permettere il prossimo frame
-    
-    if (!isVisible) return; 
+    // Controlla se il centro del carosello è vicino al centro della viewport
+    const threshold = 150; // pixels di tolleranza
+    return Math.abs(emblaCenter - viewportCenter) < threshold;
+  };
 
-    // Scorrimento verso il basso (Down Scroll)
-    if (scrollDelta > SCROLL_THRESHOLD) {
-      emblaApi.scrollNext(); 
-    } 
+  // Gestisci lo scroll con la rotella
+  const handleWheel = (e) => {
+    const isCentered = isCarouselCentered();
     
-    // Scorrimento verso l'alto (Up Scroll)
-    else if (scrollDelta < -SCROLL_THRESHOLD) {
-      emblaApi.scrollTo(0); 
+    if (isCentered) {
+      const delta = e.deltaY;
+      const canScrollNext = emblaApi.canScrollNext();
+      const canScrollPrev = emblaApi.canScrollPrev();
+      
+      // Se possiamo navigare nel carosello, blocca lo scroll verticale
+      if ((delta > 0 && canScrollNext) || (delta < 0 && canScrollPrev)) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        isCarouselActive = true;
+        
+        clearTimeout(wheelTimeout);
+        
+        if (delta > 0) {
+          emblaApi.scrollNext();
+        } else {
+          emblaApi.scrollPrev();
+        }
+        
+        // Resetta lo stato dopo un breve periodo
+        wheelTimeout = setTimeout(() => {
+          isCarouselActive = false;
+        }, 300);
+      }
+      // Se non possiamo navigare, permetti lo scroll normale
+      else {
+        isCarouselActive = false;
+      }
     }
   };
 
-  const handleWindowScroll = () => {
-    if (!isScrolling) {
-      // Usa requestAnimationFrame per limitare l'esecuzione a un frame
-      window.requestAnimationFrame(handleScrollLogic);
-      isScrolling = true;
+  // Gestisci touch per dispositivi mobili
+  let touchStartY = 0;
+  let touchStartX = 0;
+  
+  const handleTouchStart = (e) => {
+    if (isCarouselCentered()) {
+      touchStartY = e.touches[0].clientY;
+      touchStartX = e.touches[0].clientX;
+    }
+  };
+  
+  const handleTouchMove = (e) => {
+    if (!isCarouselCentered()) return;
+    
+    const touchY = e.touches[0].clientY;
+    const touchX = e.touches[0].clientX;
+    const diffY = touchStartY - touchY;
+    const diffX = touchStartX - touchX;
+    
+    // Se il movimento è più orizzontale che verticale, lascia Embla gestire
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      return;
+    }
+    
+    const canScrollNext = emblaApi.canScrollNext();
+    const canScrollPrev = emblaApi.canScrollPrev();
+    
+    // Se possiamo navigare, blocca lo scroll verticale
+    if ((diffY > 30 && canScrollNext) || (diffY < -30 && canScrollPrev)) {
+      e.preventDefault();
+      
+      if (diffY > 30) {
+        emblaApi.scrollNext();
+        touchStartY = touchY; // Reset per evitare scroll multipli
+      } else if (diffY < -30) {
+        emblaApi.scrollPrev();
+        touchStartY = touchY;
+      }
     }
   };
 
-  // 4. AGGIUNGI IL LISTENER DELLO SCROLL 
-  window.addEventListener('scroll', handleWindowScroll);
+  // 4. AGGIUNGI I LISTENER
+  document.addEventListener('wheel', handleWheel, { passive: false });
+  document.addEventListener('touchstart', handleTouchStart, { passive: true });
+  document.addEventListener('touchmove', handleTouchMove, { passive: false });
+  
   console.log("Embla initialized and listeners attached.");
 
   // 5. GESTIONE DELLA PULIZIA
   emblaApi.on("destroy", () => {
+    clearTimeout(wheelTimeout);
     removePrevNextBtnsClickHandlers(); 
-    window.removeEventListener('scroll', handleWindowScroll); 
+    document.removeEventListener('wheel', handleWheel);
+    document.removeEventListener('touchstart', handleTouchStart);
+    document.removeEventListener('touchmove', handleTouchMove);
     console.log("Embla destroyed and all listeners removed.");
   });
 
-})(); // Fine della funzione di inizializzazione
+})();
