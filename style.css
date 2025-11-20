@@ -1,17 +1,16 @@
 /* =====================================================
+   DEBUG UTILITIES (da rimuovere in produzione)
+   ===================================================== */
+.sbr { border: 1px solid red; }
+.sbb { border: 1px solid blue; }
+.sbg { border: 1px solid green; }
+
+/* =====================================================
    BASE & RESET
    ===================================================== */
-.sbr {
-  border: 1px solid red;
-}
-.sbb {
-  border: 1px solid blue;
-}
-.sbg {
-  border: 1px solid green;
-}
-
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -20,8 +19,8 @@
 /* =====================================================
    CSS VARIABLES
    ===================================================== */
-
 :root {
+  /* Colori */
   --primary-color: #FFCF57;
   --secondary-color: #1B1B1B;
   --accent-color: #F7B801;
@@ -29,7 +28,9 @@
   --text-light: #1B1B1B;
   --bg-color: #1B1B1B;
   --bg-light: #FFFFFF;
+  --border-color: #333;
   
+  /* Spacing */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
@@ -37,6 +38,7 @@
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
   
+  /* Typography */
   --font-heading: "bricolage-grotesque", sans-serif;
   --font-body: "omnes-semicond", sans-serif;
   --weight-regular: 400;
@@ -44,6 +46,7 @@
   --weight-semibold: 600;
   --weight-bold: 800;
   
+  /* Layout */
   --max-width: 1440px;
   --navbar-height: 70px;
   --border-radius: 8px;
@@ -53,7 +56,6 @@
 /* =====================================================
    TYPOGRAPHY
    ===================================================== */
-
 body {
   font-family: var(--font-body);
   font-weight: var(--weight-regular);
@@ -75,11 +77,12 @@ p {
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
   transition: color var(--transition-speed) ease;
 }
 
+/* Typography Utilities */
 .tagline {
   font-family: var(--font-heading);
   font-weight: var(--weight-medium);
@@ -96,7 +99,6 @@ a {
   font-weight: var(--weight-bold);
 }
 
-/* Utility: nasconde visivamente ma resta accessibile agli screen reader */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -110,24 +112,20 @@ a {
 }
 
 /* =====================================================
-   GRID CONTAINER 
+   LAYOUT - GRID SYSTEM
    ===================================================== */
-
 .layout-grid {
   width: 100%;
   max-width: var(--max-width);
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  
-  /* Mobile (375px) - Default */
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   padding-left: 16px;
   padding-right: 16px;
 }
 
-/* Tablet (>= 768px) */
 @media (min-width: 768px) {
   .layout-grid {
     grid-template-columns: repeat(8, 1fr);
@@ -137,7 +135,6 @@ a {
   }
 }
 
-/* Desktop (>= 1024px) */
 @media (min-width: 1024px) {
   .layout-grid {
     grid-template-columns: repeat(12, 1fr);
@@ -147,38 +144,16 @@ a {
   }
 }
 
-/* Adattamento del carosello al grid system */
-.storia-carousel-container {
-  /* Mobile: occupa tutte le 4 colonne */
-  grid-column: 1 / -1;
-}
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
 
-/* Tablet (>= 768px) */
-@media (min-width: 768px) {
-  .storia-carousel-container {
-    /* Occupa tutte le 8 colonne */
-    grid-column: 1 / -1;
-    /* Oppure centrato su 6 colonne: */
-    /* grid-column: 2 / 8; */
-  }
-}
-
-/* Desktop (>= 1024px) */
-@media (min-width: 1024px) {
-  .storia-carousel-container {
-    /* Occupa tutte le 12 colonne */
-    grid-column: 1 / -1;
-    /* Oppure centrato su 10 colonne: */
-    /* grid-column: 2 / 12; */
-  }
-}
-
-/* NAVBAR */
-/* Checkbox nascosto: gestisce lo stato aperto/chiuso del menu */
+/* Menu Toggle Checkbox (nascosto) */
 #menu-toggle {
   display: none;
 }
 
+/* Navbar Container */
 .navbar {
   position: relative;
   width: 100%;
@@ -210,13 +185,14 @@ a {
   }
 }
 
+/* Logo */
 .navbar-logo img {
   height: 40px;
   width: auto;
   display: block;
 }
 
-/* MENU DESKTOP */
+/* Desktop Menu */
 .menu {
   display: flex;
   list-style: none;
@@ -225,7 +201,7 @@ a {
   padding: 0;
 }
 
-/* Stile base pulsante: sfondo nero, bordi arrotondati, layout flex */
+/* Menu Button Base */
 .menu-btn {
   display: flex;
   align-items: center;
@@ -242,55 +218,47 @@ a {
   transition: all var(--transition-speed) ease;
 }
 
-/* Icona SVG: dimensioni fisse, colore ereditato */
 .menu-btn .btn-icon {
   width: 24px;
   height: 24px;
-  flex-shrink: 0; /* Previene il restringimento dell'icona */
+  flex-shrink: 0;
   transition: all var(--transition-speed) ease;
-  /* Filtro per rendere l'icona bianca */
 }
 
-/* Hover */
+/* Menu Button States */
 .menu-btn:hover {
-  background:var(--bg-light);
+  background: var(--bg-light);
   color: var(--text-light);
   transform: translateY(-2px);
 }
 
-/* Icona mostra colore originale al hover */
 .menu-btn:hover .btn-icon {
   filter: none;
 }
 
-/* Active: rimuove il sollevamento quando premuto */
 .menu-btn:active {
   transform: translateY(0);
   background-color: var(--secondary-color);
   color: var(--primary-color);
 }
 
-/* Focus visibile: outline solo quando si naviga con tastiera */
 .menu-btn:focus-visible {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
 }
 
-/* Disabled: opacità ridotta, nessuna interazione */
 .menu-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* Rimuove effetti hover quando disabled */
 .menu-btn:disabled:hover {
   background: var(--secondary-color);
   transform: none;
   box-shadow: none;
 }
 
-/* HAMBURGER */
-/* Icona hamburger: nascosta su desktop, visibile su mobile */
+/* Hamburger Menu */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -300,7 +268,6 @@ a {
   z-index: 1001;
 }
 
-/* Le 3 linee dell'hamburger */
 .hamburger span {
   display: block;
   width: 25px;
@@ -310,23 +277,20 @@ a {
   transition: all var(--transition-speed) ease;
 }
 
-/* Animazione X quando menu è aperto: linea superiore ruota */
+/* Hamburger Animation quando aperto */
 #menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
 
-/* Linea centrale scompare */
 #menu-toggle:checked ~ .navbar .hamburger span:nth-child(2) {
   opacity: 0;
 }
 
-/* Linea inferiore ruota in direzione opposta */
 #menu-toggle:checked ~ .navbar .hamburger span:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* MENU MOBILE */
-/* Overlay fullscreen: inset: 0 = top/right/bottom/left: 0 */
+/* Mobile Menu Popup */
 .menu-popup {
   position: fixed;
   inset: 0;
@@ -341,7 +305,6 @@ a {
               visibility var(--transition-speed) ease;
 }
 
-/* Mostra menu quando checkbox è checked */
 #menu-toggle:checked ~ .menu-popup {
   opacity: 1;
   visibility: visible;
@@ -358,7 +321,7 @@ a {
   margin: var(--spacing-md) 0;
 }
 
-/* Pulsanti menu mobile: più grandi rispetto al desktop */
+/* Mobile Menu Buttons */
 .menu-popup-btn {
   display: inline-flex;
   align-items: center;
@@ -380,22 +343,18 @@ a {
   height: 32px;
   flex-shrink: 0;
   transition: all var(--transition-speed) ease;
-  /* Filtro per rendere l'icona bianca */
   filter: brightness(0) invert(1);
 }
 
-/* Hover mobile: ingrandimento invece di sollevamento */
 .menu-popup-btn:hover {
   background: #2a2a2a;
   transform: scale(1.05);
 }
 
-/* Icona mostra colore originale al hover */
 .menu-popup-btn:hover .btn-icon {
   filter: none;
 }
 
-/* Active: leggero rimpicciolimento */
 .menu-popup-btn:active {
   transform: scale(0.98);
 }
@@ -416,8 +375,7 @@ a {
   box-shadow: none;
 }
 
-/* RESPONSIVE */
-/* Su mobile: nascondi menu desktop, mostra hamburger */
+/* Navigation Responsive */
 @media (max-width: 768px) {
   .menu {
     display: none;
@@ -426,10 +384,14 @@ a {
   .hamburger {
     display: flex;
   }
+  
+  body:has(#menu-toggle:checked) {
+    overflow: hidden;
+  }
 }
 
 /* =====================================================
-   HERO SECTION
+   SECTIONS - HERO
    ===================================================== */
 
 #hero {
@@ -439,7 +401,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow:hidden;
   padding: var(--spacing-2xl) var(--spacing-lg);
 }
 
@@ -462,10 +424,10 @@ a {
   padding: var(--spacing-xl) 0;
 }
 
-/* =====================================================
-   ABOUT ME SECTION
-   ===================================================== */
 
+/* =====================================================
+   SECTIONS - ABOUT ME
+   ===================================================== */
 #about-me {
   padding: var(--spacing-2xl) 0;
 }
@@ -487,9 +449,8 @@ a {
 }
 
 /* =====================================================
-   STORIA SECTION
+   SECTIONS - STORIA
    ===================================================== */
-
 #storia {
   padding: var(--spacing-2xl) 0;
 }
@@ -500,6 +461,24 @@ a {
   text-align: center;
 }
 
+/* Carousel Container */
+.storia-carousel-container {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+  .storia-carousel-container {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .storia-carousel-container {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Card Container */
 #storia .card-container {
   grid-column: 1 / -1;
   margin-bottom: var(--spacing-xl);
@@ -522,13 +501,15 @@ a {
   }
 }
 
+/* Cards */
 #storia .card {
   background: #2a2a2a;
   padding: var(--spacing-md);
   border-radius: var(--border-radius);
   text-align: center;
   border: 1px solid var(--primary-color);
-  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  transition: transform var(--transition-speed) ease, 
+              box-shadow var(--transition-speed) ease;
 }
 
 #storia .card:hover {
@@ -604,7 +585,8 @@ a {
   overflow: hidden;
   margin: 0;
   padding: 0 var(--spacing-md);
-  transition: max-height var(--transition-speed) ease, padding var(--transition-speed) ease;
+  transition: max-height var(--transition-speed) ease, 
+              padding var(--transition-speed) ease;
 }
 
 .accordion-item dt button[aria-expanded="true"] + dd {
@@ -613,9 +595,8 @@ a {
 }
 
 /* =====================================================
-   VITA SECTION
+   SECTIONS - VITA
    ===================================================== */
-
 #vita {
   padding: var(--spacing-2xl) 0;
 }
@@ -662,22 +643,8 @@ a {
 }
 
 /* =====================================================
-   MEDIA ELEMENTS
+   SECTIONS - NBA MASCOT TOP 5
    ===================================================== */
-
-.video-player {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--border-radius);
-}
-
-/* =====================================================
-   NBA MASCOT TOP 5 SECTION
-   ===================================================== */
-
 #nba-mascot-top5 {
   padding: var(--spacing-2xl) 0;
 }
@@ -688,6 +655,7 @@ a {
   margin-bottom: var(--spacing-lg);
 }
 
+/* Card Slider */
 #nba-mascot-top5 .card-slider {
   grid-column: 1 / -1;
   margin-bottom: var(--spacing-xl);
@@ -710,13 +678,15 @@ a {
   }
 }
 
+/* Mascot Cards */
 #nba-mascot-top5 .mascot-card {
   background: #2a2a2a;
   padding: var(--spacing-sm);
   border-radius: var(--border-radius);
-  border: 1px solid #333;
+  border: 1px solid var(--border-color);
   cursor: pointer;
-  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  transition: transform var(--transition-speed) ease, 
+              box-shadow var(--transition-speed) ease;
 }
 
 #nba-mascot-top5 .mascot-card:hover,
@@ -763,9 +733,8 @@ a {
 }
 
 /* =====================================================
-   POPUP ROCKY
+   COMPONENTS - POPUP
    ===================================================== */
-
 #popup-rocky-toggle {
   display: none;
 }
@@ -783,7 +752,8 @@ a {
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+  transition: opacity var(--transition-speed) ease, 
+              visibility var(--transition-speed) ease;
   overflow-y: auto;
   padding: var(--spacing-lg);
 }
@@ -892,9 +862,27 @@ a {
 }
 
 /* =====================================================
-   FOOTER SECTION
+   COMPONENTS - MEDIA
    ===================================================== */
+.video-player {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--border-radius);
+}
 
+@media (max-width: 768px) {
+  .video-player {
+    height: auto;
+    min-height: 200px;
+  }
+}
+
+/* =====================================================
+   COMPONENTS - FOOTER
+   ===================================================== */
 .site-footer {
   padding-top: var(--spacing-xl);
   padding-bottom: var(--spacing-lg);
@@ -936,10 +924,18 @@ a {
   text-decoration: underline;
 }
 
-/* =====================================================
-   HR STYLING
-   ===================================================== */
+@media (max-width: 768px) {
+  .site-footer .footer-content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
 
+/* =====================================================
+   UTILITIES
+   ===================================================== */
 hr {
   border: none;
   border-top: 1px solid var(--primary-color);
@@ -948,49 +944,34 @@ hr {
 }
 
 /* =====================================================
-   RESPONSIVE - MOBILE 
+   ACCESSIBILITY
    ===================================================== */
+*:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
 
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE - MOBILE OVERRIDES
+   ===================================================== */
 @media (max-width: 768px) {
-  .menu {
-    display: none;
-  }
-  
-  .hamburger {
-    display: flex;
-  }
-  
   #menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
     transform: rotate(45deg) translate(8px, 8px);
   }
   
-  #menu-toggle:checked ~ .navbar .hamburger span:nth-child(2) {
-    opacity: 0;
-  }
-  
   #menu-toggle:checked ~ .navbar .hamburger span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
-  }
-  
-  #menu-toggle:checked ~ .menu-popup {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  body:has(#menu-toggle:checked) {
-    overflow: hidden;
-  }
-  
-  .video-player {
-    height: auto;
-    min-height: 200px;
-  }
-  
-  .site-footer .footer-content {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
   }
   
   .popup-content {
@@ -999,32 +980,10 @@ hr {
 }
 
 /* =====================================================
-   RESPONSIVE - TABLET
+   RESPONSIVE - TABLET OVERRIDES
    ===================================================== */
-
-@media (max-width: 1024px) and (min-width: 769px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .navbar-container {
     padding: var(--spacing-sm) var(--spacing-md);
-  }
-}
-
-/* =====================================================
-   ACCESSIBILITY IMPROVEMENTS
-   ===================================================== */
-
-/* Focus styles */
-*:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-}
-
-/* Prefers reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }
