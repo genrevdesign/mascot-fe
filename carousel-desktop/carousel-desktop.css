@@ -2,11 +2,16 @@
    DESKTOP CAROUSEL - TEAM SECTION
    ===================================================== */
 
+/* 1. BLOCCO PRINCIPALE (MOBILE FIRST) */
 .carousel-desktop {
-  display: none; /* Nascosto su mobile, visibile su desktop */
+  display: none; /* Nascosto su mobile (default) */
 }
 
+/* =====================================================
+   2. DESKTOP STYLES (min-width: 1024px)
+   ===================================================== */
 @media (min-width: 1024px) {
+  /* CONTAINER & STRUTTURA */
   .carousel-desktop {
     display: block;
     width: 100%;
@@ -18,22 +23,24 @@
     max-width: 1200px;
     height: 450px;
     position: relative;
-    perspective: 1000px;
+    perspective: 1000px; /* Abilita l'effetto 3D */
     margin: 80px auto 0;
   }
 
   .carousel-track {
     width: 100%;
     height: 100%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Transizione non necessaria qui se gestita dalle card */
   }
 
+  /* CARTE (ELEMENTO: carousel-card) */
   .carousel-card {
+    /* Base */
     position: absolute;
     width: 280px;
     height: 380px;
@@ -41,71 +48,93 @@
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer;
+    /* Transizione (Base + Fluidità JS) */
+    /* Unifico la transizione: preferire 0.5s per interazioni rapide, 0.8s per movimento 3D */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.3s ease; 
   }
 
   .carousel-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Transizione specifica per l'immagine */
+    transition: filter 0.5s ease-in-out;
+  }
+  
+  /* ACCESSIBILITÀ (WCAG) */
+  .carousel-card:focus {
+    /* Stato di Focus Visibile */
+    outline: 3px solid #007bff; 
+    outline-offset: 4px; 
   }
 
+  [aria-hidden="true"] {
+    /* Nasconde l'elemento non interattivo */
+    opacity: 0; /* Usa opacity per la transizione fluida */
+    visibility: hidden; 
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out; /* Assicura una dissolvenza */
+  }
+
+  /* MODIFICATORI DI POSIZIONE (carousel-card--*) */
+
+  /* CENTRALE (Fuoco) */
   .carousel-card.center {
     z-index: 10;
-    transform: scale(1.1) translateZ(0);
+    transform: scale(1.1) translateZ(0); /* Leggera enfasi */
   }
-
   .carousel-card.center img {
     filter: none;
   }
 
-  .carousel-card.left-2 {
-    z-index: 1;
-    transform: translateX(-400px) scale(0.8) translateZ(-300px);
-    opacity: 0.7;
-  }
-
-  .carousel-card.left-2 img {
-    filter: grayscale(100%);
-  }
-
-  .carousel-card.left-1 {
-    z-index: 5;
-    transform: translateX(-200px) scale(0.9) translateZ(-100px);
-    opacity: 0.9;
-  }
-
-  .carousel-card.left-1 img {
-    filter: grayscale(100%);
-  }
-
+  /* LATERALE DESTRO 1 (Più vicino) */
   .carousel-card.right-1 {
     z-index: 5;
     transform: translateX(200px) scale(0.9) translateZ(-100px);
     opacity: 0.9;
   }
-
   .carousel-card.right-1 img {
     filter: grayscale(100%);
   }
 
+  /* LATERALE SINISTRO 1 (Più vicino) */
+  .carousel-card.left-1 {
+    z-index: 5;
+    transform: translateX(-200px) scale(0.9) translateZ(-100px);
+    opacity: 0.9;
+  }
+  .carousel-card.left-1 img {
+    filter: grayscale(100%);
+  }
+
+  /* LATERALE DESTRO 2 (Più lontano) */
   .carousel-card.right-2 {
     z-index: 1;
     transform: translateX(400px) scale(0.8) translateZ(-300px);
     opacity: 0.7;
   }
-
   .carousel-card.right-2 img {
     filter: grayscale(100%);
   }
 
+  /* LATERALE SINISTRO 2 (Più lontano) */
+  .carousel-card.left-2 {
+    z-index: 1;
+    transform: translateX(-400px) scale(0.8) translateZ(-300px);
+    opacity: 0.7;
+  }
+  .carousel-card.left-2 img {
+    filter: grayscale(100%);
+  }
+
+  /* NASCOSTO (Fuori vista) */
   .carousel-card.hidden {
     opacity: 0;
     pointer-events: none;
   }
 
+  /* INFORMAZIONI MEMBRO (ELEMENTO: member-info) */
   .member-info {
     text-align: center;
     margin-top: 40px;
@@ -113,16 +142,20 @@
   }
 
   .member-name {
+    /* Base */
     color: rgb(8, 42, 123);
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 10px;
     position: relative;
     display: inline-block;
+    /* Transizione coordinata con JS */
+    transition: opacity 0.2s ease-in-out; 
   }
 
   .member-name::before,
   .member-name::after {
+    /* Linee decorative */
     content: "";
     position: absolute;
     top: 100%;
@@ -149,8 +182,10 @@
     padding: 10px 0;
     margin-top: -15px;
     position: relative;
+    transition: opacity 0.2s ease-in-out; /* Aggiunto per coerenza con il nome */
   }
 
+  /* DOTS DI NAVIGAZIONE (ELEMENTO: carousel-dots) */
   .carousel-dots {
     display: flex;
     justify-content: center;
@@ -172,7 +207,9 @@
     transform: scale(1.2);
   }
 
+  /* FRECCE DI NAVIGAZIONE (ELEMENTO: carousel-nav-arrow) */
   .carousel-nav-arrow {
+    /* Base */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -186,11 +223,12 @@
     justify-content: center;
     cursor: pointer;
     z-index: 20;
-    transition: all 0.3s ease;
     font-size: 1.5rem;
     border: none;
     outline: none;
     padding-bottom: 4px;
+    /* Transizione Interazione */
+    transition: background 0.3s ease, transform 0.3s ease; 
   }
 
   .carousel-nav-arrow:hover {
@@ -198,13 +236,14 @@
     transform: translateY(-50%) scale(1.1);
   }
 
+  /* Modificatori Posizione */
   .carousel-nav-arrow.left {
     left: 20px;
-    padding-right: 3px;
+    padding-right: 3px; /* Correzione visiva */
   }
 
   .carousel-nav-arrow.right {
     right: 20px;
-    padding-left: 3px;
+    padding-left: 3px; /* Correzione visiva */
   }
 }
