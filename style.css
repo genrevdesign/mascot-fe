@@ -23,12 +23,13 @@
   /* Colori */
   --primary-color: #FFCF57;
   --secondary-color: #1B1B1B;
-  --accent-color: #F7B801;
-  --text-color: #FFFFFF;
-  --text-light: #1B1B1B;
-  --bg-color: #1B1B1B;
+  --accent-color: #1F1F1F;
+  --text-color: #1B1B1B;
+  --text-light: #FFFFFF;
+  --bg-color-body: #1B1B1B;
+  --bg-color: #1F1F1F;
   --bg-light: #FFFFFF;
-  --border-color: #333;
+  --border-color: #FFFFFF;
   
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -59,8 +60,8 @@
 body {
   font-family: var(--font-body);
   font-weight: var(--weight-regular);
-  color: var(--text-color);
-  background-color: var(--bg-color);
+  color: var(--text-light);
+  background-color: var(--bg-color-body);
   line-height: 1.6;
 }
 
@@ -86,7 +87,7 @@ a {
 .tagline {
   font-family: var(--font-heading);
   font-weight: var(--weight-medium);
-  color: var(--text-light);
+  color: var(--text-color);
 }
 
 .important-text {
@@ -209,7 +210,7 @@ a {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   font-size: 1rem;
-  color: var(--text-color);
+  color: var(--text-light);
   background: var(--secondary-color);
   border: none;
   border-radius: 50px;
@@ -428,23 +429,136 @@ a {
 /* =====================================================
    SECTIONS - ABOUT ME
    ===================================================== */
+/* =====================================================
+   SECTIONS - ABOUT ME
+   ===================================================== */
+
+/* Sezione principale */
 #about-me {
   padding: var(--spacing-2xl) 0;
 }
 
+/* Stile base per tutti i box */
 #about-me .contenitore-testo {
+  padding: var(--spacing-xl);
+  border-radius: 20px;
+  min-height: 200px;
+  background-color: var(--bg-color-body);
+}
+
+/* Titoli h3 */
+#about-me .contenitore-testo h3 {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  font-size: 1.5rem;
+}
+
+/* Icone circolari prima dei titoli */
+#about-me .contenitore-testo h3::before {
+  content: "";
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: var(--spacing-sm);
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Paragrafi */
+#about-me .contenitore-testo p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Wrapper per i primi due box */
+#about-me .box-wrapper-top {
+  grid-column: 1 / -1;
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: subgrid;
+  gap: inherit;
+}
+
+#about-me .box-wrapper-top .contenitore-testo {
   grid-column: 1 / -1;
 }
 
+/* Wrapper per gli ultimi due box - Full Width */
+#about-me .box-wrapper-bottom {
+  grid-column: 1 / -1;
+  background-color: var(--bg-color);
+  border-radius: 25px;
+  padding: var(--spacing-lg) 0;
+  
+  /* Esci dal grid e occupa tutta la larghezza */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+/* Contenitore interno che rispetta il max-width e il grid */
+#about-me .box-wrapper-bottom-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 0 16px;
+}
+
+#about-me .box-wrapper-bottom-inner .contenitore-testo {
+  grid-column: 1 / -1;
+}
+
+/* Box "Un invito a te!" - Sfondo giallo */
+#about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) {
+  background-color: var(--primary-color);
+}
+
+/* Box "Perchè questo sito" - Sfondo marshland */
+#about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(2) {
+  background-color: var(--bg-color-body);
+}
+
+#about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) h3,
+#about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) p {
+  color: var(--text-color);
+}
+
+#about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) h3::before {
+  background-color: var(--bg-light);
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+/* Tablet: 2 box per riga (4 colonne ciascuno su 8 totali) */
 @media (min-width: 768px) {
-  #about-me .contenitore-testo {
+  #about-me .box-wrapper-top .contenitore-testo,
+  #about-me .box-wrapper-bottom-inner .contenitore-testo {
     grid-column: span 4;
+  }
+  
+  #about-me .box-wrapper-bottom-inner {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 20px;
+    padding: 0 32px;
   }
 }
 
+/* Desktop: 2 box per riga (6 colonne ciascuno su 12 totali) */
 @media (min-width: 1024px) {
-  #about-me .contenitore-testo {
-    grid-column: span 3;
+  #about-me .box-wrapper-top .contenitore-testo,
+  #about-me .box-wrapper-bottom-inner .contenitore-testo {
+    grid-column: span 6;
+  }
+  
+  #about-me .box-wrapper-bottom-inner {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    padding: 0 80px;
   }
 }
 
@@ -915,7 +1029,7 @@ a {
   font-family: var(--font-body);
   font-weight: var(--weight-medium);
   font-size: 0.9rem;
-  color: var(--text-color);
+  color: var(--text-light);
 }
 
 .site-footer .footer-content a:hover,
