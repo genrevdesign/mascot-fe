@@ -219,6 +219,13 @@ a {
   transition: all var(--transition-speed) ease;
 }
 
+.btn-icon {
+  background-color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+}
 .menu-btn .btn-icon {
   width: 24px;
   height: 24px;
@@ -404,6 +411,26 @@ a {
   justify-content: center;
   overflow:hidden;
   padding: var(--spacing-2xl) var(--spacing-lg);
+}
+
+/* Mobile */
+.hero-content img {
+  width: 280px;
+  height: auto;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .hero-content img {
+    width: 320px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .hero-content img {
+    width: 550px;
+  }
 }
 
 .hero-bg-image {
@@ -1464,7 +1491,7 @@ hr {
 
 .mascot-profile-card {
   width: 100%;
-  max-width: 420px;
+  max-width: 320px;
   background-color: var(--primary-color);
   border-radius: 24px;
   overflow: hidden;
@@ -1473,6 +1500,8 @@ hr {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform var(--transition-speed) ease,
               box-shadow var(--transition-speed) ease;
+  margin: 0 auto;
+  visibility:hidden;
 }
 
 .mascot-profile-card:hover {

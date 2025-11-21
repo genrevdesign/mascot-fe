@@ -6,7 +6,7 @@
   display: block; /* Visibile su mobile */
   width: 100%;
   padding: 60px 20px;
-  background-color: var(--bg-light);
+  background-color: var(--light-bg-color);
 }
 
 .carousel-mobile-container {

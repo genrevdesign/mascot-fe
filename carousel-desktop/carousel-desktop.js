@@ -1,14 +1,14 @@
 // =====================================================
-// DESKTOP CAROUSEL - TEAM MEMBERS
+// DESKTOP CAROUSEL - NBA MASCOTS
 // =====================================================
 
 const teamMembers = [
-  { name: "Emily Kim", role: "Founder" },
-  { name: "Michael Steward", role: "Creative Director" },
-  { name: "Emma Rodriguez", role: "Lead Developer" },
-  { name: "Julia Gimmel", role: "UX Designer" },
-  { name: "Lisa Anderson", role: "Marketing Manager" },
-  { name: "James Wilson", role: "Product Manager" },
+  { name: "Rocky", role: "Denver Nuggets" },
+  { name: "Benny the Bull", role: "Chicago Bulls" },
+  { name: "Coyote", role: "San Antonio Spurs" },
+  { name: "Go", role: "Phoenix Suns" },
+  { name: "Clutch", role: "Houston Rockets" },
+  { name: "Crunch", role: "Los Angeles Clippers" },
 ];
 
 let desktopCarouselInitialized = false;
@@ -29,8 +29,9 @@ function initDesktopCarousel() {
   const memberRole = document.querySelector(".member-role");
   const leftArrow = document.querySelector(".carousel-nav-arrow.left");
   const rightArrow = document.querySelector(".carousel-nav-arrow.right");
+  const track = document.querySelector(".carousel-track");
 
-  if (!cards.length || !memberName || !memberRole) {
+  if (!cards.length || !memberName || !memberRole || !track) {
     console.warn("Desktop carousel elements not found");
     return;
   }
@@ -123,7 +124,7 @@ function initDesktopCarousel() {
 
   // Keyboard navigation
   const handleKeydown = (e) => {
-    if (window.innerWidth < 1024) return; // Solo su desktop
+    if (window.innerWidth < 1024) return;
     if (e.key === "ArrowLeft") {
       updateCarousel(currentIndex - 1);
     } else if (e.key === "ArrowRight") {
@@ -138,12 +139,12 @@ function initDesktopCarousel() {
   let touchEndX = 0;
 
   const handleTouchStart = (e) => {
-    if (window.innerWidth < 1024) return; // Solo su desktop
+    if (window.innerWidth < 1024) return;
     touchStartX = e.changedTouches[0].screenX;
   };
 
   const handleTouchEnd = (e) => {
-    if (window.innerWidth < 1024) return; // Solo su desktop
+    if (window.innerWidth < 1024) return;
     touchEndX = e.changedTouches[0].screenX;
     handleSwipe();
   };

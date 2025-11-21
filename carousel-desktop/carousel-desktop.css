@@ -8,23 +8,32 @@
 }
 
 /* =====================================================
-   2. DESKTOP STYLES (min-width: 1024px)
+   2. TABLET STYLES (768px - 1023px) - ESATTO RANGE
    ===================================================== */
-@media (min-width: 1024px) {
-  /* CONTAINER & STRUTTURA */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Mostra carousel desktop su tablet */
   .carousel-desktop {
     display: block;
     width: 100%;
-    padding: 80px 0;
+    padding: 60px 0;
+  }
+
+  /* Nascondi carousel mobile su tablet */
+  .carousel-mobile {
+    display: none !important;
   }
 
   .carousel-container {
     width: 100%;
-    max-width: 1200px;
-    height: 450px;
+    max-width: 900px;
+    height: 380px;
     position: relative;
-    perspective: 1000px; /* Abilita l'effetto 3D */
-    margin: 80px auto 0;
+    perspective: 1000px;
+    margin: 60px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
   }
 
   .carousel-track {
@@ -35,146 +44,105 @@
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
-    /* Transizione non necessaria qui se gestita dalle card */
   }
 
   /* CARTE (ELEMENTO: carousel-card) */
   .carousel-card {
-    /* Base */
     position: absolute;
-    width: 280px;
-    height: 380px;
+    width: 240px;
+    height: 320px;
     background: white;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     cursor: pointer;
-    /* Transizione (Base + Fluidità JS) */
-    /* Unifico la transizione: preferire 0.5s per interazioni rapide, 0.8s per movimento 3D */
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.3s ease; 
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.3s ease;
   }
 
   .carousel-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Transizione specifica per l'immagine */
     transition: filter 0.5s ease-in-out;
   }
   
-  /* ACCESSIBILITÀ (WCAG) */
   .carousel-card:focus {
-    /* Stato di Focus Visibile */
-    outline: 3px solid #007bff; 
-    outline-offset: 4px; 
+    outline: 3px solid #007bff;
+    outline-offset: 4px;
   }
 
   [aria-hidden="true"] {
-    /* Nasconde l'elemento non interattivo */
-    opacity: 0; /* Usa opacity per la transizione fluida */
-    visibility: hidden; 
+    opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.5s ease-in-out; /* Assicura una dissolvenza */
+    transition: opacity 0.5s ease-in-out;
   }
 
-  /* MODIFICATORI DI POSIZIONE (carousel-card--*) */
-
-  /* CENTRALE (Fuoco) */
+  /* POSIZIONI TABLET (solo 3 card visibili) */
   .carousel-card.center {
     z-index: 10;
-    transform: scale(1.1) translateZ(0); /* Leggera enfasi */
+    transform: scale(1.1) translateZ(0);
+    opacity: 1;
   }
   .carousel-card.center img {
     filter: none;
   }
 
-  /* LATERALE DESTRO 1 (Più vicino) */
   .carousel-card.right-1 {
     z-index: 5;
-    transform: translateX(200px) scale(0.9) translateZ(-100px);
-    opacity: 0.9;
+    transform: translateX(180px) scale(0.85) translateZ(-80px);
+    opacity: 0.85;
   }
   .carousel-card.right-1 img {
     filter: grayscale(100%);
   }
 
-  /* LATERALE SINISTRO 1 (Più vicino) */
   .carousel-card.left-1 {
     z-index: 5;
-    transform: translateX(-200px) scale(0.9) translateZ(-100px);
-    opacity: 0.9;
+    transform: translateX(-180px) scale(0.85) translateZ(-80px);
+    opacity: 0.85;
   }
   .carousel-card.left-1 img {
     filter: grayscale(100%);
   }
 
-  /* LATERALE DESTRO 2 (Più lontano) */
-  .carousel-card.right-2 {
-    z-index: 1;
-    transform: translateX(400px) scale(0.8) translateZ(-300px);
-    opacity: 0.7;
-  }
-  .carousel-card.right-2 img {
-    filter: grayscale(100%);
-  }
-
-  /* LATERALE SINISTRO 2 (Più lontano) */
-  .carousel-card.left-2 {
-    z-index: 1;
-    transform: translateX(-400px) scale(0.8) translateZ(-300px);
-    opacity: 0.7;
-  }
-  .carousel-card.left-2 img {
-    filter: grayscale(100%);
-  }
-
-  /* NASCOSTO (Fuori vista) */
+  /* Nascondi card laterali distanti su tablet */
+  .carousel-card.right-2,
+  .carousel-card.left-2,
   .carousel-card.hidden {
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
   }
 
-  /* INFORMAZIONI MEMBRO (ELEMENTO: member-info) */
+  /* INFORMAZIONI MEMBRO */
   .member-info {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 30px;
     transition: all 0.5s ease-out;
   }
 
   .member-name {
-    /* Base */
-    color: rgb(8, 42, 123);
-    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 10px;
     position: relative;
     display: inline-block;
-    /* Transizione coordinata con JS */
-    transition: opacity 0.2s ease-in-out; 
-  }
-
-  .member-name::before,
-  .member-name::after {
-    /* Linee decorative */
-    content: "";
-    position: absolute;
-    top: 100%;
-    width: 100px;
-    height: 2px;
-    background: rgb(8, 42, 123);
+    transition: opacity 0.2s ease-in-out;
   }
 
   .member-name::before {
-    left: -120px;
+    left: -100px;
   }
 
   .member-name::after {
-    right: -120px;
+    right: -100px;
   }
 
   .member-role {
-    color: #848696;
-    font-size: 1.5rem;
+    color: white;
+    font-size: 1.25rem;
     font-weight: 500;
     opacity: 0.8;
     text-transform: uppercase;
@@ -182,39 +150,38 @@
     padding: 10px 0;
     margin-top: -15px;
     position: relative;
-    transition: opacity 0.2s ease-in-out; /* Aggiunto per coerenza con il nome */
+    transition: opacity 0.2s ease-in-out;
   }
 
-  /* DOTS DI NAVIGAZIONE (ELEMENTO: carousel-dots) */
+  /* DOTS DI NAVIGAZIONE */
   .carousel-dots {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 60px;
+    margin-top: 40px;
   }
 
   .carousel-dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: rgba(8, 42, 123, 0.2);
+    background: #1F1F1F;
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
   .carousel-dot.active {
-    background: rgb(8, 42, 123);
+    background: var(--primary-color);
     transform: scale(1.2);
   }
 
-  /* FRECCE DI NAVIGAZIONE (ELEMENTO: carousel-nav-arrow) */
+  /* FRECCE DI NAVIGAZIONE */
   .carousel-nav-arrow {
-    /* Base */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(8, 42, 123, 0.6);
-    color: white;
+    background: var(--primary-color);
+    color: var(--secondary-color);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -227,23 +194,262 @@
     border: none;
     outline: none;
     padding-bottom: 4px;
-    /* Transizione Interazione */
-    transition: background 0.3s ease, transform 0.3s ease; 
+    transition: background 0.3s ease, transform 0.3s ease;
   }
 
   .carousel-nav-arrow:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background: white;
     transform: translateY(-50%) scale(1.1);
   }
 
-  /* Modificatori Posizione */
   .carousel-nav-arrow.left {
     left: 20px;
-    padding-right: 3px; /* Correzione visiva */
+    padding-right: 3px;
   }
 
   .carousel-nav-arrow.right {
     right: 20px;
-    padding-left: 3px; /* Correzione visiva */
+    padding-left: 3px;
+  }
+}
+
+/* =====================================================
+   3. DESKTOP STYLES (min-width: 1024px)
+   ===================================================== */
+@media (min-width: 1024px) {
+  /* Mostra carousel desktop su desktop */
+  .carousel-desktop {
+    display: block;
+    width: 100%;
+    padding: 80px 0;
+  }
+
+  /* Nascondi carousel mobile su desktop */
+  .carousel-mobile {
+    display: none !important;
+  }
+
+  .carousel-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 450px;
+    position: relative;
+    perspective: 1000px;
+    margin: 80px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .carousel-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+  }
+
+  /* CARTE (ELEMENTO: carousel-card) - DESKTOP */
+  .carousel-card {
+    position: absolute;
+    width: 280px;
+    height: 380px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.3s ease;
+  }
+
+  .carousel-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.5s ease-in-out;
+  }
+  
+  .carousel-card:focus {
+    outline: 3px solid #007bff;
+    outline-offset: 4px;
+  }
+
+  [aria-hidden="true"] {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  /* POSIZIONI DESKTOP (5 card visibili) */
+  .carousel-card.center {
+    z-index: 10;
+    transform: scale(1.1) translateZ(0);
+    opacity: 1;
+  }
+  .carousel-card.center img {
+    filter: none;
+  }
+
+  .carousel-card.right-1 {
+    z-index: 5;
+    transform: translateX(200px) scale(0.9) translateZ(-100px);
+    opacity: 0.9;
+  }
+  .carousel-card.right-1 img {
+    filter: grayscale(100%);
+  }
+
+  .carousel-card.left-1 {
+    z-index: 5;
+    transform: translateX(-200px) scale(0.9) translateZ(-100px);
+    opacity: 0.9;
+  }
+  .carousel-card.left-1 img {
+    filter: grayscale(100%);
+  }
+
+  /* CARD LATERALI DISTANTI VISIBILI SU DESKTOP */
+  .carousel-card.right-2 {
+    z-index: 1;
+    transform: translateX(400px) scale(0.8) translateZ(-300px);
+    opacity: 0.7;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .carousel-card.right-2 img {
+    filter: grayscale(100%);
+  }
+
+  .carousel-card.left-2 {
+    z-index: 1;
+    transform: translateX(-400px) scale(0.8) translateZ(-300px);
+    opacity: 0.7;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .carousel-card.left-2 img {
+    filter: grayscale(100%);
+  }
+
+  .carousel-card.hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  /* INFORMAZIONI MEMBRO - DESKTOP */
+  .member-info {
+    text-align: center;
+    margin-top: 40px;
+    transition: all 0.5s ease-out;
+  }
+
+  .member-name {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .member-name::before {
+    left: -120px;
+  }
+
+  .member-name::after {
+    right: -120px;
+  }
+
+  .member-role {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 10px 0;
+    margin-top: -15px;
+    position: relative;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  /* DOTS - DESKTOP */
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 60px;
+  }
+
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1F1F1F;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-dot.active {
+    background: var(--primary-color);
+    transform: scale(1.2);
+  }
+
+  /* FRECCE DI NAVIGAZIONE */
+  .carousel-nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    padding-bottom: 4px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .carousel-nav-arrow:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .carousel-nav-arrow.left {
+    left: 20px;
+    padding-right: 3px;
+  }
+
+  .carousel-nav-arrow.right {
+    right: 20px;
+    padding-left: 3px;
+  }
+}
+
+/* =====================================================
+   4. MOBILE STYLES (massimo 767px)
+   ===================================================== */
+@media (max-width: 767px) {
+  /* Nascondi carousel desktop su mobile */
+  .carousel-desktop {
+    display: none !important;
+  }
+
+  /* Mostra carousel mobile su mobile */
+  .carousel-mobile {
+    display: block;
   }
 }
