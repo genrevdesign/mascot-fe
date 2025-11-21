@@ -429,9 +429,6 @@ a {
 /* =====================================================
    SECTIONS - ABOUT ME
    ===================================================== */
-/* =====================================================
-   SECTIONS - ABOUT ME
-   ===================================================== */
 
 /* Sezione principale */
 #about-me {
@@ -708,11 +705,13 @@ a {
   padding: var(--spacing-md);
 }
 
+
 /* =====================================================
    SECTIONS - VITA
    ===================================================== */
 #vita {
   padding: var(--spacing-2xl) 0;
+  background-color: var(--bg-color);
 }
 
 #vita h2 {
@@ -721,32 +720,98 @@ a {
   margin-bottom: var(--spacing-lg);
 }
 
+/* Stile per gli article - identico a about-me */
 #vita .contenitore-testo {
+  padding: var(--spacing-xl);
+  border-radius: 20px;
+  min-height: 200px;
+  background-color: var(--bg-color);
+}
+
+/* Titoli h3 */
+#vita .contenitore-testo h3 {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+/* Icone circolari prima dei titoli */
+#vita .contenitore-testo h3::before {
+  content: "";
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: var(--spacing-sm);
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Paragrafi */
+#vita .contenitore-testo p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-light);
+}
+
+/* Wrapper per i primi due box */
+#vita .box-wrapper-top {
   grid-column: 1 / -1;
-  margin-bottom: var(--spacing-lg);
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: subgrid;
+  gap: inherit;
 }
 
-@media (min-width: 768px) {
-  #vita .contenitore-testo {
-    grid-column: span 4;
-  }
+#vita .box-wrapper-top .contenitore-testo {
+  grid-column: 1 / -1;
 }
 
-@media (min-width: 1024px) {
-  #vita .contenitore-testo {
-    grid-column: span 3;
-  }
+/* Primo article - Sfondo giallo */
+#vita .box-wrapper-top .contenitore-testo:first-child {
+  background-color: var(--primary-color);
 }
 
+#vita .box-wrapper-top .contenitore-testo:first-child h3,
+#vita .box-wrapper-top .contenitore-testo:first-child p {
+  color: var(--text-color);
+}
+
+#vita .box-wrapper-top .contenitore-testo:first-child h3::before {
+  background-color: var(--bg-light);
+}
+
+/* Wrapper per gli ultimi due box - Full Width */
+#vita .box-wrapper-bottom {
+  grid-column: 1 / -1;
+  background-color: var(--bg-color);
+  padding: var(--spacing-lg) 0;
+  
+  /* Esci dal grid e occupa tutta la larghezza */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+/* Contenitore interno che rispetta il max-width e il grid */
+#vita .box-wrapper-bottom-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 0 16px;
+}
+
+#vita .box-wrapper-bottom-inner .contenitore-testo {
+  grid-column: 1 / -1;
+}
+
+/* Video Container */
 #vita .video-container {
   grid-column: 1 / -1;
   margin-top: var(--spacing-lg);
-}
-
-@media (min-width: 1024px) {
-  #vita .video-container {
-    grid-column: 3 / 11;
-  }
 }
 
 #vita .video-container h3 {
@@ -754,6 +819,42 @@ a {
   color: var(--primary-color);
   text-align: center;
   margin-bottom: var(--spacing-md);
+}
+
+/* =====================================================
+   RESPONSIVE - VITA
+   ===================================================== */
+
+/* Tablet: 2 box per riga (4 colonne ciascuno su 8 totali) */
+@media (min-width: 768px) {
+  #vita .box-wrapper-top .contenitore-testo,
+  #vita .box-wrapper-bottom-inner .contenitore-testo {
+    grid-column: span 4;
+  }
+  
+  #vita .box-wrapper-bottom-inner {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 20px;
+    padding: 0 32px;
+  }
+}
+
+/* Desktop: 2 box per riga (6 colonne ciascuno su 12 totali) */
+@media (min-width: 1024px) {
+  #vita .box-wrapper-top .contenitore-testo,
+  #vita .box-wrapper-bottom-inner .contenitore-testo {
+    grid-column: span 6;
+  }
+  
+  #vita .box-wrapper-bottom-inner {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    padding: 0 80px;
+  }
+  
+  #vita .video-container {
+    grid-column: 3 / 11;
+  }
 }
 
 /* =====================================================
