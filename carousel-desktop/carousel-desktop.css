@@ -18,10 +18,12 @@
     padding: 60px 0;
   }
 
-  /* Nascondi carousel mobile su tablet */
   .carousel-mobile {
     display: none !important;
+  overflow: hidden; /* Importante per contenere i contenuti che escono */
+  width: 100%;
   }
+
 
   .carousel-container {
     width: 100%;

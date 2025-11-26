@@ -1,11 +1,4 @@
 /* =====================================================
-   DEBUG UTILITIES (da rimuovere in produzione)
-   ===================================================== */
-.sbr { border: 1px solid red; }
-.sbb { border: 1px solid blue; }
-.sbg { border: 1px solid green; }
-
-/* =====================================================
    BASE & RESET
    ===================================================== */
 *,
@@ -18,7 +11,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--navbar-height); /* Usa la variabile per coerenza */
+  scroll-padding-top: var(--navbar-height);
 }
 
 /* =====================================================
@@ -29,20 +22,20 @@ html {
   --primary-color: #FFCF57;
   --secondary-color: #1B1B1B;
   --accent-color: #1F1F1F;
-  --text-color: #1B1B1B; /* Testo scuro, es. su sfondo Primary o Light */
-  --text-light: #FFFFFF; /* Testo chiaro, es. su sfondo Secondary o Accent */
-  --bg-color-body: #1B1B1B; /* Sfondo principale del body */
-  --bg-color: #1F1F1F; /* Sfondo scuro per sezioni/contenitori (Accent) */
-  --bg-light: #FFFFFF; /* Sfondo chiaro */
+  --text-color: #1B1B1B;
+  --text-light: #FFFFFF;
+  --bg-color-body: #1B1B1B;
+  --bg-color: #1F1F1F;
+  --bg-light: #FFFFFF;
   --border-color: #FFFFFF;
   
   /* Spacing */
-  --spacing-xs: 0.5rem;   /* 8px */
-  --spacing-sm: 1rem;     /* 16px */
-  --spacing-md: 1.5rem;   /* 24px */
-  --spacing-lg: 2rem;     /* 32px */
-  --spacing-xl: 3rem;     /* 48px */
-  --spacing-2xl: 4rem;    /* 64px */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
   
   /* Typography */
   --font-heading: "bricolage-grotesque", sans-serif;
@@ -58,7 +51,7 @@ html {
   --border-radius: 8px;
   --transition-speed: 0.3s;
   
-  /* Stili Box/Contenitore - Consolidamento */
+  /* Stili Box/Contenitore */
   --box-padding: var(--spacing-xl);
   --box-radius: 20px;
   --box-min-height: 200px;
@@ -82,10 +75,8 @@ h1, h2, h3, h4, h5, h6, dt {
   line-height: 1.2;
 }
 
-/* La 'p' erediterebbe già 'font-family: var(--font-body)' da body.
-   Mantenuto solo per chiarezza se 'body' dovesse cambiare */
 p {
-  font-family: var(--font-body); 
+  font-family: var(--font-body);
   font-weight: var(--weight-regular);
 }
 
@@ -157,25 +148,19 @@ a {
   }
 }
 
-/* Elemento che esce dal grid per full-width ma all'interno di un'altra sezione (come in about-me/vita) */
 .full-width-container {
   grid-column: 1 / -1;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  /* Se ha padding verticale specifico va aggiunto al selettore della sezione */
 }
-
 
 /* =====================================================
    NAVIGATION
    ===================================================== */
-
-/* Menu Toggle Checkbox (nascosto) */
 #menu-toggle {
   display: none;
 }
 
-/* Navbar Container */
 .navbar {
   position: relative;
   width: 100%;
@@ -191,17 +176,14 @@ a {
   margin: 0 auto;
   height: var(--navbar-height);
   padding: var(--spacing-sm) 16px;
-  /* Rimossa ridondanza: padding-top: 32px non necessario se si usa padding: var(--spacing-sm) 16px;
-     Le Media Queries per il padding top sono state corrette per essere relative a padding-top della navbar-container */
-  padding-top: 32px; 
+  padding-top: 32px;
 }
-
 
 @media (min-width: 768px) {
   .navbar-container {
     padding-left: 32px;
     padding-right: 32px;
-    padding-top: 48px; 
+    padding-top: 48px;
   }
 }
 
@@ -209,7 +191,7 @@ a {
   .navbar-container {
     padding-left: 80px;
     padding-right: 80px;
-    padding-top: 60px; 
+    padding-top: 60px;
   }
 }
 
@@ -234,7 +216,7 @@ a {
 
 /* Desktop Menu - Wrapper */
 .navbar-menu {
-  display: none; /* Nascondi su mobile, mostrato in media query */
+  display: none;
 }
 
 /* Lista navbar */
@@ -247,46 +229,29 @@ a {
   padding: 0;
 }
 
-/* Rimosso .navbar-item non necessario se gli stili sono sul genitore (list) */
-/* .navbar-item { margin: 0; padding: 0; } */
-
-
 /* =====================================================
    COMPONENTS - BUTTONS (PULSANTE)
    ===================================================== */
-
-/* Pulsante base - stato NORMAL */
 .btn {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  
-  /* Tipografia */
   font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: var(--weight-bold);
-  
-  /* Colori stato Normal */
   color: var(--text-light);
   background-color: var(--secondary-color);
-  
-  /* Spaziatura */
   padding: 10px 20px;
   border-radius: 50px;
   border: none;
   cursor: pointer;
-  
-  /* Transizioni */
-  transition: background-color var(--transition-speed) ease-in-out, 
-              color var(--transition-speed) ease-in-out, 
+  transition: background-color var(--transition-speed) ease-in-out,
+              color var(--transition-speed) ease-in-out,
               transform var(--transition-speed) ease-in-out;
-  
-  /* Dimensione minima per accessibilità */
   min-height: 44px;
 }
 
-/* Contenitore icona - cerchio bianco */
 .btn-icon-wrapper {
   width: 32px;
   height: 32px;
@@ -297,14 +262,10 @@ a {
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  
-  /* Colore di sfondo del cerchio */
   background-color: var(--bg-light);
-  
   transition: background-color var(--transition-speed) ease-in-out;
 }
 
-/* SVG Icon */
 .btn-icon {
   width: 24px;
   height: 24px;
@@ -316,16 +277,11 @@ a {
   transition: color var(--transition-speed) ease-in-out;
 }
 
-
-/* Testo del pulsante */
-/* .btn-label erediterebbe da .btn e var(--font-heading). Mantenuto per semantica, ma non strettamente necessario */
 .btn-label {
-  /* font-family: var(--font-heading); */
-  /* font-weight: var(--weight-bold); */
   font-size: 0.95rem;
 }
 
-/* STATO HOVER */
+/* Button States */
 .btn:hover {
   background-color: var(--bg-light);
   color: var(--text-color);
@@ -340,7 +296,6 @@ a {
   color: var(--bg-light);
 }
 
-/* STATO ACTIVE */
 .btn:active {
   background-color: var(--secondary-color);
   color: var(--primary-color);
@@ -355,7 +310,6 @@ a {
   color: var(--text-color);
 }
 
-/* STATO FOCUS */
 .btn:focus-visible {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
@@ -364,6 +318,7 @@ a {
 /* =====================================================
    COMPONENTS - HAMBURGER MENU (MOBILE)
    ===================================================== */
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -371,20 +326,25 @@ a {
   padding: var(--spacing-xs);
   cursor: pointer;
   z-index: 1001;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
 }
 
 .hamburger span {
   display: block;
   width: 25px;
   height: 3px;
-  background: var(--secondary-color); /* Fissato al secondary (scuro) per contrasto sulla navbar primary (chiara) */
+  background: var(--bg-color);
   border-radius: 2px;
   transition: all var(--transition-speed) ease;
 }
 
-/* Hamburger Animation (Selettore semplificato, usando ~ .hamburger) */
+/* Hamburger Animation */
 #menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px); /* Valori originali migliori */
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
 #menu-toggle:checked ~ .navbar .hamburger span:nth-child(2) {
@@ -392,7 +352,95 @@ a {
 }
 
 #menu-toggle:checked ~ .navbar .hamburger span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -6px); /* Valori originali migliori */
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* =====================================================
+   RESPONSIVE BEHAVIOR (NAVBAR) - Aggiorna questa sezione
+   ===================================================== */
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  body:has(#menu-toggle:checked) {
+    overflow: hidden;
+  }
+
+  /* Navbar styles when menu is open */
+  #menu-toggle:checked ~ .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+  }
+
+  #menu-toggle:checked ~ .navbar .navbar-container {
+    background-color: var(--secondary-color);
+    /* Rimuovo justify-content per mantenere lo stesso layout */
+  }
+
+  /* Hide logo when menu is open */
+  #menu-toggle:checked ~ .navbar .navbar-logo {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* Hamburger diventa close icon - MANTIENE LA POSIZIONE ORIGINALE */
+  #menu-toggle:checked ~ .navbar .hamburger {
+    position: relative; /* Mantiene il positioning relativo al container */
+    width: 48px;
+    height: 48px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 1002;
+    margin-left: auto; /* Forza l'allineamento a destra */
+  }
+
+  #menu-toggle:checked ~ .navbar .hamburger span {
+    background: var(--bg-light);
+    position: absolute;
+  }
+
+  #menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  #menu-toggle:checked ~ .navbar .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #menu-toggle:checked ~ .navbar .hamburger span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+}
+
+/* Per tablet e schermi medi */
+@media (max-width: 768px) and (min-width: 481px) {
+  /* Non serve più questo media query specifico */
+}
+
+@media (min-width: 768px) {
+  .navbar-menu {
+    display: block;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .menu-popup {
+    display: none;
+  }
 }
 
 /* =====================================================
@@ -408,7 +456,7 @@ a {
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--transition-speed) ease, 
+  transition: opacity var(--transition-speed) ease,
               visibility var(--transition-speed) ease;
 }
 
@@ -430,24 +478,37 @@ a {
 
 /* Mobile Menu Button */
 .menu-popup-btn {
-  font-size: 1.25rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
   gap: 14px;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: var(--weight-bold);
+  color: var(--text-light);
+  background-color: var(--secondary-color);
   padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
   min-height: 56px;
-  
-  /* Transizione aggiuntiva per l'effetto scale */
-  transition: background-color 0.2s ease-in-out, 
-              color 0.2s ease-in-out, 
-              transform 0.2s ease-in-out,
-              scale 0.2s ease-in-out; 
+  transition: background-color var(--transition-speed) ease-in-out,
+              color var(--transition-speed) ease-in-out,
+              transform var(--transition-speed) ease-in-out;
 }
 
-/* Contenitore icona mobile - Sovrascrive le dimensioni */
 .menu-popup-btn .btn-icon-wrapper {
   width: 44px;
   height: 44px;
   min-width: 44px;
   min-height: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: var(--bg-light);
+  transition: background-color var(--transition-speed) ease-in-out;
 }
 
 .menu-popup-btn .btn-icon {
@@ -455,21 +516,41 @@ a {
   height: 28px;
   min-width: 28px;
   min-height: 28px;
+  display: block;
+  flex-shrink: 0;
+  color: var(--text-color);
+  transition: color var(--transition-speed) ease-in-out;
 }
 
-/* STATO HOVER - MENU POPUP */
+/* Mobile Menu Button States - Same as desktop */
 .menu-popup-btn:hover {
-  /* Eredita hover da .btn */
-  transform: scale(1.05); /* Sovrascrive transform: translateY(-2px) */
+  background-color: var(--bg-light);
+  color: var(--text-color);
+  transform: translateY(-2px);
 }
 
-/* STATO ACTIVE - MENU POPUP */
+.menu-popup-btn:hover .btn-icon-wrapper {
+  background-color: var(--secondary-color);
+}
+
+.menu-popup-btn:hover .btn-icon {
+  color: var(--bg-light);
+}
+
 .menu-popup-btn:active {
-  /* Eredita active da .btn, sovrascriviamo solo il transform */
-  transform: scale(0.98); 
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  transform: translateY(0);
 }
 
-/* STATO FOCUS - MENU POPUP */
+.menu-popup-btn:active .btn-icon-wrapper {
+  background-color: var(--primary-color);
+}
+
+.menu-popup-btn:active .btn-icon {
+  color: var(--text-color);
+}
+
 .menu-popup-btn:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 3px;
@@ -478,41 +559,79 @@ a {
 /* =====================================================
    RESPONSIVE BEHAVIOR (NAVBAR)
    ===================================================== */
-
-/* Mobile: mostra hamburger, nascondi menu desktop */
 @media (max-width: 768px) {
   .navbar-menu {
     display: none;
   }
-  
+
   .hamburger {
     display: flex;
   }
-  
+
   body:has(#menu-toggle:checked) {
     overflow: hidden;
   }
-  
-  /* Correzione leggera per l'animazione dell'hamburger in mobile-specifico */
-  #menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px); /* Ripristino a valori più puliti se si è nel max-width */
+
+  /* Navbar styles when menu is open */
+  #menu-toggle:checked ~ .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
   }
-  
+
+  #menu-toggle:checked ~ .navbar .navbar-container {
+    background-color: var(--secondary-color);
+  }
+
+  /* Hide logo when menu is open */
+  #menu-toggle:checked ~ .navbar .navbar-logo {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* Hamburger becomes close icon */
+  #menu-toggle:checked ~ .navbar .hamburger {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 1002;
+  }
+
+  #menu-toggle:checked ~ .navbar .hamburger span {
+    background: var(--bg-light);
+    position: absolute;
+  }
+
+  #menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  #menu-toggle:checked ~ .navbar .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+
   #menu-toggle:checked ~ .navbar .hamburger span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px); /* Ripristino a valori più puliti se si è nel max-width */
+    transform: rotate(-45deg);
   }
 }
 
-/* Tablet e Desktop: mostra menu, nascondi hamburger */
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .navbar-menu {
     display: block;
   }
-  
+
   .hamburger {
     display: none;
   }
-  
+
   .menu-popup {
     display: none;
   }
@@ -521,7 +640,6 @@ a {
 /* =====================================================
    SECTIONS - HERO
    ===================================================== */
-
 #hero {
   position: relative;
   width: 100%;
@@ -529,7 +647,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow:hidden;
+  overflow: hidden;
   padding: var(--spacing-2xl) var(--spacing-lg);
 }
 
@@ -541,20 +659,17 @@ a {
   padding: var(--spacing-xl) 0;
 }
 
-/* Immagine responsive nel contenuto */
 .hero-content img {
   width: 280px;
   height: auto;
 }
 
-/* Tablet */
 @media (min-width: 768px) {
   .hero-content img {
     width: 320px;
   }
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
   .hero-content img {
     width: 550px;
@@ -572,20 +687,16 @@ a {
   z-index: 0;
 }
 
-
 /* =====================================================
    COMPONENTS - CONTENT BOX (Contenitore Testo Standard)
    ===================================================== */
-
-/* Stile base per tutti i contenitori di testo riutilizzabili nelle sezioni */
 .contenitore-testo {
   padding: var(--box-padding);
   border-radius: var(--box-radius);
   min-height: var(--box-min-height);
-  background-color: var(--bg-color); 
+  background-color: var(--bg-color);
 }
 
-/* Stili per il titolo interno */
 .contenitore-testo h3 {
   display: flex;
   align-items: center;
@@ -593,7 +704,6 @@ a {
   font-size: 1.5rem;
 }
 
-/* Icone circolari prima dei titoli */
 .contenitore-testo h3::before {
   content: "";
   display: inline-block;
@@ -603,14 +713,11 @@ a {
   background-color: var(--primary-color);
   border-radius: 50%;
   flex-shrink: 0;
-  
-  /* Stili per l'immagine SVG inserita */
   background-size: 24px 24px;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Paragrafi */
 .contenitore-testo p {
   font-size: 1rem;
   line-height: 1.6;
@@ -633,15 +740,10 @@ a {
 /* =====================================================
    SECTIONS - ABOUT ME
    ===================================================== */
-
 #about-me {
   padding: var(--spacing-2xl) 0;
 }
 
-/* I contenitori .contenitore-testo ora usano lo stile base definito sopra */
-/* I colori specifici vengono applicati con classi di utility o selettori specifici */
-
-/* Wrapper per i primi due box - Trasparente sul body */
 #about-me .box-wrapper-top {
   grid-column: 1 / -1;
   background-color: transparent;
@@ -652,22 +754,18 @@ a {
 
 #about-me .box-wrapper-top .contenitore-testo {
   grid-column: 1 / -1;
-  background-color: var(--bg-color); /* Sfondo Accent per About Me Top Box */
+  background-color: var(--bg-color);
 }
 
-/* Wrapper per gli ultimi due box - Full Width / Sfondo Accent */
 #about-me .box-wrapper-bottom {
-  /* Sostituito con classe di utility per full-width */
   grid-column: 1 / -1;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  
   background-color: var(--bg-color);
   border-radius: 25px;
   padding: var(--spacing-lg) 0;
 }
 
-/* Contenitore interno che rispetta il max-width e il grid */
 #about-me .box-wrapper-bottom-inner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -679,38 +777,37 @@ a {
 
 #about-me .box-wrapper-bottom-inner .contenitore-testo {
   grid-column: 1 / -1;
-  background-color: var(--bg-color-body); /* Box default su sfondo Accent */
+  background-color: var(--bg-color-body);
 }
 
-/* Box "Un invito a te!" - Aggiunta classe di stile Primary */
+/* Box "Un invito a te!" - Sfondo primary */
 #about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) {
-  /* Applicazione dello stile primary unificato */
   background-color: var(--primary-color);
 }
+
 #about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) h3,
 #about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) p {
   color: var(--text-color);
 }
+
 #about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) h3::before {
   background-color: var(--bg-light);
 }
 
-/* Box "Perchè questo sito" - Sfondo body su wrapper accent */
+/* Box "Perchè questo sito" */
 #about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(2) {
   background-color: var(--bg-color-body);
 }
 
 /* =====================================================
-   RESPONSIVE - ABOUT ME (UNIFICATO)
+   RESPONSIVE - ABOUT ME
    ===================================================== */
-
-/* Tablet: 2 box per riga (4 colonne ciascuno su 8 totali) */
 @media (min-width: 768px) {
   #about-me .box-wrapper-top .contenitore-testo,
   #about-me .box-wrapper-bottom-inner .contenitore-testo {
     grid-column: span 4;
   }
-  
+
   #about-me .box-wrapper-bottom-inner {
     grid-template-columns: repeat(8, 1fr);
     gap: 20px;
@@ -718,13 +815,12 @@ a {
   }
 }
 
-/* Desktop: 2 box per riga (6 colonne ciascuno su 12 totali) */
 @media (min-width: 1024px) {
   #about-me .box-wrapper-top .contenitore-testo,
   #about-me .box-wrapper-bottom-inner .contenitore-testo {
     grid-column: span 6;
   }
-  
+
   #about-me .box-wrapper-bottom-inner {
     grid-template-columns: repeat(12, 1fr);
     gap: 24px;
@@ -745,10 +841,8 @@ a {
   text-align: center;
 }
 
-/* Carousel Container */
 .storia-carousel-container {
   grid-column: 1 / -1;
-  /* Rimosse media query ridondanti */
 }
 
 /* Card Container */
@@ -781,13 +875,13 @@ a {
   border-radius: var(--border-radius);
   text-align: center;
   border: 1px solid var(--primary-color);
-  transition: transform var(--transition-speed) ease, 
+  transition: transform var(--transition-speed) ease,
               box-shadow var(--transition-speed) ease;
 }
 
 #storia .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 8px rgba(255, 207, 87, 0.2); /* Aggiunto box-shadow per feedback visivo */
+  box-shadow: 0 4px 8px rgba(255, 207, 87, 0.2);
 }
 
 #storia .card h3 {
@@ -798,7 +892,7 @@ a {
 
 #storia .card .card-year {
   font-family: var(--font-body);
-  color: var(--text-light); /* Corretto da text-color a text-light per leggibilità su sfondo scuro */
+  color: var(--text-light);
   font-weight: var(--weight-medium);
   margin-top: var(--spacing-xs);
   display: block;
@@ -809,7 +903,7 @@ a {
 #storia .accordion {
   grid-column: 1 / -1;
   list-style: none;
-  padding: 0; /* Assicurarsi che non ci sia padding ereditato */
+  padding: 0;
 }
 
 .accordion-item {
@@ -860,7 +954,7 @@ a {
   overflow: hidden;
   margin: 0;
   padding: 0 var(--spacing-md);
-  transition: max-height var(--transition-speed) ease, 
+  transition: max-height var(--transition-speed) ease,
               padding var(--transition-speed) ease;
 }
 
@@ -869,13 +963,12 @@ a {
   padding: var(--spacing-md);
 }
 
-
 /* =====================================================
    SECTIONS - VITA
    ===================================================== */
 #vita {
   padding: var(--spacing-2xl) 0;
-  background-color: var(--bg-color); /* Lo sfondo Accent viene dato alla sezione stessa */
+  background-color: var(--bg-color);
   border-radius: 25px;
 }
 
@@ -885,9 +978,6 @@ a {
   margin-bottom: var(--spacing-lg);
 }
 
-/* I contenitori .contenitore-testo ora usano lo stile base definito sopra */
-
-/* Wrapper per i primi due box */
 #vita .box-wrapper-top {
   grid-column: 1 / -1;
   background-color: transparent;
@@ -898,33 +988,31 @@ a {
 
 #vita .box-wrapper-top .contenitore-testo {
   grid-column: 1 / -1;
-  background-color: var(--bg-color-body); /* Box default su sfondo Accent */
+  background-color: var(--bg-color-body);
 }
 
-/* Primo article - Sfondo giallo (Style Primary) */
+/* Primo article - Sfondo giallo */
 #vita .box-wrapper-top .contenitore-testo:first-child {
   background-color: var(--primary-color);
 }
+
 #vita .box-wrapper-top .contenitore-testo:first-child h3,
 #vita .box-wrapper-top .contenitore-testo:first-child p {
   color: var(--text-color);
 }
+
 #vita .box-wrapper-top .contenitore-testo:first-child h3::before {
   background-color: var(--bg-light);
 }
 
-/* Wrapper per gli ultimi due box - Full Width (sezione Vita ha sfondo Accent, questo wrapper no) */
 #vita .box-wrapper-bottom {
-  /* Sostituito con classe di utility per full-width */
   grid-column: 1 / -1;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  
-  background-color: transparent; /* Il genitore ha già lo sfondo Accent */
+  background-color: transparent;
   padding: var(--spacing-lg) 0;
 }
 
-/* Contenitore interno che rispetta il max-width e il grid */
 #vita .box-wrapper-bottom-inner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -936,7 +1024,7 @@ a {
 
 #vita .box-wrapper-bottom-inner .contenitore-testo {
   grid-column: 1 / -1;
-  background-color: var(--bg-color-body); /* Box default su sfondo Accent */
+  background-color: var(--bg-color-body);
 }
 
 /* Video Container */
@@ -953,16 +1041,14 @@ a {
 }
 
 /* =====================================================
-   RESPONSIVE - VITA (UNIFICATO)
+   RESPONSIVE - VITA
    ===================================================== */
-
-/* Tablet: 2 box per riga (4 colonne ciascuno su 8 totali) */
 @media (min-width: 768px) {
   #vita .box-wrapper-top .contenitore-testo,
   #vita .box-wrapper-bottom-inner .contenitore-testo {
     grid-column: span 4;
   }
-  
+
   #vita .box-wrapper-bottom-inner {
     grid-template-columns: repeat(8, 1fr);
     gap: 20px;
@@ -970,23 +1056,23 @@ a {
   }
 }
 
-/* Desktop: 2 box per riga (6 colonne ciascuno su 12 totali) */
 @media (min-width: 1024px) {
   #vita .box-wrapper-top .contenitore-testo,
   #vita .box-wrapper-bottom-inner .contenitore-testo {
     grid-column: span 6;
   }
-  
+
   #vita .box-wrapper-bottom-inner {
     grid-template-columns: repeat(12, 1fr);
     gap: 24px;
     padding: 0 80px;
   }
-  
+
   #vita .video-container {
     grid-column: 3 / 11;
   }
 }
+
 /* =====================================================
    SECTIONS - NBA MASCOT TOP 5
    ===================================================== */
@@ -1023,16 +1109,16 @@ a {
   }
 }
 
-/* Mascot Cards (Small cards in the slider) */
+/* Mascot Cards */
 #nba-mascot-top5 .mascot-card {
   background: #2a2a2a;
   padding: var(--spacing-sm);
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   cursor: pointer;
-  transition: transform var(--transition-speed) ease, 
+  transition: transform var(--transition-speed) ease,
               box-shadow var(--transition-speed) ease;
-  outline: none; /* Rimosso l'outline di default per gestirlo solo in :focus */
+  outline: none;
 }
 
 #nba-mascot-top5 .mascot-card:hover,
@@ -1042,8 +1128,9 @@ a {
   outline: 2px solid var(--primary-color);
   outline-offset: 1px;
 }
+
 #nba-mascot-top5 .mascot-card:focus {
-  outline: none; /* Sovrascritto da :focus-visible */
+  outline: none;
 }
 
 #nba-mascot-top5 .mascot-card img {
@@ -1058,7 +1145,7 @@ a {
   margin-top: var(--spacing-xs);
 }
 
-/* Grid per i contenitori testo (Diversa dal grid standard) */
+/* Grid per i contenitori testo */
 #nba-mascot-top5 .nba-text-grid {
   grid-column: 1 / -1;
   display: grid;
@@ -1067,7 +1154,7 @@ a {
   margin-bottom: var(--spacing-xl);
 }
 
-/* Contenitore grande con sfondo giallo (Style Primary) */
+/* Contenitore grande con sfondo giallo */
 #nba-mascot-top5 .contenitore-grande {
   background-color: var(--primary-color);
   display: flex;
@@ -1083,10 +1170,6 @@ a {
   background-color: var(--bg-light);
 }
 
-
-
-
-/* Paragrafi (Sovrascrive solo il margine finale se è l'ultimo) */
 #nba-mascot-top5 .contenitore-testo p:last-child {
   margin-bottom: 0;
 }
@@ -1098,39 +1181,33 @@ a {
   margin-top: var(--spacing-lg);
   color: var(--primary-color);
   font-weight: var(--weight-bold);
-  /* Aggiunto font-family per consistenza, usa anchor-up-text utility se definito */
-  font-family: var(--font-heading); 
+  font-family: var(--font-heading);
 }
-
 
 /* =====================================================
    RESPONSIVE - NBA TEXT GRID
    ===================================================== */
-
-/* Tablet e Desktop: Layout a 2 colonne */
 @media (min-width: 768px) {
   #nba-mascot-top5 .nba-text-grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 1fr; /* Righe con altezza uguale */
+    grid-auto-rows: 1fr;
     gap: 20px;
   }
-  
-  /* Il contenitore grande occupa 2 righe e la colonna 1 */
+
   #nba-mascot-top5 .contenitore-grande {
     grid-row: span 2;
     grid-column: 1;
   }
-  
-  /* Gli altri contenitori si allineano automaticamente nella colonna 2 */
+
   #nba-mascot-top5 .contenitore-testo:nth-of-type(2) {
     grid-column: 2;
   }
+
   #nba-mascot-top5 .contenitore-testo:nth-of-type(3) {
     grid-column: 2;
   }
 }
 
-/* Desktop: Gap più ampio */
 @media (min-width: 1024px) {
   #nba-mascot-top5 .nba-text-grid {
     gap: 24px;
@@ -1157,7 +1234,7 @@ a {
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--transition-speed) ease, 
+  transition: opacity var(--transition-speed) ease,
               visibility var(--transition-speed) ease;
   overflow-y: auto;
   padding: var(--spacing-lg);
@@ -1196,7 +1273,7 @@ a {
 
 .popup-close:hover,
 .popup-close:focus {
-  color: var(--text-color); /* Colore più scuro su hover */
+  color: var(--text-color);
 }
 
 .popup-main-info {
@@ -1219,7 +1296,7 @@ a {
   align-items: center;
   gap: var(--spacing-sm);
   margin-top: var(--spacing-md);
-  color: var(--text-light); /* Assicurarsi che il testo si veda */
+  color: var(--text-light);
 }
 
 .video-links {
@@ -1237,7 +1314,7 @@ a {
   background: rgba(255, 207, 87, 0.1);
   border: 1px solid var(--primary-color);
   border-radius: var(--border-radius);
-  color: var(--text-light); /* Corretto a text-light per leggibilità su sfondo scuro parzialmente trasparente */
+  color: var(--text-light);
   cursor: pointer;
   transition: background-color var(--transition-speed) ease;
   text-decoration: none;
@@ -1265,9 +1342,9 @@ a {
 .curiosita h3 {
   margin-bottom: var(--spacing-sm);
   font-size: 1.2rem;
-  color: var(--primary-color); /* Assicurare il colore del titolo h3 */
+  color: var(--primary-color);
 }
-/* Aggiunto stile per il testo interno */
+
 .curiosita p {
   color: var(--text-light);
 }
@@ -1282,7 +1359,7 @@ a {
   height: auto;
   aspect-ratio: 16 / 9;
   border-radius: var(--border-radius);
-  display: block; /* Assicurare che sia un elemento di blocco */
+  display: block;
 }
 
 @media (max-width: 768px) {
@@ -1331,7 +1408,7 @@ a {
 }
 
 .site-footer .footer-content a {
-  color: var(--text-light); /* Assicurare il colore del link */
+  color: var(--text-light);
 }
 
 .site-footer .footer-content a:hover,
@@ -1352,10 +1429,6 @@ a {
 /* =====================================================
    COMPONENTS - MASCOT PROFILE CARD
    ===================================================== */
-
-/* Rimosso il blocco duplicato 'MASCOT PROFILE CARD' */
-/* Il primo blocco era nascosto (visibility:hidden) - il secondo era più completo */
-
 .mascot-profile-card {
   width: 100%;
   max-width: 420px;
@@ -1374,10 +1447,8 @@ a {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-/* Card Image Container */
 .mascot-profile-card .card-image {
-  /* Usato padding per il bordo interno (rispetto al margin) per consistenza con card-footer */
-  width: calc(100% - 24px); 
+  width: calc(100% - 24px);
   height: 420px;
   background-color: var(--bg-light);
   border-radius: 20px;
@@ -1393,7 +1464,6 @@ a {
   display: block;
 }
 
-/* Card Footer */
 .mascot-profile-card .card-footer {
   padding: 20px 24px;
   display: flex;
@@ -1403,7 +1473,6 @@ a {
   background-color: var(--primary-color);
 }
 
-/* Card Text */
 .mascot-profile-card .card-text {
   flex: 1;
   display: flex;
@@ -1429,7 +1498,6 @@ a {
   margin: 0;
 }
 
-/* Card Icon - Cerchio bianco con logo SVG */
 .mascot-profile-card .card-icon {
   width: 56px;
   height: 56px;
@@ -1451,44 +1519,40 @@ a {
 /* =====================================================
    RESPONSIVE - MASCOT PROFILE CARD
    ===================================================== */
-
-/* Mobile: card più compatta */
 @media (max-width: 768px) {
   .mascot-profile-card {
     max-width: 100%;
   }
-  
+
   .mascot-profile-card .card-image {
     height: 320px;
   }
-  
+
   .mascot-profile-card .card-footer {
     padding: 16px 20px;
   }
-  
+
   .mascot-profile-card .card-title {
     font-size: 1.5rem;
   }
-  
+
   .mascot-profile-card .card-icon {
     width: 48px;
     height: 48px;
   }
-  
+
   .mascot-profile-card .card-icon img {
     width: 32px;
     height: 32px;
   }
 }
 
-/* Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
   .mascot-profile-card .card-image {
     height: 360px;
   }
 }
 
-/* Desktop large */
 @media (min-width: 1440px) {
   .mascot-profile-card .card-image {
     height: 480px;
@@ -1508,13 +1572,11 @@ hr {
 /* =====================================================
    ACCESSIBILITY
    ===================================================== */
-/* Usare :focus-visible è preferibile a :focus per evitare l'outline quando si clicca con il mouse */
-*:focus-visible { 
+*:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
 
-/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1526,38 +1588,33 @@ hr {
 }
 
 /* =====================================================
-   ICONE SVG PER TUTTE LE SEZIONI 
+   ICONE SVG PER TUTTE LE SEZIONI
    ===================================================== */
 
 /* About Me Icon Overrides */
-/* Box 1: Chi sono */
 #about-me .box-wrapper-top .contenitore-testo:nth-of-type(1) h3::before {
   background-image: url('assets/icons/icon-chi-sono.svg');
-  background-color: var(--primary-color); /* Colore primario su box non primary */
+  background-color: var(--primary-color);
 }
 
-/* Box 2: La mia passione per le mascotte */
 #about-me .box-wrapper-top .contenitore-testo:nth-of-type(2) h3::before {
   background-image: url('assets/icons/icon-passione.svg');
   background-color: var(--primary-color);
 }
 
-/* Box 3: Un invito a te! (Box style-primary) */
 #about-me .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(1) h3::before {
   background-image: url('assets/icons/icon-invito.svg');
-  background-color: var(--bg-light); /* Override da style-primary */
+  background-color: var(--bg-light);
 }
 
-/* Box 4: Perché questo sito */
 #about-me .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(2) h3::before {
-  background-image: url('assets/bull.jpg');
+  background-image: url('assets/icons/icon-perche.svg');
   background-color: var(--primary-color);
 }
 
 /* Sezione Storia Icon Overrides (Accordion) */
 #storia .accordion-item dt button {
-  /* Aggiunto stile per l'icona dell'accordion, ereditato dal base. Sovrascriviamo solo l'immagine e le dimensioni */
-  padding-left: var(--spacing-md); /* Ripristino padding left originale */
+  padding-left: var(--spacing-md);
 }
 
 #storia .accordion-item dt button::before {
@@ -1566,7 +1623,7 @@ hr {
   align-items: center;
   justify-content: center;
   margin-right: var(--spacing-sm);
-  background-color: var(--primary-color); /* Sfondo dell'icona nell'accordion */
+  background-color: var(--primary-color);
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -1584,44 +1641,37 @@ hr {
 }
 
 /* Sezione Vita Icon Overrides */
-/* Box 1: Un ruolo che conta (Box style-primary) */
 #vita .box-wrapper-top .contenitore-testo:nth-of-type(1) h3::before {
   background-image: url('assets/icons/icon-ruolo.svg');
-  background-color: var(--bg-light); /* Override da style-primary */
+  background-color: var(--bg-light);
 }
 
-/* Box 2: Un momento di gioia */
 #vita .box-wrapper-top .contenitore-testo:nth-of-type(2) h3::before {
   background-image: url('assets/icons/icon-gioia.svg');
   background-color: var(--primary-color);
 }
 
-/* Box 3: Fanno molto di più */
 #vita .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(1) h3::before {
   background-image: url('assets/icons/icon-artisti.svg');
   background-color: var(--primary-color);
 }
 
-/* Box 4: Prima di incontrarle */
 #vita .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(2) h3::before {
   background-image: url('assets/icons/icon-incontro.svg');
   background-color: var(--primary-color);
 }
 
 /* Sezione NBA MASCOT TOP 5 Icon Overrides */
-/* Box 1: Uno show nello show! (Contenitore Grande - style-primary) */
 #nba-mascot-top5 .contenitore-grande h3::before {
   background-image: url('assets/icons/icon-show.svg');
-  background-color: var(--bg-light); /* Override da style-primary */
+  background-color: var(--bg-light);
 }
 
-/* Box 2: Personaggi a bordo campo */
 #nba-mascot-top5 .nba-text-grid .contenitore-testo:nth-of-type(2) h3::before {
   background-image: url('assets/icons/icon-bordo-campo.svg');
   background-color: var(--primary-color);
 }
 
-/* Box 3: Un ruolo importante nello sport americano */
 #nba-mascot-top5 .nba-text-grid .contenitore-testo:nth-of-type(3) h3::before {
   background-image: url('assets/icons/icon-sport-americano.svg');
   background-color: var(--primary-color);
