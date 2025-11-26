@@ -21,7 +21,7 @@
   </head>
 <body>
 
- <!-- Checkbox nascosto per gestire apertura/chiusura menu mobile -->
+<!-- Checkbox nascosto per gestire apertura/chiusura menu mobile -->
 <input type="checkbox" id="menu-toggle">
 
 <nav class="navbar">
@@ -38,28 +38,40 @@
     </label>
     
     <!-- Menu desktop: visibile solo su schermi grandi -->
-    <ul class="menu">
-      <li>
-        <!-- Button con data-href per la navigazione tramite JS -->
-        <button class="menu-btn" data-href="#storia">
-          <!-- Sostituisci "icona-storia.svg" con il percorso della tua icona -->
-          <img src="assets/vector-storia-dandelion.svg" alt="icona sezione storia" class="btn-icon">
-          Storia
-        </button>
-      </li>
-      <li>
-        <button class="menu-btn" data-href="#vita">
-          <img src="assets/vector-vita-dandelion.svg" alt="icona sezione vita" class="btn-icon">
-          Vita da Mascot
-        </button>
-      </li>
-      <li>
-        <button class="menu-btn" data-href="#nba-mascot-top5">
-          <img src="assets/vector-nba-dandelion.svg" alt="icona sezione NBA" class="btn-icon">
-          NBA Mascot
-        </button>
-      </li>
-    </ul>
+    <nav class="navbar-menu">
+      <ul class="navbar-list">
+        <li class="navbar-item">
+          <a href="#storia" class="btn">
+            <span class="btn-icon-wrapper">
+              <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <path fill="currentColor" d="M192 233.3C220.3 221 240 192.8 240 160C240 115.8 204.2 80 160 80C115.8 80 80 115.8 80 160C80 192.8 99.7 221 128 233.3L128 288L64 288C46.3 288 32 302.3 32 320C32 337.7 46.3 352 64 352L288 352L288 406.7C259.7 419 240 447.2 240 480C240 524.2 275.8 560 320 560C364.2 560 400 524.2 400 480C400 447.2 380.3 419 352 406.7L352 352L576 352C593.7 352 608 337.7 608 320C608 302.3 593.7 288 576 288L512 288L512 233.3C540.3 221 560 192.8 560 160C560 115.8 524.2 80 480 80C435.8 80 400 115.8 400 160C400 192.8 419.7 221 448 233.3L448 288L192 288L192 233.3z"/>
+              </svg>
+            </span>
+            <span class="btn-label">Storia</span>
+          </a>
+        </li>
+        <li class="navbar-item">
+          <a href="#vita" class="btn">
+            <span class="btn-icon-wrapper">
+              <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <path fill="currentColor" d="M320 128C96 128 32 224 32 336C32 448 112 512 208 512L216.4 512C240.6 512 262.8 498.3 273.6 476.6L296.8 430.3C301.2 421.5 310.1 416 320 416C329.9 416 338.8 421.5 343.2 430.3L366.4 476.6C377.2 498.3 399.4 512 423.6 512L432 512C528 512 608 448 608 336C608 224 544 128 320 128zM128 320C128 284.7 156.7 256 192 256C227.3 256 256 284.7 256 320C256 355.3 227.3 384 192 384C156.7 384 128 355.3 128 320zM448 256C483.3 256 512 284.7 512 320C512 355.3 483.3 384 448 384C412.7 384 384 355.3 384 320C384 284.7 412.7 256 448 256z"/>
+              </svg>
+            </span>
+            <span class="btn-label">Vita da Mascot</span>
+          </a>
+        </li>
+        <li class="navbar-item">
+          <a href="#nba-mascot-top5" class="btn">
+            <span class="btn-icon-wrapper">
+              <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <path fill="currentColor" d="M156.7 122.8L235.1 201.2C253.3 176.2 264 145.3 264 112C264 97.9 262.1 84.3 258.5 71.4C220.5 80.8 185.9 98.6 156.7 122.8zM122.8 156.7C98.6 185.9 80.8 220.5 71.4 258.5C84.3 262.1 97.9 264 112 264C145.3 264 176.1 253.3 201.2 235.1L122.8 156.7zM320 64C315.4 64 310.8 64.1 306.3 64.4C310 79.7 312 95.6 312 112C312 158.6 296.1 201.4 269.4 235.4L320 286.1L483.3 122.8C438.9 86.1 382.1 64 320 64zM112 312C95.6 312 79.6 310 64.4 306.3C64.2 310.8 64 315.4 64 320C64 382.1 86.1 438.9 122.8 483.3L286.1 320L235.4 269.4C201.4 296.1 158.6 312 112 312zM575.6 333.7C575.8 329.2 576 324.6 576 320C576 257.9 553.9 201.1 517.2 156.7L353.9 320L404.6 370.6C438.6 343.9 481.5 328 528 328C544.4 328 560.4 330 575.6 333.7zM568.5 381.5C555.6 377.9 542 376 527.9 376C494.6 376 463.8 386.7 438.7 404.9L517.1 483.3C541.3 454.1 559.1 419.5 568.5 381.5zM404.9 438.8C386.7 463.8 376 494.7 376 528C376 542.1 377.9 555.7 381.5 568.6C419.5 559.2 454.1 541.4 483.3 517.2L404.9 438.8zM370.6 404.5L320 353.9L156.7 517.2C201 553.9 257.9 576 320 576C324.6 576 329.2 575.9 333.7 575.6C330 560.3 328 544.4 328 528C328 481.4 343.9 438.6 370.6 404.6z"/>
+              </svg>
+            </span>
+            <span class="btn-label">NBA Mascot</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </nav>
 
@@ -67,22 +79,34 @@
 <aside class="menu-popup">
   <ul class="menu-popup-list">
     <li>
-      <button class="menu-popup-btn" data-href="#storia">
-        <img src="assets/vector-storia-dandelion.svg" alt="" class="btn-icon">
-        Storia
-      </button>
+      <a href="#storia" class="menu-popup-btn">
+        <span class="btn-icon-wrapper">
+          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+            <path fill="currentColor" d="M192 233.3C220.3 221 240 192.8 240 160C240 115.8 204.2 80 160 80C115.8 80 80 115.8 80 160C80 192.8 99.7 221 128 233.3L128 288L64 288C46.3 288 32 302.3 32 320C32 337.7 46.3 352 64 352L288 352L288 406.7C259.7 419 240 447.2 240 480C240 524.2 275.8 560 320 560C364.2 560 400 524.2 400 480C400 447.2 380.3 419 352 406.7L352 352L576 352C593.7 352 608 337.7 608 320C608 302.3 593.7 288 576 288L512 288L512 233.3C540.3 221 560 192.8 560 160C560 115.8 524.2 80 480 80C435.8 80 400 115.8 400 160C400 192.8 419.7 221 448 233.3L448 288L192 288L192 233.3z"/>
+          </svg>
+        </span>
+        <span class="btn-label">Storia</span>
+      </a>
     </li>
     <li>
-      <button class="menu-popup-btn" data-href="#vita">
-        <img src="assets/vector-vita-dandelion.svg" alt="" class="btn-icon">
-        Vita da Mascot
-      </button>
+      <a href="#vita" class="menu-popup-btn">
+        <span class="btn-icon-wrapper">
+          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+            <path fill="currentColor" d="M320 128C96 128 32 224 32 336C32 448 112 512 208 512L216.4 512C240.6 512 262.8 498.3 273.6 476.6L296.8 430.3C301.2 421.5 310.1 416 320 416C329.9 416 338.8 421.5 343.2 430.3L366.4 476.6C377.2 498.3 399.4 512 423.6 512L432 512C528 512 608 448 608 336C608 224 544 128 320 128zM128 320C128 284.7 156.7 256 192 256C227.3 256 256 284.7 256 320C256 355.3 227.3 384 192 384C156.7 384 128 355.3 128 320zM448 256C483.3 256 512 284.7 512 320C512 355.3 483.3 384 448 384C412.7 384 384 355.3 384 320C384 284.7 412.7 256 448 256z"/>
+          </svg>
+        </span>
+        <span class="btn-label">Vita da Mascot</span>
+      </a>
     </li>
     <li>
-      <button class="menu-popup-btn" data-href="#nba-mascot-top5">
-        <img src="assets/vector-nba-dandelion.svg" alt="" class="btn-icon">
-        NBA Mascot
-      </button>
+      <a href="#nba-mascot-top5" class="menu-popup-btn">
+        <span class="btn-icon-wrapper">
+          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+            <path fill="currentColor" d="M156.7 122.8L235.1 201.2C253.3 176.2 264 145.3 264 112C264 97.9 262.1 84.3 258.5 71.4C220.5 80.8 185.9 98.6 156.7 122.8zM122.8 156.7C98.6 185.9 80.8 220.5 71.4 258.5C84.3 262.1 97.9 264 112 264C145.3 264 176.1 253.3 201.2 235.1L122.8 156.7zM320 64C315.4 64 310.8 64.1 306.3 64.4C310 79.7 312 95.6 312 112C312 158.6 296.1 201.4 269.4 235.4L320 286.1L483.3 122.8C438.9 86.1 382.1 64 320 64zM112 312C95.6 312 79.6 310 64.4 306.3C64.2 310.8 64 315.4 64 320C64 382.1 86.1 438.9 122.8 483.3L286.1 320L235.4 269.4C201.4 296.1 158.6 312 112 312zM575.6 333.7C575.8 329.2 576 324.6 576 320C576 257.9 553.9 201.1 517.2 156.7L353.9 320L404.6 370.6C438.6 343.9 481.5 328 528 328C544.4 328 560.4 330 575.6 333.7zM568.5 381.5C555.6 377.9 542 376 527.9 376C494.6 376 463.8 386.7 438.7 404.9L517.1 483.3C541.3 454.1 559.1 419.5 568.5 381.5zM404.9 438.8C386.7 463.8 376 494.7 376 528C376 542.1 377.9 555.7 381.5 568.6C419.5 559.2 454.1 541.4 483.3 517.2L404.9 438.8zM370.6 404.5L320 353.9L156.7 517.2C201 553.9 257.9 576 320 576C324.6 576 329.2 575.9 333.7 575.6C330 560.3 328 544.4 328 528C328 481.4 343.9 438.6 370.6 404.6z"/>
+          </svg>
+        </span>
+        <span class="btn-label">NBA Mascot</span>
+      </a>
     </li>
   </ul>
 </aside>
@@ -134,9 +158,9 @@
   </div>
 </section>
 
-    <hr>
-    
-<section class="layout-grid">
+  
+<section id="storia">
+  <div class="layout-grid">
   <h2 id="storia-title">Dal passato a oggi: l'evoluzione delle mascot</h2>
   <div class="storia-carousel-container">
   
@@ -191,63 +215,8 @@
       </div>
     </div>
   </div>
-</section>
 
-    <!-- Storia Section -->
-    <section id="storia" aria-labelledby="storia-title">
-      <div class="layout-grid">
-        
-        <!-- <div class="card-container">
-          <article class="card">
-            <h3>The Totem Era</h3>
-            <time class="card-year">Prima del 1800</time>
-          </article>
-
-          <article class="card">
-            <h3>The Name Drop</h3>
-            <time datetime="1800" class="card-year">Anno: 1800</time>
-          </article>
-
-          <article class="card">
-            <h3>Mascots emerge</h3>
-            <time datetime="1900" class="card-year">Gli inizi del 1900</time>
-          </article>
-
-          <article class="card">
-            <h3>Mr. Met (MLB)</h3>
-            <time datetime="1964" class="card-year">Anno: 1964</time>
-          </article>
-
-          <article class="card">
-            <h3>Phillie Phanatic</h3>
-            <time datetime="1974" class="card-year">Anno: 1974</time>
-          </article>
-
-          <article class="card">
-            <h3>Mascot Boom US</h3>
-            <time datetime="1980" class="card-year">Anno: 1980</time>
-          </article>
-
-          <article class="card">
-            <h3>Brand Mascot</h3>
-            <time datetime="1990" class="card-year">Anno: 1990</time>
-          </article>
-
-          <article class="card">
-            <h3>Tech Upgrade</h3>
-            <time datetime="2000" class="card-year">Anni 2000</time>
-          </article>
-
-          <article class="card">
-            <h3>Trending</h3>
-            <time datetime="2010" class="card-year">Anno: 2010</time>
-          </article>
-
-          <article class="card">
-            <h3>Virtual Mascot</h3>
-            <time datetime="2020" class="card-year">Anno: 2020</time>
-          </article>
-        </div> -->
+  <!-- Storia Section -->
         
         <!-- Accordion -->
         <dl class="accordion">
@@ -461,43 +430,7 @@
         </div>
       </section>
 
-    <!-- <div class="card-slider">
-      <article class="card mascot-card" tabindex="0" role="button" aria-label="Apri dettagli Rocky">
-        <img src="https://via.placeholder.com/300x200" alt="Rocky - Denver Nuggets">
-        <h3>Rocky</h3>
-        <p>Denver Nuggets</p>
-        <img src="https://via.placeholder.com/40x40" alt="Logo Denver Nuggets" class="team-logo">
-      </article>
-
-      <article class="card mascot-card">
-        <img src="https://via.placeholder.com/300x200" alt="Benny - Chicago Bulls">
-        <h3>Benny</h3>
-        <p>Chicago Bulls</p>
-        <img src="https://via.placeholder.com/40x40" alt="Logo Chicago Bulls" class="team-logo">
-      </article>
-
-      <article class="card mascot-card">
-        <img src="https://via.placeholder.com/300x200" alt="Coyote - San Antonio Spurs">
-        <h3>Coyote</h3>
-        <p>San Antonio Spurs</p>
-        <img src="https://via.placeholder.com/40x40" alt="Logo San Antonio Spurs" class="team-logo">
-      </article>
-
-      <article class="card mascot-card">
-        <img src="https://via.placeholder.com/300x200" alt="Go - Phoenix Suns">
-        <h3>Go</h3>
-        <p>Phoenix Suns</p>
-        <img src="https://via.placeholder.com/40x40" alt="Logo Phoenix Suns" class="team-logo">
-      </article>
-
-      <article class="card mascot-card">
-        <img src="https://via.placeholder.com/300x200" alt="Clutch - Houston Rockets">
-        <h3>Clutch</h3>
-        <p>Houston Rockets</p>
-        <img src="https://via.placeholder.com/40x40" alt="Logo Houston Rockets" class="team-logo">
-      </article>
-    </div> -->
-
+  
     <!-- Grid per i contenitori testo -->
       <div class="layout-grid">
     <div class="nba-text-grid">
@@ -509,12 +442,12 @@
 
       <article class="contenitore-testo">
         <h3>Personaggi a bordo campo</h3>
-        <p>Sono parte dello spettacolo, proprio come le cheerleader. Fanno balli, acrobazie, scherzi e numeri divertenti. Fanno ridere il pubblico e tengono alta l'energia durante la partita. Giocano con i tifosi, lanciano gadget e si fanno fotografare con i bambini.</p>
+        <p>Sono parte dello  <span class="important-text"> spettacolo </span>, proprio come le cheerleader. Fanno balli, acrobazie, scherzi e numeri divertenti. Fanno ridere il pubblico e tengono alta l'energia durante la partita. Giocano con i tifosi, lanciano gadget e si fanno fotografare con i bambini.</p>
       </article>
 
       <article class="contenitore-testo">
         <h3>Un ruolo importante nello sport americano</h3>
-        <p>Oggi le mascotte sono vere star. Non sono comparse: sono atleti, attori e simboli delle squadre. Aiutano a creare entusiasmo, promuovono il marchio e attirano fan di tutte le età. Ogni squadra NBA investe su di loro: una mascotte può costare <span class="important-text">50.000 dollari</span> all'anno. Le più famose guadagnano molto di più, grazie a eventi e merchandising.</p>
+        <p>Oggi le mascotte sono <span class="important-text">vere star</span>. Non sono comparse: sono atleti, attori e simboli delle squadre. Aiutano a creare entusiasmo, promuovono il marchio e attirano fan di tutte le età. Ogni squadra NBA investe su di loro: una mascotte può costare <span class="important-text">50.000 dollari</span> all'anno. Le più famose guadagnano molto di più, grazie a eventi e merchandising.</p>
       </article>
     </div>
 

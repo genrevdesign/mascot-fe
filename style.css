@@ -16,6 +16,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height); /* Usa la variabile per coerenza */
+}
+
 /* =====================================================
    CSS VARIABLES
    ===================================================== */
@@ -24,20 +29,20 @@
   --primary-color: #FFCF57;
   --secondary-color: #1B1B1B;
   --accent-color: #1F1F1F;
-  --text-color: #1B1B1B;
-  --text-light: #FFFFFF;
-  --bg-color-body: #1B1B1B;
-  --bg-color: #1F1F1F;
-  --bg-light: #FFFFFF;
+  --text-color: #1B1B1B; /* Testo scuro, es. su sfondo Primary o Light */
+  --text-light: #FFFFFF; /* Testo chiaro, es. su sfondo Secondary o Accent */
+  --bg-color-body: #1B1B1B; /* Sfondo principale del body */
+  --bg-color: #1F1F1F; /* Sfondo scuro per sezioni/contenitori (Accent) */
+  --bg-light: #FFFFFF; /* Sfondo chiaro */
   --border-color: #FFFFFF;
   
   /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  --spacing-2xl: 4rem;
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 1rem;     /* 16px */
+  --spacing-md: 1.5rem;   /* 24px */
+  --spacing-lg: 2rem;     /* 32px */
+  --spacing-xl: 3rem;     /* 48px */
+  --spacing-2xl: 4rem;    /* 64px */
   
   /* Typography */
   --font-heading: "bricolage-grotesque", sans-serif;
@@ -52,6 +57,11 @@
   --navbar-height: 70px;
   --border-radius: 8px;
   --transition-speed: 0.3s;
+  
+  /* Stili Box/Contenitore - Consolidamento */
+  --box-padding: var(--spacing-xl);
+  --box-radius: 20px;
+  --box-min-height: 200px;
 }
 
 /* =====================================================
@@ -72,8 +82,10 @@ h1, h2, h3, h4, h5, h6, dt {
   line-height: 1.2;
 }
 
+/* La 'p' erediterebbe già 'font-family: var(--font-body)' da body.
+   Mantenuto solo per chiarezza se 'body' dovesse cambiare */
 p {
-  font-family: var(--font-body);
+  font-family: var(--font-body); 
   font-weight: var(--weight-regular);
 }
 
@@ -145,6 +157,15 @@ a {
   }
 }
 
+/* Elemento che esce dal grid per full-width ma all'interno di un'altra sezione (come in about-me/vita) */
+.full-width-container {
+  grid-column: 1 / -1;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  /* Se ha padding verticale specifico va aggiunto al selettore della sezione */
+}
+
+
 /* =====================================================
    NAVIGATION
    ===================================================== */
@@ -170,12 +191,17 @@ a {
   margin: 0 auto;
   height: var(--navbar-height);
   padding: var(--spacing-sm) 16px;
+  /* Rimossa ridondanza: padding-top: 32px non necessario se si usa padding: var(--spacing-sm) 16px;
+     Le Media Queries per il padding top sono state corrette per essere relative a padding-top della navbar-container */
+  padding-top: 32px; 
 }
+
 
 @media (min-width: 768px) {
   .navbar-container {
     padding-left: 32px;
     padding-right: 32px;
+    padding-top: 48px; 
   }
 }
 
@@ -183,90 +209,161 @@ a {
   .navbar-container {
     padding-left: 80px;
     padding-right: 80px;
+    padding-top: 60px; 
   }
 }
 
-/* Logo */
+/* Logo - Responsive */
 .navbar-logo img {
-  height: 40px;
+  height: 32px;
   width: auto;
   display: block;
 }
 
-/* Desktop Menu */
-.menu {
+@media (min-width: 768px) {
+  .navbar-logo img {
+    height: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar-logo img {
+    height: 48px;
+  }
+}
+
+/* Desktop Menu - Wrapper */
+.navbar-menu {
+  display: none; /* Nascondi su mobile, mostrato in media query */
+}
+
+/* Lista navbar */
+.navbar-list {
   display: flex;
+  align-items: center;
   list-style: none;
-  gap: var(--spacing-lg);
+  gap: 16px;
   margin: 0;
   padding: 0;
 }
 
-/* Menu Button Base */
-.menu-btn {
-  display: flex;
+/* Rimosso .navbar-item non necessario se gli stili sono sul genitore (list) */
+/* .navbar-item { margin: 0; padding: 0; } */
+
+
+/* =====================================================
+   COMPONENTS - BUTTONS (PULSANTE)
+   ===================================================== */
+
+/* Pulsante base - stato NORMAL */
+.btn {
+  text-decoration: none;
+  display: inline-flex;
   align-items: center;
   gap: 12px;
+  
+  /* Tipografia */
   font-family: var(--font-heading);
+  font-size: 0.95rem;
   font-weight: var(--weight-bold);
-  font-size: 1rem;
+  
+  /* Colori stato Normal */
   color: var(--text-light);
-  background: var(--secondary-color);
-  border: none;
+  background-color: var(--secondary-color);
+  
+  /* Spaziatura */
+  padding: 10px 20px;
   border-radius: 50px;
-  padding: 12px 24px;
+  border: none;
   cursor: pointer;
-  transition: all var(--transition-speed) ease;
+  
+  /* Transizioni */
+  transition: background-color var(--transition-speed) ease-in-out, 
+              color var(--transition-speed) ease-in-out, 
+              transform var(--transition-speed) ease-in-out;
+  
+  /* Dimensione minima per accessibilità */
+  min-height: 44px;
 }
 
-.btn-icon {
-  background-color: white;
+/* Contenitore icona - cerchio bianco */
+.btn-icon-wrapper {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  padding: 3px;
-}
-.menu-btn .btn-icon {
-  width: 24px;
-  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-shrink: 0;
-  transition: all var(--transition-speed) ease;
+  
+  /* Colore di sfondo del cerchio */
+  background-color: var(--bg-light);
+  
+  transition: background-color var(--transition-speed) ease-in-out;
 }
 
-/* Menu Button States */
-.menu-btn:hover {
-  background: var(--bg-light);
-  color: var(--text-light);
+/* SVG Icon */
+.btn-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  display: block;
+  flex-shrink: 0;
+  color: var(--text-color);
+  transition: color var(--transition-speed) ease-in-out;
+}
+
+
+/* Testo del pulsante */
+/* .btn-label erediterebbe da .btn e var(--font-heading). Mantenuto per semantica, ma non strettamente necessario */
+.btn-label {
+  /* font-family: var(--font-heading); */
+  /* font-weight: var(--weight-bold); */
+  font-size: 0.95rem;
+}
+
+/* STATO HOVER */
+.btn:hover {
+  background-color: var(--bg-light);
+  color: var(--text-color);
   transform: translateY(-2px);
 }
 
-.menu-btn:hover .btn-icon {
-  filter: none;
+.btn:hover .btn-icon-wrapper {
+  background-color: var(--secondary-color);
 }
 
-.menu-btn:active {
-  transform: translateY(0);
+.btn:hover .btn-icon {
+  color: var(--bg-light);
+}
+
+/* STATO ACTIVE */
+.btn:active {
   background-color: var(--secondary-color);
   color: var(--primary-color);
+  transform: translateY(0);
 }
 
-.menu-btn:focus-visible {
+.btn:active .btn-icon-wrapper {
+  background-color: var(--primary-color);
+}
+
+.btn:active .btn-icon {
+  color: var(--text-color);
+}
+
+/* STATO FOCUS */
+.btn:focus-visible {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
 }
 
-.menu-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.menu-btn:disabled:hover {
-  background: var(--secondary-color);
-  transform: none;
-  box-shadow: none;
-}
-
-/* Hamburger Menu */
+/* =====================================================
+   COMPONENTS - HAMBURGER MENU (MOBILE)
+   ===================================================== */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -280,14 +377,14 @@ a {
   display: block;
   width: 25px;
   height: 3px;
-  background: var(--bg-color);
+  background: var(--secondary-color); /* Fissato al secondary (scuro) per contrasto sulla navbar primary (chiara) */
   border-radius: 2px;
   transition: all var(--transition-speed) ease;
 }
 
-/* Hamburger Animation quando aperto */
+/* Hamburger Animation (Selettore semplificato, usando ~ .hamburger) */
 #menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(5px, 5px); /* Valori originali migliori */
 }
 
 #menu-toggle:checked ~ .navbar .hamburger span:nth-child(2) {
@@ -295,10 +392,12 @@ a {
 }
 
 #menu-toggle:checked ~ .navbar .hamburger span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -6px);
+  transform: rotate(-45deg) translate(7px, -6px); /* Valori originali migliori */
 }
 
-/* Mobile Menu Popup */
+/* =====================================================
+   COMPONENTS - MOBILE MENU POPUP
+   ===================================================== */
 .menu-popup {
   position: fixed;
   inset: 0;
@@ -326,66 +425,63 @@ a {
 }
 
 .menu-popup-list li {
-  margin: var(--spacing-md) 0;
+  margin: var(--spacing-lg) 0;
 }
 
-/* Mobile Menu Buttons */
+/* Mobile Menu Button */
 .menu-popup-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  font-family: var(--font-heading);
-  font-weight: var(--weight-bold);
-  font-size: 1.5rem;
-  color: var(--text-color);
-  background: var(--secondary-color);
-  border: none;
-  border-radius: 50px;
-  padding: 16px 32px;
-  cursor: pointer;
-  transition: all var(--transition-speed) ease;
+  font-size: 1.25rem;
+  gap: 14px;
+  padding: 14px 28px;
+  min-height: 56px;
+  
+  /* Transizione aggiuntiva per l'effetto scale */
+  transition: background-color 0.2s ease-in-out, 
+              color 0.2s ease-in-out, 
+              transform 0.2s ease-in-out,
+              scale 0.2s ease-in-out; 
+}
+
+/* Contenitore icona mobile - Sovrascrive le dimensioni */
+.menu-popup-btn .btn-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .menu-popup-btn .btn-icon {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  transition: all var(--transition-speed) ease;
-  filter: brightness(0) invert(1);
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
 }
 
+/* STATO HOVER - MENU POPUP */
 .menu-popup-btn:hover {
-  background: #2a2a2a;
-  transform: scale(1.05);
+  /* Eredita hover da .btn */
+  transform: scale(1.05); /* Sovrascrive transform: translateY(-2px) */
 }
 
-.menu-popup-btn:hover .btn-icon {
-  filter: none;
-}
-
+/* STATO ACTIVE - MENU POPUP */
 .menu-popup-btn:active {
-  transform: scale(0.98);
+  /* Eredita active da .btn, sovrascriviamo solo il transform */
+  transform: scale(0.98); 
 }
 
+/* STATO FOCUS - MENU POPUP */
 .menu-popup-btn:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 3px;
 }
 
-.menu-popup-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+/* =====================================================
+   RESPONSIVE BEHAVIOR (NAVBAR)
+   ===================================================== */
 
-.menu-popup-btn:disabled:hover {
-  background: var(--secondary-color);
-  transform: none;
-  box-shadow: none;
-}
-
-/* Navigation Responsive */
+/* Mobile: mostra hamburger, nascondi menu desktop */
 @media (max-width: 768px) {
-  .menu {
+  .navbar-menu {
     display: none;
   }
   
@@ -395,6 +491,30 @@ a {
   
   body:has(#menu-toggle:checked) {
     overflow: hidden;
+  }
+  
+  /* Correzione leggera per l'animazione dell'hamburger in mobile-specifico */
+  #menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px); /* Ripristino a valori più puliti se si è nel max-width */
+  }
+  
+  #menu-toggle:checked ~ .navbar .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px); /* Ripristino a valori più puliti se si è nel max-width */
+  }
+}
+
+/* Tablet e Desktop: mostra menu, nascondi hamburger */
+@media (min-width: 769px) {
+  .navbar-menu {
+    display: block;
+  }
+  
+  .hamburger {
+    display: none;
+  }
+  
+  .menu-popup {
+    display: none;
   }
 }
 
@@ -413,7 +533,15 @@ a {
   padding: var(--spacing-2xl) var(--spacing-lg);
 }
 
-/* Mobile */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  padding: var(--spacing-xl) 0;
+}
+
+/* Immagine responsive nel contenuto */
 .hero-content img {
   width: 280px;
   height: auto;
@@ -444,34 +572,21 @@ a {
   z-index: 0;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 800px;
-  padding: var(--spacing-xl) 0;
-}
-
 
 /* =====================================================
-   SECTIONS - ABOUT ME
+   COMPONENTS - CONTENT BOX (Contenitore Testo Standard)
    ===================================================== */
 
-/* Sezione principale */
-#about-me {
-  padding: var(--spacing-2xl) 0;
+/* Stile base per tutti i contenitori di testo riutilizzabili nelle sezioni */
+.contenitore-testo {
+  padding: var(--box-padding);
+  border-radius: var(--box-radius);
+  min-height: var(--box-min-height);
+  background-color: var(--bg-color); 
 }
 
-/* Stile base per tutti i box */
-#about-me .contenitore-testo {
-  padding: var(--spacing-xl);
-  border-radius: 20px;
-  min-height: 200px;
-  background-color: var(--bg-color-body);
-}
-
-/* Titoli h3 */
-#about-me .contenitore-testo h3 {
+/* Stili per il titolo interno */
+.contenitore-testo h3 {
   display: flex;
   align-items: center;
   margin-bottom: var(--spacing-md);
@@ -479,7 +594,7 @@ a {
 }
 
 /* Icone circolari prima dei titoli */
-#about-me .contenitore-testo h3::before {
+.contenitore-testo h3::before {
   content: "";
   display: inline-block;
   width: 40px;
@@ -488,15 +603,45 @@ a {
   background-color: var(--primary-color);
   border-radius: 50%;
   flex-shrink: 0;
+  
+  /* Stili per l'immagine SVG inserita */
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Paragrafi */
-#about-me .contenitore-testo p {
+.contenitore-testo p {
   font-size: 1rem;
   line-height: 1.6;
 }
 
-/* Wrapper per i primi due box */
+/* Stile per i box a sfondo primary (giallo) */
+.contenitore-testo.style-primary {
+  background-color: var(--primary-color);
+}
+
+.contenitore-testo.style-primary h3,
+.contenitore-testo.style-primary p {
+  color: var(--text-color);
+}
+
+.contenitore-testo.style-primary h3::before {
+  background-color: var(--bg-light);
+}
+
+/* =====================================================
+   SECTIONS - ABOUT ME
+   ===================================================== */
+
+#about-me {
+  padding: var(--spacing-2xl) 0;
+}
+
+/* I contenitori .contenitore-testo ora usano lo stile base definito sopra */
+/* I colori specifici vengono applicati con classi di utility o selettori specifici */
+
+/* Wrapper per i primi due box - Trasparente sul body */
 #about-me .box-wrapper-top {
   grid-column: 1 / -1;
   background-color: transparent;
@@ -507,18 +652,19 @@ a {
 
 #about-me .box-wrapper-top .contenitore-testo {
   grid-column: 1 / -1;
+  background-color: var(--bg-color); /* Sfondo Accent per About Me Top Box */
 }
 
-/* Wrapper per gli ultimi due box - Full Width */
+/* Wrapper per gli ultimi due box - Full Width / Sfondo Accent */
 #about-me .box-wrapper-bottom {
+  /* Sostituito con classe di utility per full-width */
   grid-column: 1 / -1;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  
   background-color: var(--bg-color);
   border-radius: 25px;
   padding: var(--spacing-lg) 0;
-  
-  /* Esci dal grid e occupa tutta la larghezza */
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
 }
 
 /* Contenitore interno che rispetta il max-width e il grid */
@@ -533,29 +679,29 @@ a {
 
 #about-me .box-wrapper-bottom-inner .contenitore-testo {
   grid-column: 1 / -1;
+  background-color: var(--bg-color-body); /* Box default su sfondo Accent */
 }
 
-/* Box "Un invito a te!" - Sfondo giallo */
+/* Box "Un invito a te!" - Aggiunta classe di stile Primary */
 #about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) {
+  /* Applicazione dello stile primary unificato */
   background-color: var(--primary-color);
 }
-
-/* Box "Perchè questo sito" - Sfondo marshland */
-#about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(2) {
-  background-color: var(--bg-color-body);
-}
-
 #about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) h3,
 #about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) p {
   color: var(--text-color);
 }
-
 #about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) h3::before {
   background-color: var(--bg-light);
 }
 
+/* Box "Perchè questo sito" - Sfondo body su wrapper accent */
+#about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(2) {
+  background-color: var(--bg-color-body);
+}
+
 /* =====================================================
-   RESPONSIVE
+   RESPONSIVE - ABOUT ME (UNIFICATO)
    ===================================================== */
 
 /* Tablet: 2 box per riga (4 colonne ciascuno su 8 totali) */
@@ -602,18 +748,7 @@ a {
 /* Carousel Container */
 .storia-carousel-container {
   grid-column: 1 / -1;
-}
-
-@media (min-width: 768px) {
-  .storia-carousel-container {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (min-width: 1024px) {
-  .storia-carousel-container {
-    grid-column: 1 / -1;
-  }
+  /* Rimosse media query ridondanti */
 }
 
 /* Card Container */
@@ -652,6 +787,7 @@ a {
 
 #storia .card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(255, 207, 87, 0.2); /* Aggiunto box-shadow per feedback visivo */
 }
 
 #storia .card h3 {
@@ -662,7 +798,7 @@ a {
 
 #storia .card .card-year {
   font-family: var(--font-body);
-  color: var(--text-color);
+  color: var(--text-light); /* Corretto da text-color a text-light per leggibilità su sfondo scuro */
   font-weight: var(--weight-medium);
   margin-top: var(--spacing-xs);
   display: block;
@@ -673,6 +809,7 @@ a {
 #storia .accordion {
   grid-column: 1 / -1;
   list-style: none;
+  padding: 0; /* Assicurarsi che non ci sia padding ereditato */
 }
 
 .accordion-item {
@@ -738,7 +875,7 @@ a {
    ===================================================== */
 #vita {
   padding: var(--spacing-2xl) 0;
-  background-color: var(--bg-color);
+  background-color: var(--bg-color); /* Lo sfondo Accent viene dato alla sezione stessa */
   border-radius: 25px;
 }
 
@@ -748,41 +885,7 @@ a {
   margin-bottom: var(--spacing-lg);
 }
 
-/* Stile per gli article - identico a about-me */
-#vita .contenitore-testo {
-  padding: var(--spacing-xl);
-  border-radius: 20px;
-  min-height: 200px;
-  background-color: var(--bg-color);
-}
-
-/* Titoli h3 */
-#vita .contenitore-testo h3 {
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--spacing-md);
-  font-size: 1.5rem;
-  color: var(--primary-color);
-}
-
-/* Icone circolari prima dei titoli */
-#vita .contenitore-testo h3::before {
-  content: "";
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  margin-right: var(--spacing-sm);
-  background-color: var(--primary-color);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-/* Paragrafi */
-#vita .contenitore-testo p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-light);
-}
+/* I contenitori .contenitore-testo ora usano lo stile base definito sopra */
 
 /* Wrapper per i primi due box */
 #vita .box-wrapper-top {
@@ -795,31 +898,30 @@ a {
 
 #vita .box-wrapper-top .contenitore-testo {
   grid-column: 1 / -1;
+  background-color: var(--bg-color-body); /* Box default su sfondo Accent */
 }
 
-/* Primo article - Sfondo giallo */
+/* Primo article - Sfondo giallo (Style Primary) */
 #vita .box-wrapper-top .contenitore-testo:first-child {
   background-color: var(--primary-color);
 }
-
 #vita .box-wrapper-top .contenitore-testo:first-child h3,
 #vita .box-wrapper-top .contenitore-testo:first-child p {
   color: var(--text-color);
 }
-
 #vita .box-wrapper-top .contenitore-testo:first-child h3::before {
   background-color: var(--bg-light);
 }
 
-/* Wrapper per gli ultimi due box - Full Width */
+/* Wrapper per gli ultimi due box - Full Width (sezione Vita ha sfondo Accent, questo wrapper no) */
 #vita .box-wrapper-bottom {
+  /* Sostituito con classe di utility per full-width */
   grid-column: 1 / -1;
-  background-color: var(--bg-color);
-  padding: var(--spacing-lg) 0;
-  
-  /* Esci dal grid e occupa tutta la larghezza */
   width: 100vw;
   margin-left: calc(-50vw + 50%);
+  
+  background-color: transparent; /* Il genitore ha già lo sfondo Accent */
+  padding: var(--spacing-lg) 0;
 }
 
 /* Contenitore interno che rispetta il max-width e il grid */
@@ -834,6 +936,7 @@ a {
 
 #vita .box-wrapper-bottom-inner .contenitore-testo {
   grid-column: 1 / -1;
+  background-color: var(--bg-color-body); /* Box default su sfondo Accent */
 }
 
 /* Video Container */
@@ -850,7 +953,7 @@ a {
 }
 
 /* =====================================================
-   RESPONSIVE - VITA
+   RESPONSIVE - VITA (UNIFICATO)
    ===================================================== */
 
 /* Tablet: 2 box per riga (4 colonne ciascuno su 8 totali) */
@@ -920,7 +1023,7 @@ a {
   }
 }
 
-/* Mascot Cards */
+/* Mascot Cards (Small cards in the slider) */
 #nba-mascot-top5 .mascot-card {
   background: #2a2a2a;
   padding: var(--spacing-sm);
@@ -929,13 +1032,18 @@ a {
   cursor: pointer;
   transition: transform var(--transition-speed) ease, 
               box-shadow var(--transition-speed) ease;
+  outline: none; /* Rimosso l'outline di default per gestirlo solo in :focus */
 }
 
 #nba-mascot-top5 .mascot-card:hover,
-#nba-mascot-top5 .mascot-card:focus {
+#nba-mascot-top5 .mascot-card:focus-visible {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(255, 207, 87, 0.3);
   outline: 2px solid var(--primary-color);
+  outline-offset: 1px;
+}
+#nba-mascot-top5 .mascot-card:focus {
+  outline: none; /* Sovrascritto da :focus-visible */
 }
 
 #nba-mascot-top5 .mascot-card img {
@@ -950,7 +1058,7 @@ a {
   margin-top: var(--spacing-xs);
 }
 
-/* Grid per i contenitori testo */
+/* Grid per i contenitori testo (Diversa dal grid standard) */
 #nba-mascot-top5 .nba-text-grid {
   grid-column: 1 / -1;
   display: grid;
@@ -959,14 +1067,7 @@ a {
   margin-bottom: var(--spacing-xl);
 }
 
-/* Stile base per i contenitori testo */
-#nba-mascot-top5 .contenitore-testo {
-  padding: var(--spacing-xl);
-  border-radius: 20px;
-  background-color: var(--bg-color);
-}
-
-/* Contenitore grande con sfondo giallo */
+/* Contenitore grande con sfondo giallo (Style Primary) */
 #nba-mascot-top5 .contenitore-grande {
   background-color: var(--primary-color);
   display: flex;
@@ -982,49 +1083,10 @@ a {
   background-color: var(--bg-light);
 }
 
-#nba-mascot-top5 .contenitore-testo:first-of-type p {
-  color: var(--text-color); 
-}
-
-/* Primo contenitore - Personalizzazione colori */
-#nba-mascot-top5 .contenitore-testo:first-of-type h3 {
-  color: var(--text-color); 
-}
-
-#nba-mascot-top5 .contenitore-testo:first-of-type h3::before {
-  background-color: var(--bg-light); 
-}
 
 
-/* Titoli h3 */
-#nba-mascot-top5 .contenitore-testo h3 {
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--spacing-md);
-  font-size: 1.5rem;
-  color: var(--primary-color);
-}
 
-/* Icone circolari prima dei titoli */
-#nba-mascot-top5 .contenitore-testo h3::before {
-  content: "";
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  margin-right: var(--spacing-sm);
-  background-color: var(--primary-color);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-/* Paragrafi */
-#nba-mascot-top5 .contenitore-testo p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-light);
-  margin-bottom: var(--spacing-sm);
-}
-
+/* Paragrafi (Sovrascrive solo il margine finale se è l'ultimo) */
 #nba-mascot-top5 .contenitore-testo p:last-child {
   margin-bottom: 0;
 }
@@ -1036,12 +1098,10 @@ a {
   margin-top: var(--spacing-lg);
   color: var(--primary-color);
   font-weight: var(--weight-bold);
+  /* Aggiunto font-family per consistenza, usa anchor-up-text utility se definito */
+  font-family: var(--font-heading); 
 }
 
-#nba-mascot-top5 .back-to-top:hover,
-#nba-mascot-top5 .back-to-top:focus {
-  text-decoration: underline;
-}
 
 /* =====================================================
    RESPONSIVE - NBA TEXT GRID
@@ -1055,14 +1115,17 @@ a {
     gap: 20px;
   }
   
-  /* Il contenitore grande occupa 2 righe */
+  /* Il contenitore grande occupa 2 righe e la colonna 1 */
   #nba-mascot-top5 .contenitore-grande {
     grid-row: span 2;
     grid-column: 1;
   }
   
-  /* Gli altri contenitori si allineano automaticamente */
-  #nba-mascot-top5 .contenitore-testo:not(.contenitore-grande) {
+  /* Gli altri contenitori si allineano automaticamente nella colonna 2 */
+  #nba-mascot-top5 .contenitore-testo:nth-of-type(2) {
+    grid-column: 2;
+  }
+  #nba-mascot-top5 .contenitore-testo:nth-of-type(3) {
     grid-column: 2;
   }
 }
@@ -1133,7 +1196,7 @@ a {
 
 .popup-close:hover,
 .popup-close:focus {
-  color: var(--text-color);
+  color: var(--text-color); /* Colore più scuro su hover */
 }
 
 .popup-main-info {
@@ -1156,6 +1219,7 @@ a {
   align-items: center;
   gap: var(--spacing-sm);
   margin-top: var(--spacing-md);
+  color: var(--text-light); /* Assicurarsi che il testo si veda */
 }
 
 .video-links {
@@ -1173,7 +1237,7 @@ a {
   background: rgba(255, 207, 87, 0.1);
   border: 1px solid var(--primary-color);
   border-radius: var(--border-radius);
-  color: var(--text-color);
+  color: var(--text-light); /* Corretto a text-light per leggibilità su sfondo scuro parzialmente trasparente */
   cursor: pointer;
   transition: background-color var(--transition-speed) ease;
   text-decoration: none;
@@ -1201,6 +1265,11 @@ a {
 .curiosita h3 {
   margin-bottom: var(--spacing-sm);
   font-size: 1.2rem;
+  color: var(--primary-color); /* Assicurare il colore del titolo h3 */
+}
+/* Aggiunto stile per il testo interno */
+.curiosita p {
+  color: var(--text-light);
 }
 
 /* =====================================================
@@ -1213,6 +1282,7 @@ a {
   height: auto;
   aspect-ratio: 16 / 9;
   border-radius: var(--border-radius);
+  display: block; /* Assicurare che sia un elemento di blocco */
 }
 
 @media (max-width: 768px) {
@@ -1260,6 +1330,10 @@ a {
   color: var(--text-light);
 }
 
+.site-footer .footer-content a {
+  color: var(--text-light); /* Assicurare il colore del link */
+}
+
 .site-footer .footer-content a:hover,
 .site-footer .footer-content a:focus {
   color: var(--primary-color);
@@ -1276,315 +1350,11 @@ a {
 }
 
 /* =====================================================
-   UTILITIES
-   ===================================================== */
-hr {
-  border: none;
-  border-top: 1px solid var(--primary-color);
-  margin: var(--spacing-2xl) 0;
-  opacity: 0.3;
-}
-
-/* =====================================================
-   ACCESSIBILITY
-   ===================================================== */
-*:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-}
-
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* =====================================================
-   RESPONSIVE - MOBILE OVERRIDES
-   ===================================================== */
-@media (max-width: 768px) {
-  #menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-  }
-  
-  #menu-toggle:checked ~ .navbar .hamburger span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-  }
-  
-  .popup-content {
-    padding: var(--spacing-lg);
-  }
-}
-
-/* =====================================================
-   RESPONSIVE - TABLET OVERRIDES
-   ===================================================== */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .navbar-container {
-    padding: var(--spacing-sm) var(--spacing-md);
-  }
-}
-
-/* =====================================================
-   ICONE SVG PER TUTTE LE SEZIONI
+   COMPONENTS - MASCOT PROFILE CARD
    ===================================================== */
 
-/* =====================================================
-   SEZIONE: ABOUT ME
-   ===================================================== */
-
-/* Box 1: Chi sono */
-#about-me .box-wrapper-top .contenitore-testo:nth-of-type(1) h3::before {
-  background-image: url('assets/icons/icon-chi-sono.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Box 2: La mia passione per le mascotte */
-#about-me .box-wrapper-top .contenitore-testo:nth-of-type(2) h3::before {
-  background-image: url('assets/icons/icon-passione.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Box 3: Un invito a te! */
-#about-me .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(1) h3::before {
-  background-image: url('assets/icons/icon-invito.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Box 4: Perché questo sito */
-#about-me .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(2) h3::before {
-  background-image: url('assets/icons/icon-sito.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* =====================================================
-   SEZIONE: STORIA
-   ===================================================== */
-
-/* Accordion items - icone più grandi e centrate */
-#storia .accordion-item:nth-of-type(1) dt button::before {
-  content: "";
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  margin-right: var(--spacing-sm);
-  background-image: url('assets/icons/icon-origini.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-  flex-shrink: 0;
-}
-
-#storia .accordion-item:nth-of-type(2) dt button::before {
-  content: "";
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  margin-right: var(--spacing-sm);
-  background-image: url('assets/icons/icon-evoluzione.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-  flex-shrink: 0;
-}
-
-#storia .accordion-item:nth-of-type(3) dt button::before {
-  content: "";
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  margin-right: var(--spacing-sm);
-  background-image: url('assets/icons/icon-presente.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-  flex-shrink: 0;
-}
-
-/* =====================================================
-   SEZIONE: VITA
-   ===================================================== */
-
-/* Box 1: Un ruolo che conta */
-#vita .box-wrapper-top .contenitore-testo:nth-of-type(1) h3::before {
-  background-image: url('assets/icons/icon-ruolo.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Box 2: Un momento di gioia */
-#vita .box-wrapper-top .contenitore-testo:nth-of-type(2) h3::before {
-  background-image: url('assets/icons/icon-gioia.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Box 3: Fanno molto di più */
-#vita .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(1) h3::before {
-  background-image: url('assets/icons/icon-artisti.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Box 4: Prima di incontrarle */
-#vita .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(2) h3::before {
-  background-image: url('assets/icons/icon-incontro.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* =====================================================
-   SEZIONE: NBA MASCOT TOP 5
-   ===================================================== */
-
-/* Box 1: Uno show nello show! */
-#nba-mascot-top5 .contenitore-grande h3::before {
-  background-image: url('assets/icons/icon-show.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Box 2: Personaggi a bordo campo */
-#nba-mascot-top5 .nba-text-grid .contenitore-testo:nth-of-type(2) h3::before {
-  background-image: url('assets/icons/icon-bordo-campo.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Box 3: Un ruolo importante nello sport americano */
-#nba-mascot-top5 .nba-text-grid .contenitore-testo:nth-of-type(3) h3::before {
-  background-image: url('assets/icons/icon-sport-americano.svg');
-  background-size: 24px 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-
-/* =====================================================
-   MASCOT PROFILE CARD
-   ===================================================== */
-
-.mascot-profile-card {
-  width: 100%;
-  max-width: 320px;
-  background-color: var(--primary-color);
-  border-radius: 24px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform var(--transition-speed) ease,
-              box-shadow var(--transition-speed) ease;
-  margin: 0 auto;
-  visibility:hidden;
-}
-
-.mascot-profile-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-/* Card Image Container */
-.mascot-profile-card .card-image {
-  width: 100%;
-  height: 420px;
-  background-color: var(--bg-light);
-  border-radius: 20px 20px 0 0;
-  margin: 12px 12px 0 12px;
-  overflow: hidden;
-  position: relative;
-}
-
-.mascot-profile-card .card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Card Footer */
-.mascot-profile-card .card-footer {
-  padding: 20px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--spacing-md);
-  background-color: var(--primary-color);
-}
-
-/* Card Text */
-.mascot-profile-card .card-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.mascot-profile-card .card-title {
-  font-family: var(--font-heading);
-  font-weight: var(--weight-bold);
-  font-size: 1.75rem;
-  color: var(--text-color);
-  line-height: 1.2;
-  margin: 0;
-}
-
-.mascot-profile-card .card-subtitle {
-  font-family: var(--font-body);
-  font-weight: var(--weight-regular);
-  font-size: 1rem;
-  color: var(--text-color);
-  line-height: 1.4;
-  margin: 0;
-}
-
-/* Card Icon */
-.mascot-profile-card .card-icon {
-  width: 56px;
-  height: 56px;
-  background-color: var(--bg-light);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-
-.mascot-profile-card .card-icon img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
-/* =====================================================
-   MASCOT PROFILE CARD
-   ===================================================== */
+/* Rimosso il blocco duplicato 'MASCOT PROFILE CARD' */
+/* Il primo blocco era nascosto (visibility:hidden) - il secondo era più completo */
 
 .mascot-profile-card {
   width: 100%;
@@ -1606,7 +1376,8 @@ hr {
 
 /* Card Image Container */
 .mascot-profile-card .card-image {
-  width: calc(100% - 24px);
+  /* Usato padding per il bordo interno (rispetto al margin) per consistenza con card-footer */
+  width: calc(100% - 24px); 
   height: 420px;
   background-color: var(--bg-light);
   border-radius: 20px;
@@ -1629,6 +1400,7 @@ hr {
   justify-content: space-between;
   align-items: center;
   gap: var(--spacing-md);
+  background-color: var(--primary-color);
 }
 
 /* Card Text */
@@ -1723,28 +1495,134 @@ hr {
   }
 }
 
-## **Struttura delle cartelle consigliata:**
-```
-assets/
-  icons/
-    # ABOUT ME
-    icon-chi-sono.svg
-    icon-passione.svg
-    icon-invito.svg
-    icon-sito.svg
-    
-    # STORIA (opzionale)
-    icon-origini.svg
-    icon-evoluzione.svg
-    icon-presente.svg
-    
-    # VITA
-    icon-ruolo.svg
-    icon-gioia.svg
-    icon-artisti.svg
-    icon-incontro.svg
-    
-    # NBA
-    icon-show.svg
-    icon-bordo-campo.svg
-    icon-sport-americano.svg
+/* =====================================================
+   UTILITIES
+   ===================================================== */
+hr {
+  border: none;
+  border-top: 1px solid var(--primary-color);
+  margin: var(--spacing-2xl) 0;
+  opacity: 0.3;
+}
+
+/* =====================================================
+   ACCESSIBILITY
+   ===================================================== */
+/* Usare :focus-visible è preferibile a :focus per evitare l'outline quando si clicca con il mouse */
+*:focus-visible { 
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =====================================================
+   ICONE SVG PER TUTTE LE SEZIONI 
+   ===================================================== */
+
+/* About Me Icon Overrides */
+/* Box 1: Chi sono */
+#about-me .box-wrapper-top .contenitore-testo:nth-of-type(1) h3::before {
+  background-image: url('assets/icons/icon-chi-sono.svg');
+  background-color: var(--primary-color); /* Colore primario su box non primary */
+}
+
+/* Box 2: La mia passione per le mascotte */
+#about-me .box-wrapper-top .contenitore-testo:nth-of-type(2) h3::before {
+  background-image: url('assets/icons/icon-passione.svg');
+  background-color: var(--primary-color);
+}
+
+/* Box 3: Un invito a te! (Box style-primary) */
+#about-me .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(1) h3::before {
+  background-image: url('assets/icons/icon-invito.svg');
+  background-color: var(--bg-light); /* Override da style-primary */
+}
+
+/* Box 4: Perché questo sito */
+#about-me .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(2) h3::before {
+  background-image: url('assets/bull.jpg');
+  background-color: var(--primary-color);
+}
+
+/* Sezione Storia Icon Overrides (Accordion) */
+#storia .accordion-item dt button {
+  /* Aggiunto stile per l'icona dell'accordion, ereditato dal base. Sovrascriviamo solo l'immagine e le dimensioni */
+  padding-left: var(--spacing-md); /* Ripristino padding left originale */
+}
+
+#storia .accordion-item dt button::before {
+  content: "";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--spacing-sm);
+  background-color: var(--primary-color); /* Sfondo dell'icona nell'accordion */
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+#storia .accordion-item:nth-of-type(1) dt button::before {
+  background-image: url('assets/icons/icon-origini.svg');
+}
+
+#storia .accordion-item:nth-of-type(2) dt button::before {
+  background-image: url('assets/icons/icon-evoluzione.svg');
+}
+
+#storia .accordion-item:nth-of-type(3) dt button::before {
+  background-image: url('assets/icons/icon-presente.svg');
+}
+
+/* Sezione Vita Icon Overrides */
+/* Box 1: Un ruolo che conta (Box style-primary) */
+#vita .box-wrapper-top .contenitore-testo:nth-of-type(1) h3::before {
+  background-image: url('assets/icons/icon-ruolo.svg');
+  background-color: var(--bg-light); /* Override da style-primary */
+}
+
+/* Box 2: Un momento di gioia */
+#vita .box-wrapper-top .contenitore-testo:nth-of-type(2) h3::before {
+  background-image: url('assets/icons/icon-gioia.svg');
+  background-color: var(--primary-color);
+}
+
+/* Box 3: Fanno molto di più */
+#vita .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(1) h3::before {
+  background-image: url('assets/icons/icon-artisti.svg');
+  background-color: var(--primary-color);
+}
+
+/* Box 4: Prima di incontrarle */
+#vita .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(2) h3::before {
+  background-image: url('assets/icons/icon-incontro.svg');
+  background-color: var(--primary-color);
+}
+
+/* Sezione NBA MASCOT TOP 5 Icon Overrides */
+/* Box 1: Uno show nello show! (Contenitore Grande - style-primary) */
+#nba-mascot-top5 .contenitore-grande h3::before {
+  background-image: url('assets/icons/icon-show.svg');
+  background-color: var(--bg-light); /* Override da style-primary */
+}
+
+/* Box 2: Personaggi a bordo campo */
+#nba-mascot-top5 .nba-text-grid .contenitore-testo:nth-of-type(2) h3::before {
+  background-image: url('assets/icons/icon-bordo-campo.svg');
+  background-color: var(--primary-color);
+}
+
+/* Box 3: Un ruolo importante nello sport americano */
+#nba-mascot-top5 .nba-text-grid .contenitore-testo:nth-of-type(3) h3::before {
+  background-image: url('assets/icons/icon-sport-americano.svg');
+  background-color: var(--primary-color);
+}
