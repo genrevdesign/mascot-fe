@@ -146,3 +146,59 @@ const OPTIONS = {
   });
 
 })();
+
+// =================================================================================
+// DROPDOWN ACCORDION FUNCTIONALITY
+// =================================================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+  /**
+   * Chiude tutti gli elementi dropdown aperti, tranne l'eccezione.
+   */
+  function closeAllDropdowns(exceptionContent = null) {
+    const allContents = document.querySelectorAll('.dropdown');
+    
+    allContents.forEach(content => {
+      if (content.classList.contains('show') && content !== exceptionContent) {
+        content.classList.remove('show');
+      }
+    });
+  }
+  
+  /**
+   * Apre/chiude un singolo elemento dell'accordion.
+   */
+  function toggleAccordion(event) {
+    const clickedElement = event.target;
+    const dropdownContainer = clickedElement.closest('.dropdown');
+    
+    if (!dropdownContainer) return;
+    
+    closeAllDropdowns(dropdownContainer);
+    dropdownContainer.classList.toggle('show');
+  }
+
+  // Seleziona tutti i trigger
+  const triggers = document.querySelectorAll('.accordion-trigger');
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', toggleAccordion);
+    
+    // Accessibilità: apertura con Invio o Spazio
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleAccordion(e);
+      }
+    });
+  });
+
+  // Chiudi dropdown cliccando fuori
+  window.addEventListener('click', function(event) {
+    if (!event.target.closest('.dropdown')) {
+      closeAllDropdowns();
+    }
+  });
+  
+});
