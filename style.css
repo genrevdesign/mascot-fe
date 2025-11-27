@@ -1867,6 +1867,7 @@ hr {
   background-color: var(--color-bg-light);
 }
 
+
 /* Large Container Internal Titles */
 #nba-mascot-top5 .contenitore-grande h4 {
   font-family: var(--font-heading);
@@ -1880,6 +1881,7 @@ hr {
 #nba-mascot-top5 .contenitore-grande h4:first-of-type {
   margin-top: 0;
 }
+
 
 /* Stacked Cards */
 #nba-mascot-top5 .stacked-cards {
@@ -1964,7 +1966,7 @@ hr {
   flex-wrap: wrap;
   gap: var(--space-sm);
   padding-top: var(--space-md);
-  border-top: 1px solid var(--color-primary);
+  border-top: 2px solid var(--color-bg-light);
 }
 
 .site-footer .footer-content p {
@@ -1972,18 +1974,18 @@ hr {
   font-weight: var(--weight-medium);
   font-size: var(--text-sm); /* 16px - aumentato da 0.9rem */
   line-height: var(--leading-normal);
-  color: var(--color-text-light);
+  color: var(--color-primary);
 }
 
 .site-footer .footer-content a {
-  color: var(--color-text-light);
+  color: var(--color-primary);
   padding: var(--space-xs); /* Aumenta area cliccabile */
   margin: calc(var(--space-xs) * -1);
 }
 
 .site-footer .footer-content a:hover,
 .site-footer .footer-content a:focus {
-  color: var(--color-primary);
+  color: var(--color-bg-light);
 }
 
 /* Footer Responsive */
@@ -2047,22 +2049,22 @@ hr {
    ----------------------------------------------------------------------------- */
 
 #about-me .box-wrapper-top .contenitore-testo:nth-of-type(1) h3::before {
-  background-image: url('assets/icons/icon-chi-sono.svg');
+  background-image: url('assets/vector-chi-sono.svg');
   background-color: var(--color-primary);
 }
 
 #about-me .box-wrapper-top .contenitore-testo:nth-of-type(2) h3::before {
-  background-image: url('assets/icons/icon-passione.svg');
+  background-image: url('assets/vector-la-mia-passione.svg');
   background-color: var(--color-primary);
 }
 
 #about-me .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(1) h3::before {
-  background-image: url('assets/icons/icon-invito.svg');
+  background-image: url('assets/vector-un-invito-a-te.svg');
   background-color: var(--color-bg-light);
 }
 
 #about-me .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(2) h3::before {
-  background-image: url('assets/icons/icon-perche.svg');
+  background-image: url('assets/vector-perchè-questo-sito.svg');
   background-color: var(--color-primary);
 }
 
@@ -2072,22 +2074,22 @@ hr {
    ----------------------------------------------------------------------------- */
 
 #vita .box-wrapper-top .contenitore-testo:nth-of-type(1) h3::before {
-  background-image: url('assets/icons/icon-ruolo.svg');
+  background-image: url('assets/vector-un-ruolo-che-conta.svg');
   background-color: var(--color-bg-light);
 }
 
 #vita .box-wrapper-top .contenitore-testo:nth-of-type(2) h3::before {
-  background-image: url('assets/icons/icon-gioia.svg');
+  background-image: url('assets/vector-un-momento-di-gioia.svg');
   background-color: var(--color-primary);
 }
 
 #vita .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(1) h3::before {
-  background-image: url('assets/icons/icon-artisti.svg');
+  background-image: url('assets/vector-fanno-molto-di-più.svg ');
   background-color: var(--color-primary);
 }
 
 #vita .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(2) h3::before {
-  background-image: url('assets/icons/icon-incontro.svg');
+  background-image: url('assets/vector-prima-di-incontrarle.svg');
   background-color: var(--color-primary);
 }
 
@@ -2096,20 +2098,20 @@ hr {
    ----------------------------------------------------------------------------- */
 
 #nba-mascot-top5 .contenitore-grande h3::before {
-  background-image: url('assets/icons/icon-show.svg');
+  background-image: url('assets/vector-show-nello-show.svg');
   background-color: var(--color-bg-light);
 }
 
-#nba-mascot-top5 .nba-text-grid .contenitore-testo:nth-of-type(2) h3::before {
-  background-image: url('assets/icons/icon-bordo-campo.svg');
+#nba-mascot-top5 .stacked-cards .contenitore-testo:first-child h3::before {
+  background-image: url('assets/vector-personaggi.svg');
   background-color: var(--color-primary);
 }
 
-#nba-mascot-top5 .nba-text-grid .contenitore-testo:nth-of-type(3) h3::before {
-  background-image: url('assets/icons/icon-sport-americano.svg');
+
+#nba-mascot-top5 .stacked-cards .contenitore-testo:nth-child(2) h3::before {
+  background-image: url('assets/vector-ruolo-importante.svg');
   background-color: var(--color-primary);
 }
-
 
 /* =============================================================================
    END OF STYLESHEET
