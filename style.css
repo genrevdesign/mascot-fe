@@ -1578,59 +1578,176 @@ hr {
   grid-column: 1 / -1;
 }
 
-/* Storia Card Container */
-#storia .card-container {
-  grid-column: 1 / -1;
-  margin-bottom: var(--space-xl);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+/* -----------------------------------------------------------------------------
+   Storia Card Component
+   ----------------------------------------------------------------------------- */
+
+.storia-card {
+  width: 100%;
+  height: var(--slide-height);
+  background-color: var(--color-primary);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (min-width: 768px) {
-  #storia .card-container {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
+/* Area Immagine */
+.storia-card__image {
+  flex: 1;
+  margin: 12px;
+  margin-bottom: 0;
+  background-color: var(--color-bg-light);
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 0; /* Fix per flex container */
 }
 
-@media (min-width: 1024px) {
-  #storia .card-container {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 24px;
-  }
-}
-
-/* Storia Cards */
-#storia .card {
-  background: #2a2a2a;
-  padding: var(--space-md);
-  border-radius: var(--border-radius);
-  text-align: center;
-  border: 1px solid var(--color-primary);
-  transition: 
-    transform var(--transition),
-    box-shadow var(--transition);
-}
-
-#storia .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 8px rgba(255, 207, 87, 0.2);
-}
-
-#storia .card h3 {
-  font-size: var(--text-lg);
-  color: var(--color-primary);
-  line-height: var(--leading-snug);
-}
-
-#storia .card .card-year {
-  font-family: var(--font-body);
-  color: var(--color-text-light);
-  font-weight: var(--weight-medium);
-  margin-top: var(--space-xs);
+.storia-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
-  font-size: var(--text-sm);
+}
+
+/* Footer Card - Centrato */
+.storia-card__footer {
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  flex-shrink: 0; /* Impedisce al footer di restringersi */
+}
+
+/* Titolo - WCAG: minimo 18px per headings */
+.storia-card__title {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-2xl);           /* 28px mobile */
+  color: var(--color-text-dark);
+  line-height: var(--leading-tight);
+  margin: 0;
+}
+
+/* Rimuove l'icona ereditata da .contenitore-testo h3 */
+.storia-card__title::before {
+  display: none;
+  content: none;
+}
+
+/* Label - WCAG 1.4.4: minimo 16px per body text */
+.storia-card__label {
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-sm);            /* 16px - WCAG minimum */
+  color: var(--color-text-dark);
+  line-height: var(--leading-normal);   /* 1.6 per leggibilità */
+  margin: 0;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Storia Card - Responsive (WCAG Compliant)
+   ----------------------------------------------------------------------------- */
+
+/* Tablet (768px+) */
+@media (min-width: 768px) {
+  .storia-card {
+    border-radius: 18px;
+  }
+  
+  .storia-card__image {
+    margin: 10px;
+    margin-bottom: 0;
+    border-radius: 14px;
+  }
+  
+  .storia-card__footer {
+    padding: 12px 14px 14px;
+    gap: 2px;
+  }
+  
+  .storia-card__title {
+    font-size: var(--text-xl);          /* 24px tablet */
+  }
+  
+  .storia-card__label {
+    font-size: var(--text-sm);          /* 16px - mantiene WCAG minimum */
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .storia-card {
+    border-radius: 20px;
+  }
+  
+  .storia-card__image {
+    margin: 12px;
+    margin-bottom: 0;
+    border-radius: 16px;
+  }
+  
+  .storia-card__footer {
+    padding: 14px 16px 16px;
+    gap: 4px;
+  }
+  
+  .storia-card__title {
+    font-size: var(--text-2xl);         /* 28px desktop */
+  }
+  
+  .storia-card__label {
+    font-size: var(--text-base);        /* 18px desktop - sopra WCAG minimum */
+  }
+}
+
+/* Large Desktop (1440px+) */
+@media (min-width: 1440px) {
+  .storia-card__footer {
+    padding: 16px 20px 20px;
+  }
+  
+  .storia-card__title {
+    font-size: var(--text-2xl);         /* 28px */
+  }
+  
+  .storia-card__label {
+    font-size: var(--text-base);        /* 18px */
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   Storia Card
+   ----------------------------------------------------------------------------- */
+
+/* Focus visible per navigazione da tastiera */
+.storia-card:focus-within {
+  outline: 3px solid var(--color-text-dark);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .storia-card,
+  .storia-card__image img {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .storia-card {
+    border: 2px solid var(--color-text-dark);
+  }
+  
+  .storia-card__image {
+    border: 1px solid var(--color-text-dark);
+  }
 }
 
 
