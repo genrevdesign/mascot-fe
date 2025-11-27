@@ -69,12 +69,12 @@
 </nav>
 
 <!-- Menu mobile fullscreen: visibile solo quando checkbox è checked -->
-<aside class="menu-popup">
+<aside class="menu-popup" aria-label="Menu di navigazione mobile">
   <ul class="menu-popup-list">
     <li>
       <a href="#storia" class="menu-popup-btn">
         <span class="btn-icon-wrapper">
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true">
             <path fill="currentColor" d="M192 233.3C220.3 221 240 192.8 240 160C240 115.8 204.2 80 160 80C115.8 80 80 115.8 80 160C80 192.8 99.7 221 128 233.3L128 288L64 288C46.3 288 32 302.3 32 320C32 337.7 46.3 352 64 352L288 352L288 406.7C259.7 419 240 447.2 240 480C240 524.2 275.8 560 320 560C364.2 560 400 524.2 400 480C400 447.2 380.3 419 352 406.7L352 352L576 352C593.7 352 608 337.7 608 320C608 302.3 593.7 288 576 288L512 288L512 233.3C540.3 221 560 192.8 560 160C560 115.8 524.2 80 480 80C435.8 80 400 115.8 400 160C400 192.8 419.7 221 448 233.3L448 288L192 288L192 233.3z"/>
           </svg>
         </span>
@@ -84,7 +84,7 @@
     <li>
       <a href="#vita" class="menu-popup-btn">
         <span class="btn-icon-wrapper">
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true">
             <path fill="currentColor" d="M320 128C96 128 32 224 32 336C32 448 112 512 208 512L216.4 512C240.6 512 262.8 498.3 273.6 476.6L296.8 430.3C301.2 421.5 310.1 416 320 416C329.9 416 338.8 421.5 343.2 430.3L366.4 476.6C377.2 498.3 399.4 512 423.6 512L432 512C528 512 608 448 608 336C608 224 544 128 320 128zM128 320C128 284.7 156.7 256 192 256C227.3 256 256 284.7 256 320C256 355.3 227.3 384 192 384C156.7 384 128 355.3 128 320zM448 256C483.3 256 512 284.7 512 320C512 355.3 483.3 384 448 384C412.7 384 384 355.3 384 320C384 284.7 412.7 256 448 256z"/>
           </svg>
         </span>
@@ -94,7 +94,7 @@
     <li>
       <a href="#nba-mascot-top5" class="menu-popup-btn">
         <span class="btn-icon-wrapper">
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true">
             <path fill="currentColor" d="M156.7 122.8L235.1 201.2C253.3 176.2 264 145.3 264 112C264 97.9 262.1 84.3 258.5 71.4C220.5 80.8 185.9 98.6 156.7 122.8zM122.8 156.7C98.6 185.9 80.8 220.5 71.4 258.5C84.3 262.1 97.9 264 112 264C145.3 264 176.1 253.3 201.2 235.1L122.8 156.7zM320 64C315.4 64 310.8 64.1 306.3 64.4C310 79.7 312 95.6 312 112C312 158.6 296.1 201.4 269.4 235.4L320 286.1L483.3 122.8C438.9 86.1 382.1 64 320 64zM112 312C95.6 312 79.6 310 64.4 306.3C64.2 310.8 64 315.4 64 320C64 382.1 86.1 438.9 122.8 483.3L286.1 320L235.4 269.4C201.4 296.1 158.6 312 112 312zM575.6 333.7C575.8 329.2 576 324.6 576 320C576 257.9 553.9 201.1 517.2 156.7L353.9 320L404.6 370.6C438.6 343.9 481.5 328 528 328C544.4 328 560.4 330 575.6 333.7zM568.5 381.5C555.6 377.9 542 376 527.9 376C494.6 376 463.8 386.7 438.7 404.9L517.1 483.3C541.3 454.1 559.1 419.5 568.5 381.5zM404.9 438.8C386.7 463.8 376 494.7 376 528C376 542.1 377.9 555.7 381.5 568.6C419.5 559.2 454.1 541.4 483.3 517.2L404.9 438.8zM370.6 404.5L320 353.9L156.7 517.2C201 553.9 257.9 576 320 576C324.6 576 329.2 575.9 333.7 575.6C330 560.3 328 544.4 328 528C328 481.4 343.9 438.6 370.6 404.6z"/>
           </svg>
         </span>
@@ -116,7 +116,6 @@
 
 <!-- Main Content -->
 <main>
-  
   <!-- About Me Section -->
   <section id="about-me" aria-labelledby="about-me-title">
     <div class="layout-grid">
@@ -153,11 +152,11 @@
   </section>
 
   <!-- Storia Section -->
-  <section id="storia">
+  <section id="storia" aria-labelledby="storia-title">
     <div class="layout-grid">
       <h2 id="storia-title">Dal passato a oggi: l'evoluzione delle mascot</h2>
-      <div class="storia-carousel-container">
       
+      <div class="storia-carousel-container">
         <div class="embla">
           <div class="embla__viewport">
             <div class="embla__container">
@@ -195,14 +194,14 @@
           </div>
           <div class="embla__controls">
             <div class="embla__buttons">
-              <button class="embla__button embla__button--prev" type="button">
-                <svg class="embla__button__svg" viewBox="0 0 532 532">
-                  <path fill="currentColor" d="M355.66 11.354c13.793-13.805 36.208-13.805 50.001 0 13.785 13.804 13.785 36.238 0 50.034L201.22 266l204.442 204.61c13.785 13.805 13.785 36.239 0 50.044-13.793 13.796-36.208 13.796-50.002 0a5994246.277 5994246.277 0 0 0-229.332-229.454 35.065 35.065 0 0 1-10.326-25.126c0-9.2 3.393-18.26 10.326-25.2C172.192 194.973 332.731 34.31 355.66 11.354Z"></path>
+              <button class="embla__button embla__button--prev" type="button" aria-label="Slide precedente">
+                <svg class="embla__button__svg" viewBox="0 0 532 532" aria-hidden="true">
+                  <path fill="currentColor" d="M355.66 11.354c13.793-13.805 36.208-13.805 50.001 0 13.785 13.804 13.785 36.238 0 50.034L201.22 266l204.442 204.61c13.785 13.805 13.785 36.239 0 50.044-13.793 13.796-36.208 13.796-50.002 0a5994246.277 5994246.277 0 0 0-229.332-229.454 35.065 35.065 0 0 1-10.326-25.126c0-9.2 3.393-18.26 10.326-25.2C172.192 194.973 332.731 34.31 355.66 11.354Z"/>
                 </svg>
               </button>
-              <button class="embla__button embla__button--next" type="button">
-                <svg class="embla__button__svg" viewBox="0 0 532 532">
-                  <path fill="currentColor" d="M176.34 520.646c-13.793 13.805-36.208 13.805-50.001 0-13.785-13.804-13.785-36.238 0-50.034L330.78 266 126.34 61.391c-13.785-13.805-13.785-36.239 0-50.044 13.793-13.796 36.208-13.796 50.002 0 22.928 22.947 206.395 206.507 229.332 229.454a35.065 35.065 0 0 1 10.326 25.126c0 9.2-3.393 18.26-10.326 25.2-45.865 45.901-206.404 206.564-229.332 229.52Z"></path>
+              <button class="embla__button embla__button--next" type="button" aria-label="Slide successiva">
+                <svg class="embla__button__svg" viewBox="0 0 532 532" aria-hidden="true">
+                  <path fill="currentColor" d="M176.34 520.646c-13.793 13.805-36.208 13.805-50.001 0-13.785-13.804-13.785-36.238 0-50.034L330.78 266 126.34 61.391c-13.785-13.805-13.785-36.239 0-50.044 13.793-13.796 36.208-13.796 50.002 0 22.928 22.947 206.395 206.507 229.332 229.454a35.065 35.065 0 0 1 10.326 25.126c0 9.2-3.393 18.26-10.326 25.2-45.865 45.901-206.404 206.564-229.332 229.52Z"/>
                 </svg>
               </button>
             </div>
@@ -289,7 +288,8 @@
           width="560" 
           height="315" 
           src="https://www.youtube.com/embed/bNRVYi37V54?si=xT27Tkm9JEQ8zxZv" 
-          title="YouTube video player" 
+          title="Video sulle mascotte NBA" 
+          loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
           allowfullscreen>
         </iframe>
@@ -301,36 +301,36 @@
   <section id="nba-mascot-top5" aria-labelledby="nba-title">
     <h2 id="nba-title">Le mascot NBA: la top 5</h2>
 
-    <section class="mascot">
+    <div class="mascot">
       <!-- Carosello Desktop -->
       <div class="carousel-desktop">
         <div class="carousel-container">
-          <button class="carousel-nav-arrow left">‹</button>
+          <button class="carousel-nav-arrow left" type="button" aria-label="Mascotte precedente">‹</button>
           <div class="carousel-track">
             <div class="carousel-card" data-index="0">
-              <img src="assets/rocky.jpg" alt="Rocky">
+              <img src="assets/rocky.jpg" alt="Rocky, mascotte dei Denver Nuggets">
             </div>
             <div class="carousel-card" data-index="1">
-              <img src="assets/coyote.jpg" alt="Coyote">
+              <img src="assets/coyote.jpg" alt="Coyote, mascotte dei San Antonio Spurs">
             </div>
             <div class="carousel-card" data-index="2">
-              <img src="assets/bull.jpg" alt="Benny the Bull">
+              <img src="assets/bull.jpg" alt="Benny the Bull, mascotte dei Chicago Bulls">
             </div>
             <div class="carousel-card" data-index="3">
-              <img src="assets/coyote.jpg" alt="Coyote">
+              <img src="assets/coyote.jpg" alt="Coyote, mascotte dei San Antonio Spurs">
             </div>
             <div class="carousel-card" data-index="4">
-              <img src="assets/go.jpg" alt="Go">
+              <img src="assets/go.jpg" alt="Go, mascotte degli Orlando Magic">
             </div>
             <div class="carousel-card" data-index="5">
-              <img src="assets/rocket.jpg" alt="Clutch">
+              <img src="assets/rocket.jpg" alt="Clutch, mascotte degli Houston Rockets">
             </div>
           </div>
-          <button class="carousel-nav-arrow right">›</button>
+          <button class="carousel-nav-arrow right" type="button" aria-label="Mascotte successiva">›</button>
         </div>
 
         <div class="member-info">
-          <h2 class="member-name">Rocky</h2>
+          <h3 class="member-name">Rocky</h3>
           <p class="member-role">The mountain lion</p>
         </div>
 
@@ -350,25 +350,25 @@
           <div class="swiper swiper-mascot">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <img src="assets/rocky.jpg" alt="Rocky">
+                <img src="assets/rocky.jpg" alt="Rocky, mascotte dei Denver Nuggets">
               </div>
               <div class="swiper-slide">
-                <img src="assets/coyote.jpg" alt="Coyote">
+                <img src="assets/coyote.jpg" alt="Coyote, mascotte dei San Antonio Spurs">
               </div>
               <div class="swiper-slide">
-                <img src="assets/bull.jpg" alt="Benny the Bull">
+                <img src="assets/bull.jpg" alt="Benny the Bull, mascotte dei Chicago Bulls">
               </div>
               <div class="swiper-slide">
-                <img src="assets/coyote.jpg" alt="Coyote">
+                <img src="assets/coyote.jpg" alt="Coyote, mascotte dei San Antonio Spurs">
               </div>
               <div class="swiper-slide">
-                <img src="assets/go.jpg" alt="Go">
+                <img src="assets/go.jpg" alt="Go, mascotte degli Orlando Magic">
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- Grid per i contenitori testo -->
     <div class="layout-grid">
@@ -390,17 +390,18 @@
         </article>
       </div>
 
-      <a href="#hero" class="back-to-top"><span class="anchor-up-text">Torna su</span></a>
+      <a href="#hero" class="back-to-top">
+        <span class="anchor-up-text">Torna su</span>
+      </a>
     </div>
   </section>
-  
 </main>
 
 <!-- Footer -->
 <footer class="site-footer">
   <div class="footer-image-bg">
     <div class="layout-grid">
-      <img src="assets/illustration.png" alt="Snaky Illustration" class="footer-illustration">
+      <img src="assets/illustration.png" alt="" class="footer-illustration">
       <div class="footer-content">
         <p>&copy; 2025 Website designed by Genrev G.</p>
         <p><a href="#">Privacy &amp; Terms</a></p>
