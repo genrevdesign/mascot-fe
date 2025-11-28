@@ -1,41 +1,10 @@
-/* =============================================================================
-   MASCOT - STYLESHEET PRINCIPALE (WCAG ACCESSIBLE)
-   =============================================================================
-   
-   INDICE:
-   
-   1. RESET & BASE
-   2. CSS CUSTOM PROPERTIES (Variabili)
-   3. TYPOGRAPHY
-   4. LAYOUT SYSTEM (Grid)
-   5. UTILITIES
-   6. COMPONENTS
-      6.1 Buttons
-      6.2 Content Box (Contenitore Testo)
-      6.3 Accordion
-      6.4 Video Player
-      6.5 Mascot Profile Card
-      6.6 Popup
-   7. NAVIGATION
-      7.1 Navbar Desktop
-      7.2 Hamburger Menu
-      7.3 Mobile Menu Popup
-   8. SECTIONS
-      8.1 Hero
-      8.2 About Me
-      8.3 Storia
-      8.4 Vita da Mascot
-      8.5 NBA Mascot Top 5
-   9. FOOTER
-   10. ACCESSIBILITY
-   11. ICONS (SVG per sezioni)
-   
-   ============================================================================= */
+/* ========================================================================
+   MASCOT - STYLESHEET PRINCIPALE
+   ======================================================================== */
 
-
-/* =============================================================================
-   1. RESET & BASE
-   ============================================================================= */
+/* ========================================================================
+   RESET & BASE
+   ======================================================================== */
 
 *,
 *::before,
@@ -48,20 +17,15 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--navbar-height);
-  
-  /* WCAG 1.4.4: Permette ridimensionamento fino al 200% */
   font-size: 100%;
 }
 
-
-/* =============================================================================
-   2. CSS CUSTOM PROPERTIES (Variabili)
-   ============================================================================= */
+/* ========================================================================
+   CSS CUSTOM PROPERTIES
+   ======================================================================== */
 
 :root {
-  /* -------------------------
-     Colori
-     ------------------------- */
+  /* Colori */
   --color-primary: #FFCF57;
   --color-secondary: #1B1B1B;
   --color-accent: #1F1F1F;
@@ -72,53 +36,43 @@ html {
   --color-bg-light: #FFFFFF;
   --color-border: #FFFFFF;
 
-  /* -------------------------
-     Spacing
-     ------------------------- */
-  --space-xs: 0.5rem;    /* 8px */
-  --space-sm: 1rem;      /* 16px */
-  --space-md: 1.5rem;    /* 24px */
-  --space-lg: 2rem;      /* 32px */
-  --space-xl: 3rem;      /* 48px */
-  --space-2xl: 4rem;     /* 64px */
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
 
-  /* -------------------------
-     Typography - WCAG Optimized
-     ------------------------- */
+  /* Typography */
   --font-heading: "bricolage-grotesque", sans-serif;
   --font-body: "omnes-semicond", sans-serif;
   
-  /* Font Weights */
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
   --weight-bold: 800;
   
-  /* Font Sizes - Mobile First (WCAG 1.4.4) */
-  --text-xs: 0.875rem;     /* 14px - solo metadata */
-  --text-sm: 1rem;         /* 16px - minimo body */
-  --text-base: 1.125rem;   /* 18px - body principale */
-  --text-lg: 1.25rem;      /* 20px - lead text */
-  --text-xl: 1.5rem;       /* 24px - h3 mobile */
-  --text-2xl: 1.75rem;     /* 28px - h2 mobile */
-  --text-3xl: 2rem;        /* 32px - h1 mobile */
-  --text-4xl: 2.5rem;      /* 40px - h2 desktop */
-  --text-5xl: 3rem;        /* 48px - h1 desktop */
+  --text-xs: 0.875rem;
+  --text-sm: 1rem;
+  --text-base: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3rem;
   
-  /* Line Heights - WCAG 1.4.8 (AAA: ≥1.5 per body) */
-  --leading-tight: 1.3;    /* headings */
-  --leading-snug: 1.4;     /* subheadings */
-  --leading-normal: 1.6;   /* body standard */
-  --leading-relaxed: 1.75; /* body lungo/accessibile */
+  --leading-tight: 1.3;
+  --leading-snug: 1.4;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
   
-  /* Letter Spacing */
   --tracking-tight: -0.02em;
   --tracking-normal: 0;
   --tracking-wide: 0.01em;
 
-  /* -------------------------
-     Layout
-     ------------------------- */
+  /* Layout */
   --max-width: 1440px;
   --navbar-height: 102px;
   --border-radius: 8px;
@@ -126,15 +80,12 @@ html {
   --border-radius-xl: 25px;
   --transition: 0.3s ease;
 
-  /* -------------------------
-     Components
-     ------------------------- */
+  /* Components */
   --box-padding: var(--space-xl);
   --box-radius: var(--border-radius-lg);
   --box-min-height: 200px;
 }
 
-/* Navbar Height - Responsive */
 @media (min-width: 768px) {
   :root {
     --navbar-height: 118px;
@@ -147,91 +98,50 @@ html {
   }
 }
 
-
-/* =============================================================================
-   3. TYPOGRAPHY - WCAG Accessible
-   ============================================================================= */
+/* ========================================================================
+   TYPOGRAPHY
+   ======================================================================== */
 
 body {
   font-family: var(--font-body);
   font-weight: var(--weight-regular);
-  font-size: var(--text-base); /* 18px - WCAG raccomandato */
-  line-height: var(--leading-relaxed); /* 1.75 - WCAG AAA */
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
   color: var(--color-text-light);
   background-color: var(--color-bg-body);
-  
-  /* WCAG 1.4.12: Spaziatura testo */
   word-spacing: 0.05em;
 }
 
-/* Headings - WCAG 1.4.4 Scalabili */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   color: var(--color-primary);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
-  
-  /* WCAG 1.4.8: Spaziatura dopo headings */
   margin-bottom: 0.5em;
 }
 
-h1 {
-  font-size: var(--text-3xl); /* 32px mobile */
-}
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); line-height: var(--leading-snug); }
+h4 { font-size: var(--text-lg); line-height: var(--leading-snug); }
 
-h2 {
-  font-size: var(--text-2xl); /* 28px mobile */
-}
-
-h3 {
-  font-size: var(--text-xl); /* 24px mobile */
-  line-height: var(--leading-snug);
-}
-
-h4 {
-  font-size: var(--text-lg); /* 20px */
-  line-height: var(--leading-snug);
-}
-
-/* Tablet */
 @media (min-width: 768px) {
-  h1 {
-    font-size: var(--text-4xl); /* 40px */
-  }
-  
-  h2 {
-    font-size: var(--text-3xl); /* 32px */
-  }
-  
-  h3 {
-    font-size: var(--text-2xl); /* 28px */
-  }
+  h1 { font-size: var(--text-4xl); }
+  h2 { font-size: var(--text-3xl); }
+  h3 { font-size: var(--text-2xl); }
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
-  h1 {
-    font-size: var(--text-5xl); /* 48px */
-  }
-  
-  h2 {
-    font-size: var(--text-4xl); /* 40px */
-  }
-  
-  h3 {
-    font-size: var(--text-2xl); /* 28px */
-  }
+  h1 { font-size: var(--text-5xl); }
+  h2 { font-size: var(--text-4xl); }
 }
 
-/* Paragraphs - WCAG 1.4.8 */
 p {
   font-family: var(--font-body);
   font-weight: var(--weight-regular);
-  font-size: var(--text-base); /* 18px */
-  line-height: var(--leading-relaxed); /* 1.75 */
-  
-  /* WCAG 1.4.8: Spaziatura paragrafi ≥2x font-size */
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
   margin-bottom: 1.5em;
 }
 
@@ -239,14 +149,12 @@ p:last-child {
   margin-bottom: 0;
 }
 
-/* Links - WCAG 2.4.4 */
 a {
   color: inherit;
-  text-decoration: underline;
+  text-decoration: none;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   transition: color var(--transition);
-  text-decoration: none;
 }
 
 a:hover,
@@ -254,31 +162,25 @@ a:focus {
   text-decoration-thickness: 2px;
 }
 
-/* Strong/Bold Text */
 strong,
 .important-text {
   font-weight: var(--weight-semibold);
 }
 
-/* Text Utilities */
 .tagline {
   font-family: var(--font-heading);
   font-weight: var(--weight-medium);
-  font-size: var(--text-lg); /* 20px mobile */
+  font-size: var(--text-lg);
   line-height: var(--leading-snug);
   color: var(--color-text-dark);
 }
 
 @media (min-width: 768px) {
-  .tagline {
-    font-size: var(--text-xl); 
-  }
+  .tagline { font-size: var(--text-xl); }
 }
 
 @media (min-width: 1024px) {
-  .tagline {
-    font-size: var(--text-3xl); 
-  }
+  .tagline { font-size: var(--text-3xl); }
 }
 
 .anchor-up-text {
@@ -287,10 +189,9 @@ strong,
   font-size: var(--text-base);
 }
 
-
-/* =============================================================================
-   4. LAYOUT SYSTEM (Grid)
-   ============================================================================= */
+/* ========================================================================
+   LAYOUT SYSTEM
+   ======================================================================== */
 
 .layout-grid {
   width: 100%;
@@ -322,7 +223,6 @@ strong,
   }
 }
 
-/* Full Width Container (Full-Bleed) */
 .full-width-container {
   grid-column: 1 / -1;
   position: relative;
@@ -333,12 +233,10 @@ strong,
   width: 100vw;
 }
 
+/* ========================================================================
+   UTILITIES
+   ======================================================================== */
 
-/* =============================================================================
-   5. UTILITIES
-   ============================================================================= */
-
-/* Visually Hidden (Screen Reader Only) - WCAG */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -351,7 +249,6 @@ strong,
   border: 0;
 }
 
-/* Skip Link - WCAG 2.4.1 */
 .skip-link {
   position: absolute;
   top: -100%;
@@ -369,7 +266,6 @@ strong,
   top: var(--space-sm);
 }
 
-/* Horizontal Rule */
 hr {
   border: none;
   border-top: 1px solid var(--color-primary);
@@ -377,22 +273,16 @@ hr {
   opacity: 0.3;
 }
 
-
-/* =============================================================================
-   6. COMPONENTS
-   ============================================================================= */
-
-
-/* -----------------------------------------------------------------------------
-   6.1 Buttons - WCAG 2.5.5 (Target Size)
-   ----------------------------------------------------------------------------- */
+/* ========================================================================
+   BUTTONS
+   ======================================================================== */
 
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   font-family: var(--font-heading);
-  font-size: var(--text-sm); /* 16px - aumentato da 0.95rem */
+  font-size: var(--text-sm);
   font-weight: var(--weight-bold);
   color: var(--color-text-light);
   background-color: var(--color-secondary);
@@ -401,7 +291,7 @@ hr {
   border: none;
   cursor: pointer;
   text-decoration: none;
-  min-height: 48px; /* WCAG 2.5.5: minimo 44px, 48px raccomandato */
+  min-height: 48px;
   min-width: 48px;
   transition: 
     background-color var(--transition),
@@ -409,7 +299,6 @@ hr {
     transform var(--transition);
 }
 
-/* Button Icon Wrapper */
 .btn-icon-wrapper {
   width: 32px;
   height: 32px;
@@ -424,7 +313,6 @@ hr {
   transition: background-color var(--transition);
 }
 
-/* Button Icon */
 .btn-icon {
   width: 24px;
   height: 24px;
@@ -436,12 +324,10 @@ hr {
   transition: color var(--transition);
 }
 
-/* Button Label */
 .btn-label {
-  font-size: var(--text-sm); /* 16px */
+  font-size: var(--text-sm);
 }
 
-/* Button States */
 .btn:hover {
   background-color: var(--color-bg-light);
   color: var(--color-text-dark);
@@ -475,10 +361,9 @@ hr {
   outline-offset: 2px;
 }
 
-
-/* -----------------------------------------------------------------------------
-   6.2 Content Box (Contenitore Testo) - WCAG Typography
-   ----------------------------------------------------------------------------- */
+/* ========================================================================
+   CONTENT BOX
+   ======================================================================== */
 
 .contenitore-testo {
   padding: var(--box-padding);
@@ -487,21 +372,19 @@ hr {
   background-color: var(--color-bg-dark);
 }
 
-/* Box Title */
 .contenitore-testo h3 {
   display: flex;
   align-items: center;
   margin-bottom: var(--space-md);
-  font-size: var(--text-xl); /* 24px mobile */
+  font-size: var(--text-xl);
 }
 
 @media (min-width: 768px) {
   .contenitore-testo h3 {
-    font-size: var(--text-2xl); /* 28px tablet+ */
+    font-size: var(--text-2xl);
   }
 }
 
-/* Box Title Icon */
 .contenitore-testo h3::before {
   content: "";
   display: inline-block;
@@ -516,13 +399,11 @@ hr {
   background-repeat: no-repeat;
 }
 
-/* Box Text - WCAG 1.4.8 */
 .contenitore-testo p {
-  font-size: var(--text-base); /* 18px */
-  line-height: var(--leading-relaxed); /* 1.75 */
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
 }
 
-/* Box Style: Primary (Yellow Background) */
 .contenitore-testo.style-primary {
   background-color: var(--color-primary);
 }
@@ -536,19 +417,16 @@ hr {
   background-color: var(--color-bg-light);
 }
 
+/* ========================================================================
+   ACCORDION
+   ======================================================================== */
 
-/* -----------------------------------------------------------------------------
-   6.3 Accordion - WCAG Accessible
-   ----------------------------------------------------------------------------- */
-
-/* Accordion Container */
 .accordion-container {
   grid-column: 1 / -1;
   margin: var(--space-lg) 0;
   padding: 0;
 }
 
-/* Accordion Item */
 .dropdown {
   position: relative;
   display: block;
@@ -558,13 +436,12 @@ hr {
   background-color: var(--color-primary);
 }
 
-/* Accordion Trigger - WCAG 2.5.5 Target Size */
 .accordion-trigger {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  min-height: 64px; /* WCAG: area touch adeguata */
+  min-height: 64px;
   padding: var(--space-md) var(--space-lg);
   background-color: var(--color-primary);
   color: var(--color-text-dark);
@@ -577,12 +454,11 @@ hr {
     color var(--transition);
 }
 
-/* Accordion Trigger Title - WCAG 1.4.4 */
 .accordion-trigger p {
   margin: 0;
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
-  font-size: var(--text-lg); /* 20px mobile */
+  font-size: var(--text-lg);
   line-height: var(--leading-snug);
   color: var(--color-text-dark);
   transition: color var(--transition);
@@ -590,17 +466,16 @@ hr {
 
 @media (min-width: 768px) {
   .accordion-trigger p {
-    font-size: var(--text-xl); /* 24px tablet+ */
+    font-size: var(--text-xl);
   }
 }
 
 @media (min-width: 1024px) {
   .accordion-trigger p {
-    font-size: 1.375rem; /* 22px desktop */
+    font-size: 1.375rem;
   }
 }
 
-/* Accordion Trigger Icon */
 .accordion-trigger svg {
   flex-shrink: 0;
   width: 48px;
@@ -616,7 +491,6 @@ hr {
   transition: fill var(--transition);
 }
 
-/* Accordion Trigger States - WCAG 2.4.7 Focus Visible */
 .accordion-trigger:focus {
   outline: none;
 }
@@ -653,7 +527,6 @@ hr {
   transform: rotate(45deg);
 }
 
-/* Accordion Content - WCAG 1.4.8 */
 .dropdown-content {
   display: grid;
   grid-template-rows: 0fr;
@@ -671,8 +544,8 @@ hr {
 .dropdown-content p {
   margin: 0;
   padding: 0 var(--space-lg);
-  font-size: var(--text-base); /* 18px */
-  line-height: var(--leading-relaxed); /* 1.75 */
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
   letter-spacing: var(--tracking-wide);
   color: var(--color-text-light);
   width: 100%;
@@ -681,17 +554,15 @@ hr {
 
 @media (min-width: 1024px) {
   .dropdown-content p {
-    font-size: 1.1875rem; /* 19px */
+    font-size: 1.1875rem;
   }
 }
 
-/* Accordion Content Strong Text */
 .dropdown-content strong {
   font-weight: var(--weight-semibold);
   color: var(--color-text-light);
 }
 
-/* Accordion Open State */
 .dropdown.show .dropdown-content {
   grid-template-rows: 1fr;
 }
@@ -708,7 +579,6 @@ hr {
   fill: var(--color-bg-body);
 }
 
-/* Accordion Responsive - WCAG 1.4.10 Reflow */
 @media (max-width: 480px) {
   .accordion-trigger {
     min-height: 56px;
@@ -724,7 +594,7 @@ hr {
   }
   
   .dropdown-content p {
-    font-size: var(--text-sm); /* 16px */
+    font-size: var(--text-sm);
     padding-left: var(--space-md);
     padding-right: var(--space-md);
   }
@@ -734,10 +604,9 @@ hr {
   }
 }
 
-
-/* -----------------------------------------------------------------------------
-   6.4 Video Player
-   ----------------------------------------------------------------------------- */
+/* ========================================================================
+   VIDEO PLAYER
+   ======================================================================== */
 
 .video-player {
   width: 100%;
@@ -757,10 +626,9 @@ hr {
   }
 }
 
-
-/* -----------------------------------------------------------------------------
-   6.5 Mascot Profile Card
-   ----------------------------------------------------------------------------- */
+/* ========================================================================
+   MASCOT PROFILE CARD
+   ======================================================================== */
 
 .mascot-profile-card {
   width: 100%;
@@ -781,7 +649,6 @@ hr {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-/* Card Image */
 .mascot-profile-card .card-image {
   width: calc(100% - 24px);
   height: 420px;
@@ -799,7 +666,6 @@ hr {
   display: block;
 }
 
-/* Card Footer */
 .mascot-profile-card .card-footer {
   padding: 20px 24px;
   display: flex;
@@ -809,7 +675,6 @@ hr {
   background-color: var(--color-primary);
 }
 
-/* Card Text */
 .mascot-profile-card .card-text {
   flex: 1;
   display: flex;
@@ -820,7 +685,7 @@ hr {
 .mascot-profile-card .card-title {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
-  font-size: var(--text-2xl); /* 28px */
+  font-size: var(--text-2xl);
   color: var(--color-text-dark);
   line-height: var(--leading-tight);
   margin: 0;
@@ -829,13 +694,12 @@ hr {
 .mascot-profile-card .card-subtitle {
   font-family: var(--font-body);
   font-weight: var(--weight-regular);
-  font-size: var(--text-base); /* 18px */
+  font-size: var(--text-base);
   color: var(--color-text-dark);
   line-height: var(--leading-snug);
   margin: 0;
 }
 
-/* Card Icon */
 .mascot-profile-card .card-icon {
   width: 56px;
   height: 56px;
@@ -854,7 +718,6 @@ hr {
   object-fit: contain;
 }
 
-/* Mascot Profile Card Responsive */
 @media (max-width: 767px) {
   .mascot-profile-card {
     max-width: 100%;
@@ -869,7 +732,7 @@ hr {
   }
 
   .mascot-profile-card .card-title {
-    font-size: var(--text-xl); /* 24px */
+    font-size: var(--text-xl);
   }
 
   .mascot-profile-card .card-icon {
@@ -895,10 +758,9 @@ hr {
   }
 }
 
-
-/* -----------------------------------------------------------------------------
-   6.6 Popup
-   ----------------------------------------------------------------------------- */
+/* ========================================================================
+   POPUP
+   ======================================================================== */
 
 #popup-rocky-toggle {
   display: none;
@@ -952,7 +814,7 @@ hr {
   cursor: pointer;
   line-height: 1;
   padding: var(--space-xs);
-  min-width: 48px; /* WCAG 2.5.5 */
+  min-width: 48px;
   min-height: 48px;
   transition: color var(--transition);
 }
@@ -1004,7 +866,7 @@ hr {
   color: var(--color-text-light);
   font-size: var(--text-base);
   cursor: pointer;
-  min-height: 48px; /* WCAG 2.5.5 */
+  min-height: 48px;
   transition: background-color var(--transition);
   text-decoration: none;
 }
@@ -1037,16 +899,9 @@ hr {
 .curiosita p {
   color: var(--color-text-light);
 }
-
-
-/* =============================================================================
-   7. NAVIGATION
-   ============================================================================= */
-
-
-/* -----------------------------------------------------------------------------
-   7.1 Navbar Desktop
-   ----------------------------------------------------------------------------- */
+/* ========================================================================
+   NAVIGATION
+   ======================================================================== */
 
 #menu-toggle {
   display: none;
@@ -1086,7 +941,6 @@ hr {
   }
 }
 
-/* Navbar Logo */
 .navbar-logo img {
   height: 32px;
   width: auto;
@@ -1094,29 +948,21 @@ hr {
 }
 
 @media (min-width: 768px) {
-  .navbar-logo img {
-    height: 40px;
-  }
+  .navbar-logo img { height: 40px; }
 }
 
 @media (min-width: 1024px) {
-  .navbar-logo img {
-    height: 48px;
-  }
+  .navbar-logo img { height: 48px; }
 }
 
-/* Navbar Menu */
 .navbar-menu {
   display: none;
 }
 
 @media (min-width: 768px) {
-  .navbar-menu {
-    display: block;
-  }
+  .navbar-menu { display: block; }
 }
 
-/* Navbar List */
 .navbar-list {
   display: flex;
   align-items: center;
@@ -1126,11 +972,7 @@ hr {
   padding: 0;
 }
 
-
-/* -----------------------------------------------------------------------------
-   7.2 Hamburger Menu - WCAG 2.5.5 Target Size
-   ----------------------------------------------------------------------------- */
-
+/* Hamburger Menu */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -1141,7 +983,7 @@ hr {
   position: relative;
   width: 48px;
   height: 48px;
-  min-width: 48px; /* WCAG 2.5.5 */
+  min-width: 48px;
   min-height: 48px;
   align-items: center;
   justify-content: center;
@@ -1158,7 +1000,6 @@ hr {
   transition: all var(--transition);
 }
 
-/* Hamburger Animation */
 #menu-toggle:checked ~ .navbar .hamburger span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -1171,18 +1012,11 @@ hr {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Hamburger Responsive */
 @media (max-width: 767px) {
-  .hamburger {
-    display: flex;
-  }
+  .hamburger { display: flex; }
 }
 
-
-/* -----------------------------------------------------------------------------
-   7.3 Mobile Menu Popup
-   ----------------------------------------------------------------------------- */
-
+/* Mobile Menu Popup */
 .menu-popup {
   position: fixed;
   inset: 0;
@@ -1218,13 +1052,12 @@ hr {
   margin: var(--space-lg) 0;
 }
 
-/* Mobile Menu Button - WCAG 2.5.5 */
 .menu-popup-btn {
   display: inline-flex;
   align-items: center;
   gap: 14px;
   font-family: var(--font-heading);
-  font-size: var(--text-lg); /* 20px - aumentato */
+  font-size: var(--text-lg);
   font-weight: var(--weight-bold);
   color: var(--color-text-light);
   background-color: var(--color-secondary);
@@ -1232,7 +1065,7 @@ hr {
   border-radius: 50px;
   border: none;
   cursor: pointer;
-  min-height: 56px; /* WCAG 2.5.5 */
+  min-height: 56px;
   text-decoration: none;
   transition: 
     background-color var(--transition),
@@ -1265,7 +1098,6 @@ hr {
   transition: color var(--transition);
 }
 
-/* Mobile Menu Button States */
 .menu-popup-btn:hover {
   background-color: var(--color-bg-light);
   color: var(--color-text-dark);
@@ -1299,7 +1131,6 @@ hr {
   outline-offset: 3px;
 }
 
-/* Mobile Menu Responsive Behavior */
 @media (max-width: 767px) {
   body:has(#menu-toggle:checked) {
     overflow: hidden;
@@ -1362,7 +1193,6 @@ hr {
     transform: rotate(-45deg);
   }
   
-  /* Fix per evitare lo shift del menu popup */
   #menu-toggle:checked ~ .menu-popup {
     position: fixed;
     top: 0;
@@ -1374,14 +1204,9 @@ hr {
   }
 }
 
-
-/* =============================================================================
-   8. SECTIONS
-   ============================================================================= */
-   
-/* -----------------------------------------------------------------------------
-   8.1 Hero
-   ----------------------------------------------------------------------------- */
+/* ========================================================================
+   HERO SECTION
+   ======================================================================== */
 
 #hero {
   position: relative;
@@ -1394,7 +1219,6 @@ hr {
   padding: var(--space-2xl) var(--space-lg);
 }
 
-/* Hero Content */
 .hero-content {
   position: relative;
   z-index: 1;
@@ -1403,25 +1227,19 @@ hr {
   padding: var(--space-xl) 0;
 }
 
-/* Hero Logo */
 .hero-content img {
   width: 280px;
   height: auto;
 }
 
 @media (min-width: 768px) {
-  .hero-content img {
-    width: 320px;
-  }
+  .hero-content img { width: 320px; }
 }
 
 @media (min-width: 1024px) {
-  .hero-content img {
-    width: 550px;
-  }
+  .hero-content img { width: 550px; }
 }
 
-/* Hero Background Image */
 .hero-bg-image {
   position: absolute;
   top: auto;
@@ -1444,9 +1262,7 @@ hr {
 }
 
 @media (min-width: 1440px) {
-  #hero {
-    overflow: hidden;
-  }
+  #hero { overflow: hidden; }
   
   .hero-bg-image {
     width: auto;
@@ -1457,15 +1273,14 @@ hr {
   }
 }
 
-/* -----------------------------------------------------------------------------
-   8.2 About Me
-   ----------------------------------------------------------------------------- */
+/* ========================================================================
+   ABOUT ME SECTION
+   ======================================================================== */
 
 #about-me {
   padding: var(--space-2xl) 0;
 }
 
-/* Box Wrapper Top */
 #about-me .box-wrapper-top {
   grid-column: 1 / -1;
   background-color: transparent;
@@ -1479,7 +1294,6 @@ hr {
   background-color: var(--color-bg-body);
 }
 
-/* Box Wrapper Bottom (Full-Bleed) */
 #about-me .box-wrapper-bottom {
   grid-column: 1 / -1;
   position: relative;
@@ -1507,7 +1321,6 @@ hr {
   background-color: var(--color-bg-body);
 }
 
-/* Box "Un invito a te!" - Yellow Background */
 #about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(1) {
   background-color: var(--color-primary);
 }
@@ -1521,12 +1334,10 @@ hr {
   background-color: var(--color-bg-light);
 }
 
-/* Box "Perchè questo sito" */
 #about-me .box-wrapper-bottom .contenitore-testo:nth-of-type(2) {
   background-color: var(--color-bg-body);
 }
 
-/* About Me Responsive */
 @media (min-width: 768px) {
   #about-me .box-wrapper-top .contenitore-testo {
     grid-column: span 4;
@@ -1559,10 +1370,9 @@ hr {
   }
 }
 
-
-/* -----------------------------------------------------------------------------
-   8.3 Storia
-   ----------------------------------------------------------------------------- */
+/* ========================================================================
+   STORIA SECTION
+   ======================================================================== */
 
 #storia {
   padding: var(--space-2xl) 0;
@@ -1578,24 +1388,20 @@ hr {
   grid-column: 1 / -1;
 }
 
-/* -----------------------------------------------------------------------------
-   Storia Card Component
-   ----------------------------------------------------------------------------- */
-
+/* Storia Card */
 .storia-card {
   width: 100%;
   height: var(--slide-height);
   background-color: var(--color-primary);
   border-radius: 20px;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   flex-direction: column;
   cursor: pointer;
 }
 
-/* Area Immagine */
 .storia-card__image {
-  flex: 1; /* Occupa tutto lo spazio disponibile */
+  flex: 1;
   margin: 12px;
   margin-bottom: 0;
   background-color: var(--color-bg-light);
@@ -1617,150 +1423,83 @@ hr {
   transform: scale(1.12);
 }
 
-/* Applica zoom solo su dispositivi con mouse */
 @media (hover: hover) and (pointer: fine) {
   .storia-card:hover .storia-card__image img {
     transform: scale(1.1);
   }
 }
 
-.img-contain img
-{
+.img-contain img {
   object-fit: contain;
   object-position: center;
 }
 
-
-/* Variante: contain con padding */
-.img-zoom  img {
+.img-zoom img {
   object-fit: cover;
   object-position: center;
   transform: scale(1.2);
 }
 
-/* Footer Card - Centrato */
 .storia-card__footer {
-  padding: 16px 20px 20px;
+  padding: 6px 10px 10px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 4px;
-  flex-shrink: 0;
-  padding: 6px 10px 10px !important;
   gap: 2px !important;
+  flex-shrink: 0;
 }
 
-/* Titolo - WCAG: minimo 18px per headings */
 .storia-card__title {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
-  font-size: var(--text-2xl);           /* 28px mobile */
+  font-size: var(--text-2xl);
   color: var(--color-text-dark);
   line-height: var(--leading-tight);
   margin: 0;
 }
 
-/* Rimuove l'icona ereditata da .contenitore-testo h3 */
 .storia-card__title::before {
   display: none;
   content: none;
 }
 
-/* Label - WCAG 1.4.4: minimo 16px per body text */
 .storia-card__label {
   font-family: var(--font-body);
   font-weight: var(--weight-regular);
-  font-size: var(--text-xl);       
+  font-size: var(--text-xl);
   color: var(--color-text-dark);
-  line-height: var(--leading-normal);   /* 1.6 per leggibilità */
+  line-height: var(--leading-normal);
   margin: 0;
 }
 
-
-/* -----------------------------------------------------------------------------
-   Storia Card - Responsive (WCAG Compliant)
-   ----------------------------------------------------------------------------- */
-
-/* Tablet (768px+) */
 @media (min-width: 768px) {
-  .storia-card {
-    border-radius: 18px;
-  }
-  
-  .storia-card__image {
-    margin: 10px;
-    margin-bottom: 0;
-    border-radius: 14px;
-  }
-  
-  .storia-card__footer {
-    padding: 12px 14px 14px;
-    gap: 2px;
-  }
-  
-  .storia-card__title {
-    font-size: var(--text-xl);          /* 24px tablet */
-  }
-  
-  .storia-card__label {
-    font-size: var(--text-sm);          /* 16px - mantiene WCAG minimum */
-  }
+  .storia-card { border-radius: 18px; }
+  .storia-card__image { margin: 10px; margin-bottom: 0; border-radius: 14px; }
+  .storia-card__footer { padding: 12px 14px 14px; gap: 2px; }
+  .storia-card__title { font-size: var(--text-xl); }
+  .storia-card__label { font-size: var(--text-sm); }
 }
 
-/* Desktop (1024px+) */
 @media (min-width: 1024px) {
-  .storia-card {
-    border-radius: 20px;
-  }
-  
-  .storia-card__image {
-    margin: 12px;
-    margin-bottom: 0;
-    border-radius: 16px;
-  }
-  
-  .storia-card__footer {
-    padding: 14px 16px 16px;
-    gap: 4px;
-  }
-  
-  .storia-card__title {
-    font-size: var(--text-2xl);         /* 28px desktop */
-  }
-  
-  .storia-card__label {
-    font-size: var(--text-base);        /* 18px desktop - sopra WCAG minimum */
-  }
+  .storia-card { border-radius: 20px; }
+  .storia-card__image { margin: 12px; margin-bottom: 0; border-radius: 16px; }
+  .storia-card__footer { padding: 14px 16px 16px; gap: 4px; }
+  .storia-card__title { font-size: var(--text-2xl); }
+  .storia-card__label { font-size: var(--text-base); }
 }
 
-/* Large Desktop (1440px+) */
 @media (min-width: 1440px) {
-  .storia-card__footer {
-    padding: 16px 20px 20px;
-  }
-  
-  .storia-card__title {
-    font-size: var(--text-2xl);         /* 28px */
-  }
-  
-  .storia-card__label {
-    font-size: var(--text-xl);       
-  }
+  .storia-card__footer { padding: 16px 20px 20px; }
+  .storia-card__title { font-size: var(--text-2xl); }
+  .storia-card__label { font-size: var(--text-xl); }
 }
 
-
-/* -----------------------------------------------------------------------------
-   Storia Card
-   ----------------------------------------------------------------------------- */
-
-/* Focus visible per navigazione da tastiera */
 .storia-card:focus-within {
   outline: 3px solid var(--color-text-dark);
   outline-offset: 2px;
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .storia-card,
   .storia-card__image img {
@@ -1768,7 +1507,6 @@ hr {
   }
 }
 
-/* High contrast mode */
 @media (prefers-contrast: high) {
   .storia-card {
     border: 2px solid var(--color-text-dark);
@@ -1779,10 +1517,9 @@ hr {
   }
 }
 
-
-/* -----------------------------------------------------------------------------
-   8.4 Vita da Mascot
-   ----------------------------------------------------------------------------- */
+/* ========================================================================
+   VITA DA MASCOT SECTION
+   ======================================================================== */
 
 #vita {
   padding: var(--space-2xl) 0;
@@ -1796,7 +1533,6 @@ hr {
   margin-bottom: var(--space-lg);
 }
 
-/* Vita Box Wrapper Top */
 #vita .box-wrapper-top {
   grid-column: 1 / -1;
   background-color: transparent;
@@ -1810,7 +1546,6 @@ hr {
   background-color: var(--color-bg-body);
 }
 
-/* Card 1 - "Un ruolo che conta" - Yellow Background */
 #vita .box-wrapper-top .contenitore-testo:first-child {
   background-color: var(--color-primary);
 }
@@ -1824,12 +1559,10 @@ hr {
   background-color: var(--color-bg-light);
 }
 
-/* Card 2 - "Un momento di gioia" - Dark Background */
 #vita .box-wrapper-top .contenitore-testo:nth-of-type(2) {
   background-color: var(--color-bg-dark);
 }
 
-/* Vita Box Wrapper Bottom (Full-Bleed) */
 #vita .box-wrapper-bottom {
   grid-column: 1 / -1;
   position: relative;
@@ -1851,13 +1584,11 @@ hr {
   padding: 0 16px;
 }
 
-/* Card 3 & 4 - Dark Background */
 #vita .box-wrapper-bottom-inner .contenitore-testo {
   grid-column: 1 / -1;
   background-color: var(--color-bg-dark);
 }
 
-/* Video Container */
 #vita .video-container {
   grid-column: 1 / -1;
   margin-top: var(--space-lg);
@@ -1871,32 +1602,20 @@ hr {
 }
 
 @media (min-width: 768px) {
-  #vita .video-container h3 {
-    font-size: var(--text-2xl);
-  }
-}
-
-/* Vita Responsive */
-@media (min-width: 768px) {
-  #vita .box-wrapper-top .contenitore-testo {
-    grid-column: span 4;
-  }
-
+  #vita .video-container h3 { font-size: var(--text-2xl); }
+  #vita .box-wrapper-top .contenitore-testo { grid-column: span 4; }
+  
   #vita .box-wrapper-bottom-inner {
     grid-template-columns: repeat(8, 1fr);
     gap: 20px;
     padding: 0 32px;
   }
 
-  #vita .box-wrapper-bottom-inner .contenitore-testo {
-    grid-column: span 4;
-  }
+  #vita .box-wrapper-bottom-inner .contenitore-testo { grid-column: span 4; }
 }
 
 @media (min-width: 1024px) {
-  #vita .box-wrapper-top .contenitore-testo {
-    grid-column: span 6;
-  }
+  #vita .box-wrapper-top .contenitore-testo { grid-column: span 6; }
 
   #vita .box-wrapper-bottom-inner {
     grid-template-columns: repeat(12, 1fr);
@@ -1904,19 +1623,13 @@ hr {
     padding: 0 80px;
   }
 
-  #vita .box-wrapper-bottom-inner .contenitore-testo {
-    grid-column: span 6;
-  }
-
-  #vita .video-container {
-    grid-column: 3 / 11;
-  }
+  #vita .box-wrapper-bottom-inner .contenitore-testo { grid-column: span 6; }
+  #vita .video-container { grid-column: 3 / 11; }
 }
 
-
-/* -----------------------------------------------------------------------------
-   8.5 NBA Mascot Top 5
-   ----------------------------------------------------------------------------- */
+/* ========================================================================
+   NBA MASCOT TOP 5 SECTION
+   ======================================================================== */
 
 #nba-mascot-top5 {
   padding: var(--space-2xl) 0;
@@ -1928,7 +1641,6 @@ hr {
   margin-bottom: var(--space-lg);
 }
 
-/* Card Slider */
 #nba-mascot-top5 .card-slider {
   grid-column: 1 / -1;
   margin-bottom: var(--space-xl);
@@ -1951,7 +1663,6 @@ hr {
   }
 }
 
-/* Mascot Cards */
 #nba-mascot-top5 .mascot-card {
   background: #2a2a2a;
   padding: var(--space-sm);
@@ -1988,7 +1699,6 @@ hr {
   margin-top: var(--space-xs);
 }
 
-/* NBA Text Grid */
 #nba-mascot-top5 .nba-text-grid {
   grid-column: 1 / -1;
   display: flex;
@@ -1997,7 +1707,6 @@ hr {
   margin-bottom: var(--space-xl);
 }
 
-/* Large Container - Yellow Background */
 #nba-mascot-top5 .contenitore-grande {
   background-color: var(--color-primary);
   display: flex;
@@ -2013,12 +1722,10 @@ hr {
   background-color: var(--color-bg-light);
 }
 
-
-/* Large Container Internal Titles */
 #nba-mascot-top5 .contenitore-grande h4 {
   font-family: var(--font-heading);
   font-weight: var(--weight-semibold);
-  font-size: var(--text-lg); /* 20px */
+  font-size: var(--text-lg);
   color: var(--color-text-dark);
   margin-top: var(--space-lg);
   margin-bottom: var(--space-xs);
@@ -2028,41 +1735,27 @@ hr {
   margin-top: 0;
 }
 
-
-/* Stacked Cards */
 #nba-mascot-top5 .stacked-cards {
   display: flex;
   flex-direction: column;
   gap: 0;
 }
 
-/* NBA Text Grid Responsive */
 @media (min-width: 768px) {
   #nba-mascot-top5 .nba-text-grid {
     flex-direction: row;
     gap: 20px;
   }
 
-  #nba-mascot-top5 .contenitore-grande {
-    flex: 1;
-  }
-
-  #nba-mascot-top5 .stacked-cards {
-    flex: 1;
-  }
-
-  #nba-mascot-top5 .stacked-cards .contenitore-testo {
-    flex: 1;
-  }
+  #nba-mascot-top5 .contenitore-grande { flex: 1; }
+  #nba-mascot-top5 .stacked-cards { flex: 1; }
+  #nba-mascot-top5 .stacked-cards .contenitore-testo { flex: 1; }
 }
 
 @media (min-width: 1024px) {
-  #nba-mascot-top5 .nba-text-grid {
-    gap: 24px;
-  }
+  #nba-mascot-top5 .nba-text-grid { gap: 24px; }
 }
 
-/* Back to Top - WCAG 2.5.5 */
 #nba-mascot-top5 .back-to-top {
   grid-column: 1 / -1;
   display: inline-flex;
@@ -2082,10 +1775,9 @@ hr {
   text-decoration-thickness: 2px;
 }
 
-
-/* =============================================================================
-   9. FOOTER - WCAG Typography
-   ============================================================================= */
+/* ========================================================================
+   FOOTER
+   ======================================================================== */
 
 .site-footer {
   padding-top: var(--space-xl);
@@ -2118,14 +1810,14 @@ hr {
 .site-footer .footer-content p {
   font-family: var(--font-body);
   font-weight: var(--weight-medium);
-  font-size: var(--text-sm); /* 16px - aumentato da 0.9rem */
+  font-size: var(--text-sm);
   line-height: var(--leading-normal);
   color: var(--color-primary);
 }
 
 .site-footer .footer-content a {
   color: var(--color-primary);
-  padding: var(--space-xs); /* Aumenta area cliccabile */
+  padding: var(--space-xs);
   margin: calc(var(--space-xs) * -1);
 }
 
@@ -2134,7 +1826,6 @@ hr {
   color: var(--color-bg-light);
 }
 
-/* Footer Responsive */
 @media (max-width: 767px) {
   .site-footer .footer-content {
     flex-direction: column;
@@ -2144,18 +1835,15 @@ hr {
   }
 }
 
+/* ========================================================================
+   ACCESSIBILITY
+   ======================================================================== */
 
-/* =============================================================================
-   10. ACCESSIBILITY
-   ============================================================================= */
-
-/* Focus Visible - WCAG 2.4.7 */
 *:focus-visible {
   outline: 3px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-/* Reduced Motion - WCAG 2.3.3 */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -2165,12 +1853,9 @@ hr {
     transition-duration: 0.01ms !important;
   }
   
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
 }
 
-/* High Contrast Mode Support */
 @media (prefers-contrast: high) {
   :root {
     --color-primary: #FFD700;
@@ -2185,15 +1870,11 @@ hr {
   }
 }
 
+/* ========================================================================
+   SECTION ICONS
+   ======================================================================== */
 
-/* =============================================================================
-   11. ICONS (SVG per sezioni)
-   ============================================================================= */
-
-/* -----------------------------------------------------------------------------
-   About Me Icons
-   ----------------------------------------------------------------------------- */
-
+/* About Me Icons */
 #about-me .box-wrapper-top .contenitore-testo:nth-of-type(1) h3::before {
   background-image: url('assets/vector-chi-sono.svg');
   background-color: var(--color-primary);
@@ -2214,11 +1895,7 @@ hr {
   background-color: var(--color-primary);
 }
 
-
-/* -----------------------------------------------------------------------------
-   Vita da Mascot Icons
-   ----------------------------------------------------------------------------- */
-
+/* Vita da Mascot Icons */
 #vita .box-wrapper-top .contenitore-testo:nth-of-type(1) h3::before {
   background-image: url('assets/vector-un-ruolo-che-conta.svg');
   background-color: var(--color-bg-light);
@@ -2230,7 +1907,7 @@ hr {
 }
 
 #vita .box-wrapper-bottom-inner .contenitore-testo:nth-of-type(1) h3::before {
-  background-image: url('assets/vector-fanno-molto-di-più.svg ');
+  background-image: url('assets/vector-fanno-molto-di-più.svg');
   background-color: var(--color-primary);
 }
 
@@ -2239,10 +1916,7 @@ hr {
   background-color: var(--color-primary);
 }
 
-/* -----------------------------------------------------------------------------
-   NBA Mascot Top 5 Icons
-   ----------------------------------------------------------------------------- */
-
+/* NBA Mascot Top 5 Icons */
 #nba-mascot-top5 .contenitore-grande h3::before {
   background-image: url('assets/vector-show-nello-show.svg');
   background-color: var(--color-bg-light);
@@ -2253,12 +1927,7 @@ hr {
   background-color: var(--color-primary);
 }
 
-
 #nba-mascot-top5 .stacked-cards .contenitore-testo:nth-child(2) h3::before {
   background-image: url('assets/vector-ruolo-importante.svg');
   background-color: var(--color-primary);
 }
-
-/* =============================================================================
-   END OF STYLESHEET
-   ============================================================================= */

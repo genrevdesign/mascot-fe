@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Esplora il mondo delle mascotte sportive, dalla storia alle stelle NBA">
   <title>Mascot - Where life is better in a mascot suit</title>
+  
   <link rel="stylesheet" href="https://use.typekit.net/vgg0ait.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="embla-carousel/embla_style.css">
@@ -14,7 +15,6 @@
 </head>
 <body>
 
-<!-- Checkbox nascosto per gestire apertura/chiusura menu mobile -->
 <input type="checkbox" id="menu-toggle">
 
 <nav class="navbar">
@@ -23,14 +23,12 @@
       <img src="assets/simbolo.svg" alt="Mascot Logo">
     </a>
     
-    <!-- Label collegata al checkbox: apre/chiude il menu mobile -->
     <label for="menu-toggle" class="hamburger" aria-label="Menu">
       <span></span>
       <span></span>
       <span></span>
     </label>
     
-    <!-- Menu desktop: visibile solo su schermi grandi -->
     <div class="navbar-menu">
       <ul class="navbar-list">
         <li class="navbar-item">
@@ -68,7 +66,6 @@
   </div>
 </nav>
 
-<!-- Menu mobile fullscreen: visibile solo quando checkbox è checked -->
 <aside class="menu-popup" aria-label="Menu di navigazione mobile">
   <ul class="menu-popup-list">
     <li>
@@ -104,24 +101,22 @@
   </ul>
 </aside>
 
-<!-- Hero Section -->
+<!-- ========== HERO ========== -->
 <header id="hero">
   <img src="assets/BG01-desktop.svg" alt="" class="hero-bg-image">
-  
   <div class="hero-content">
     <img src="assets/logo.svg" alt="Mascot Logo">
     <h1><span class="tagline">where life is better in a mascot suit.</span></h1>
   </div>
 </header>
 
-<!-- Main Content -->
 <main>
-  <!-- About Me Section -->
+
+  <!-- ========== ABOUT ME ========== -->
   <section id="about-me" aria-labelledby="about-me-title">
     <div class="layout-grid">
       <h2 id="about-me-title" class="visually-hidden">Chi sono</h2>
       
-      <!-- Wrapper trasparente per i primi 2 box -->
       <div class="box-wrapper-top">
         <article class="contenitore-testo">
           <h3>Chi sono</h3>
@@ -134,7 +129,6 @@
         </article>
       </div>
 
-      <!-- Wrapper con background per gli ultimi 2 box -->
       <div class="box-wrapper-bottom">
         <div class="box-wrapper-bottom-inner">
           <article class="contenitore-testo">
@@ -151,218 +145,206 @@
     </div>
   </section>
 
-<!-- Storia Section - Aggiornata con le nuove card -->
-<section id="storia" aria-labelledby="storia-title">
-  <div class="layout-grid">
-    <h2 id="storia-title">Dal passato a oggi: l'evoluzione delle mascot</h2>
-    
-    <div class="storia-carousel-container">
-      <div class="embla">
-        <div class="embla__viewport">
-          <div class="embla__container">
-            
-            <!-- Card 1 -->
-            <div class="embla__slide">
-              <article class="storia-card">
-                <div class="storia-card__image">
-                  <img src="images-storia-timeline/The-Totem-Era.jpg" alt="Descrizione immagine 1">
-                </div>
-                <div class="storia-card__footer">
-                  <h3 class="storia-card__title">The Totem Era</h3>
-                  <p class="storia-card__label">Prima del 1800</p>
-                </div>
-              </article>
+  <!-- ========== STORIA ========== -->
+  <section id="storia" aria-labelledby="storia-title">
+    <div class="layout-grid">
+      <h2 id="storia-title">Dal passato a oggi: l'evoluzione delle mascot</h2>
+      
+      <div class="storia-carousel-container">
+        <div class="embla">
+          <div class="embla__viewport">
+            <div class="embla__container">
+              
+              <div class="embla__slide">
+                <article class="storia-card">
+                  <div class="storia-card__image">
+                    <img src="images-storia-timeline/The-Totem-Era.jpg" alt="The Totem Era">
+                  </div>
+                  <div class="storia-card__footer">
+                    <h3 class="storia-card__title">The Totem Era</h3>
+                    <p class="storia-card__label">Prima del 1800</p>
+                  </div>
+                </article>
+              </div>
+              
+              <div class="embla__slide">
+                <article class="storia-card">
+                  <div class="storia-card__image img-zoom">
+                    <img src="images-storia-timeline/The-Name-Drop.jpg" alt="The Name Drop">
+                  </div>
+                  <div class="storia-card__footer">
+                    <h3 class="storia-card__title">The Name Drop</h3>
+                    <p class="storia-card__label">Anno: 1800</p>
+                  </div>
+                </article>
+              </div>
+              
+              <div class="embla__slide">
+                <article class="storia-card">
+                  <div class="storia-card__image">
+                    <img src="images-storia-timeline/Mascots-Emerge.jpg" alt="Mascots emerge">
+                  </div>
+                  <div class="storia-card__footer">
+                    <h3 class="storia-card__title">Mascots emerge</h3>
+                    <p class="storia-card__label">Gli inizi del 1900</p>
+                  </div>
+                </article>
+              </div>
+              
+              <div class="embla__slide">
+                <article class="storia-card">
+                  <div class="storia-card__image">
+                    <img src="images-storia-timeline/Mr-Met.png" alt="Mr. Met">
+                  </div>
+                  <div class="storia-card__footer">
+                    <h3 class="storia-card__title">Mr. Met (MLB)</h3>
+                    <p class="storia-card__label">Anno: 1964</p>
+                  </div>
+                </article>
+              </div>
+              
+              <div class="embla__slide">
+                <article class="storia-card">
+                  <div class="storia-card__image">
+                    <img src="images-storia-timeline/Phillie-Phanatic.png" alt="Phillie Phanatic">
+                  </div>
+                  <div class="storia-card__footer">
+                    <h3 class="storia-card__title">Phillie Phanatic</h3>
+                    <p class="storia-card__label">Anno: 1974</p>
+                  </div>
+                </article>
+              </div>
+              
+              <div class="embla__slide">
+                <article class="storia-card">
+                  <div class="storia-card__image img-contain">
+                    <img src="images-storia-timeline/Mascot-Boom.png" alt="Mascot Boom">
+                  </div>
+                  <div class="storia-card__footer">
+                    <h3 class="storia-card__title">Mascot Boom US</h3>
+                    <p class="storia-card__label">Anno: 1980</p>
+                  </div>
+                </article>
+              </div>
+              
+              <div class="embla__slide">
+                <article class="storia-card">
+                  <div class="storia-card__image img-contain">
+                    <img src="images-storia-timeline/Brand-Mascot.png" alt="Brand Mascot">
+                  </div>
+                  <div class="storia-card__footer">
+                    <h3 class="storia-card__title">Brand Mascot</h3>
+                    <p class="storia-card__label">Anno: 1990</p>
+                  </div>
+                </article>
+              </div>
+              
+              <div class="embla__slide">
+                <article class="storia-card">
+                  <div class="storia-card__image img-contain">
+                    <img src="images-storia-timeline/Tech-Upgrade.png" alt="Tech Upgrade">
+                  </div>
+                  <div class="storia-card__footer">
+                    <h3 class="storia-card__title">Tech Upgrade</h3>
+                    <p class="storia-card__label">Anni 2000</p>
+                  </div>
+                </article>
+              </div>
+              
+              <div class="embla__slide">
+                <article class="storia-card">
+                  <div class="storia-card__image">
+                    <img src="images-storia-timeline/Trending.png" alt="Trending">
+                  </div>
+                  <div class="storia-card__footer">
+                    <h3 class="storia-card__title">Trending</h3>
+                    <p class="storia-card__label">Anno: 2010</p>
+                  </div>
+                </article>
+              </div>
+              
+              <div class="embla__slide">
+                <article class="storia-card">
+                  <div class="storia-card__image">
+                    <img src="images-storia-timeline/Virtual-Mascot.png" alt="Virtual Mascot">
+                  </div>
+                  <div class="storia-card__footer">
+                    <h3 class="storia-card__title">Virtual Mascot</h3>
+                    <p class="storia-card__label">Anno: 2020</p>
+                  </div>
+                </article>
+              </div>
+              
             </div>
-            
-            <!-- Card 2 -->
-            <div class="embla__slide">
-              <article class="storia-card">
-                <div class="storia-card__image img-zoom">
-                  <img src="images-storia-timeline/The-Name-Drop.jpg" alt="Descrizione immagine 2">
-                </div>
-                <div class="storia-card__footer">
-                  <h3 class="storia-card__title">The Name Drop</h3>
-                  <p class="storia-card__label">Anno: 1800</p>
-                </div>
-              </article>
-            </div>
-            
-            <!-- Card 3 -->
-            <div class="embla__slide">
-              <article class="storia-card">
-                <div class="storia-card__image">
-                  <img src="images-storia-timeline/Mascots-Emerge.jpg" alt="Descrizione immagine 3">
-                </div>
-                <div class="storia-card__footer">
-                  <h3 class="storia-card__title">Mascots emerge</h3>
-                  <p class="storia-card__label">Gli inizi del 1900</p>
-                </div>
-              </article>
-            </div>
-            
-            <!-- Card 4 -->
-            <div class="embla__slide">
-              <article class="storia-card">
-                <div class="storia-card__image">
-                  <img src="images-storia-timeline/Mr-Met.png" alt="Descrizione immagine 4">
-                </div>
-                <div class="storia-card__footer">
-                  <h3 class="storia-card__title">Mr. Met (MLB)</h3>
-                  <p class="storia-card__label">Anno: 1964</p>
-                </div>
-              </article>
-            </div>
-            
-            <!-- Card 5 -->
-            <div class="embla__slide">
-              <article class="storia-card">
-                <div class="storia-card__image">
-                  <img src="images-storia-timeline/Phillie-Phanatic.png" alt="Descrizione immagine 5">
-                </div>
-                <div class="storia-card__footer">
-                  <h3 class="storia-card__title">Phillie Phanatic</h3>
-                  <p class="storia-card__label">Anno: 1974</p>
-                </div>
-              </article>
-            </div>
-            
-            <!-- Card 6 -->
-            <div class="embla__slide">
-              <article class="storia-card">
-                <div class="storia-card__image img-contain">
-                  <img src="images-storia-timeline/Mascot-Boom.png" alt="Descrizione immagine 6">
-                </div>
-                <div class="storia-card__footer">
-                  <h3 class="storia-card__title">Mascot Boom US</h3>
-                  <p class="storia-card__label">Anno: 1980</p>
-                </div>
-              </article>
-            </div>
-            
-            <!-- Card 7 -->
-            <div class="embla__slide">
-              <article class="storia-card">
-                <div class="storia-card__image img-contain">
-                  <img src="images-storia-timeline/Brand-Mascot.png" alt="Descrizione immagine 7">
-                </div>
-                <div class="storia-card__footer">
-                  <h3 class="storia-card__title">Brand Mascot</h3>
-                  <p class="storia-card__label">Anno: 1990</p>
-                </div>
-              </article>
-            </div>
-            
-            <!-- Card 8 -->
-            <div class="embla__slide">
-              <article class="storia-card">
-                <div class="storia-card__image img-contain">
-                  <img src="images-storia-timeline/Tech-Upgrade.png" alt="Descrizione immagine 8">
-                </div>
-                <div class="storia-card__footer">
-                  <h3 class="storia-card__title">Tech Upgrade</h3>
-                  <p class="storia-card__label">Anni 2000</p>
-                </div>
-              </article>
-            </div>
-            
-            <!-- Card 9 -->
-            <div class="embla__slide">
-              <article class="storia-card">
-                <div class="storia-card__image">
-                  <img src="images-storia-timeline/Trending.png" alt="Descrizione immagine 9">
-                </div>
-                <div class="storia-card__footer">
-                  <h3 class="storia-card__title">Trending</h3>
-                  <p class="storia-card__label">Anno: 2010</p>
-                </div>
-              </article>
-            </div>
-            
-            <!-- Card 10 -->
-            <div class="embla__slide">
-              <article class="storia-card">
-                <div class="storia-card__image">
-                  <img src="images-storia-timeline/Virtual-Mascot.png" alt="Descrizione immagine 10">
-                </div>
-                <div class="storia-card__footer">
-                  <h3 class="storia-card__title">Virtual Mascot</h3>
-                  <p class="storia-card__label">Anno: 2020</p>
-                </div>
-              </article>
-            </div>
-            
           </div>
-        </div>
-        <div class="embla__controls">
-          <div class="embla__buttons">
-            <button class="embla__button embla__button--prev" type="button" aria-label="Slide precedente">
-                <svg class="embla__button__svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-</svg>
-
-            </button>
-            <button class="embla__button embla__button--next" type="button" aria-label="Slide successiva">
-              <svg class="embla__button__svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-</svg>
-
-            </button>
+          
+          <div class="embla__controls">
+            <div class="embla__buttons">
+              <button class="embla__button embla__button--prev" type="button" aria-label="Slide precedente">
+                <svg class="embla__button__svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/>
+                </svg>
+              </button>
+              <button class="embla__button embla__button--next" type="button" aria-label="Slide successiva">
+                <svg class="embla__button__svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+                </svg>
+              </button>
+            </div>
+            <button class="embla__play" type="button">Start</button>
           </div>
-          <button class="embla__play" type="button">Start</button>
         </div>
       </div>
-    </div>
 
-<!-- Accordion -->
-<dl class="accordion-container">
-  <div class="dropdown">
-    <dt tabindex="0" class="accordion-trigger">
-      <p>Le origini fino al 1800</p>
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="48" height="48" rx="24" fill="white"/>
-        <path d="M40.3254 20.3964C42.3162 20.3967 43.93 22.0105 43.9302 24.0012C43.9299 25.9922 42.3164 27.6062 40.3254 27.606L27.6031 27.602L27.6031 40.3203L27.5852 40.6888C27.401 42.5066 25.8667 43.9264 24.0003 43.9271C22.0092 43.9274 20.3938 42.3114 20.3935 40.3203L20.3916 27.6L7.68321 27.602C5.6924 27.6017 4.07859 25.9879 4.07843 23.9972C4.07871 22.0062 5.6922 20.3923 7.68321 20.3924L20.3916 20.3904L20.3896 7.67811L20.4075 7.30967C20.592 5.49187 22.1278 4.0736 23.9944 4.07333C25.861 4.07333 27.3967 5.4916 27.5812 7.30967L27.5991 7.67811L27.5991 20.3924L40.3254 20.3964Z" fill="#1B1B1B"/>
-      </svg>
-    </dt>
-    <dd class="dropdown-content">
-      <p>Tanto tempo fa, le persone usavano <strong>simboli speciali</strong>. Servivano per raccontare storie, spaventare i nemici o proteggere il proprio gruppo. Questi simboli avevano un <strong>significato profondo</strong> e venivano rispettati da tutti. Con il passare degli anni, quei simboli sono cambiati. Ma la loro forza è rimasta. Oggi li vediamo anche nel mondo dello <strong>sport</strong>. Le squadre li usano per mostrare <strong>forza, coraggio e identità</strong>. Vogliono ispirare i tifosi e unire le persone sotto gli stessi colori. Così, poco a poco, sono nate le prime <strong>mascotte</strong>. All'inizio erano semplici costumi. Poi sono diventate personaggi veri e propri, pieni di energia e fantasia. Oggi le mascotte fanno parte dello <strong>spettacolo</strong>. Fanno ridere, ballano e danno vita alle partite. Ma nel profondo, portano ancora con sé l'antico <strong>potere dei simboli</strong>.</p>
-    </dd>
-  </div>
+      <!-- Accordion -->
+      <dl class="accordion-container">
+        <div class="dropdown">
+          <dt tabindex="0" class="accordion-trigger">
+            <p>Le origini fino al 1800</p>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="48" height="48" rx="24" fill="white"/>
+              <path d="M40.3254 20.3964C42.3162 20.3967 43.93 22.0105 43.9302 24.0012C43.9299 25.9922 42.3164 27.6062 40.3254 27.606L27.6031 27.602L27.6031 40.3203L27.5852 40.6888C27.401 42.5066 25.8667 43.9264 24.0003 43.9271C22.0092 43.9274 20.3938 42.3114 20.3935 40.3203L20.3916 27.6L7.68321 27.602C5.6924 27.6017 4.07859 25.9879 4.07843 23.9972C4.07871 22.0062 5.6922 20.3923 7.68321 20.3924L20.3916 20.3904L20.3896 7.67811L20.4075 7.30967C20.592 5.49187 22.1278 4.0736 23.9944 4.07333C25.861 4.07333 27.3967 5.4916 27.5812 7.30967L27.5991 7.67811L27.5991 20.3924L40.3254 20.3964Z" fill="#1B1B1B"/>
+            </svg>
+          </dt>
+          <dd class="dropdown-content">
+            <p>Tanto tempo fa, le persone usavano <strong>simboli speciali</strong>. Servivano per raccontare storie, spaventare i nemici o proteggere il proprio gruppo. Questi simboli avevano un <strong>significato profondo</strong> e venivano rispettati da tutti. Con il passare degli anni, quei simboli sono cambiati. Ma la loro forza è rimasta. Oggi li vediamo anche nel mondo dello <strong>sport</strong>. Le squadre li usano per mostrare <strong>forza, coraggio e identità</strong>. Vogliono ispirare i tifosi e unire le persone sotto gli stessi colori. Così, poco a poco, sono nate le prime <strong>mascotte</strong>. All'inizio erano semplici costumi. Poi sono diventate personaggi veri e propri, pieni di energia e fantasia. Oggi le mascotte fanno parte dello <strong>spettacolo</strong>. Fanno ridere, ballano e danno vita alle partite. Ma nel profondo, portano ancora con sé l'antico <strong>potere dei simboli</strong>.</p>
+          </dd>
+        </div>
 
-  <div class="dropdown">
-    <dt tabindex="0" class="accordion-trigger">
-      <p>L'evoluzione nel tempo</p>
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="48" height="48" rx="24" fill="white"/>
-        <path d="M40.3254 20.3964C42.3162 20.3967 43.93 22.0105 43.9302 24.0012C43.9299 25.9922 42.3164 27.6062 40.3254 27.606L27.6031 27.602L27.6031 40.3203L27.5852 40.6888C27.401 42.5066 25.8667 43.9264 24.0003 43.9271C22.0092 43.9274 20.3938 42.3114 20.3935 40.3203L20.3916 27.6L7.68321 27.602C5.6924 27.6017 4.07859 25.9879 4.07843 23.9972C4.07871 22.0062 5.6922 20.3923 7.68321 20.3924L20.3916 20.3904L20.3896 7.67811L20.4075 7.30967C20.592 5.49187 22.1278 4.0736 23.9944 4.07333C25.861 4.07333 27.3967 5.4916 27.5812 7.30967L27.5991 7.67811L27.5991 20.3924L40.3254 20.3964Z" fill="#1B1B1B"/>
-      </svg>
-    </dt>
-    <dd class="dropdown-content">
-      <p>Poi sono arrivate le <strong>aziende</strong>. Anche loro volevano un personaggio che potesse parlare al pubblico, ma senza usare le parole. Un volto simpatico, facile da ricordare, capace di <strong>trasmettere emozioni</strong>. Così le mascotte sono uscite dagli stadi e hanno cominciato a vivere in tanti altri luoghi: nei <strong>negozi</strong>, nelle <strong>pubblicità</strong>, nei <strong>parchi a tema</strong>, e perfino <strong>online</strong>. Oggi le mascotte sono ovunque. Le vediamo nei video, sulle magliette, nei giochi e negli eventi. Ma non sono solo costumi o pupazzi. Sono veri <strong>personaggi</strong>, con una storia da raccontare. Ogni mascotte rappresenta qualcosa: un'<strong>idea</strong>, un'<strong>emozione</strong>, un'<strong>identità</strong>. Può far sorridere, far riflettere o far sentire parte di un gruppo. E proprio per questo continuano a essere <strong>amate da grandi e piccoli</strong>, in tutto il mondo.</p>
-    </dd>
-  </div>
+        <div class="dropdown">
+          <dt tabindex="0" class="accordion-trigger">
+            <p>L'evoluzione nel tempo</p>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="48" height="48" rx="24" fill="white"/>
+              <path d="M40.3254 20.3964C42.3162 20.3967 43.93 22.0105 43.9302 24.0012C43.9299 25.9922 42.3164 27.6062 40.3254 27.606L27.6031 27.602L27.6031 40.3203L27.5852 40.6888C27.401 42.5066 25.8667 43.9264 24.0003 43.9271C22.0092 43.9274 20.3938 42.3114 20.3935 40.3203L20.3916 27.6L7.68321 27.602C5.6924 27.6017 4.07859 25.9879 4.07843 23.9972C4.07871 22.0062 5.6922 20.3923 7.68321 20.3924L20.3916 20.3904L20.3896 7.67811L20.4075 7.30967C20.592 5.49187 22.1278 4.0736 23.9944 4.07333C25.861 4.07333 27.3967 5.4916 27.5812 7.30967L27.5991 7.67811L27.5991 20.3924L40.3254 20.3964Z" fill="#1B1B1B"/>
+            </svg>
+          </dt>
+          <dd class="dropdown-content">
+            <p>Poi sono arrivate le <strong>aziende</strong>. Anche loro volevano un personaggio che potesse parlare al pubblico, ma senza usare le parole. Un volto simpatico, facile da ricordare, capace di <strong>trasmettere emozioni</strong>. Così le mascotte sono uscite dagli stadi e hanno cominciato a vivere in tanti altri luoghi: nei <strong>negozi</strong>, nelle <strong>pubblicità</strong>, nei <strong>parchi a tema</strong>, e perfino <strong>online</strong>. Oggi le mascotte sono ovunque. Le vediamo nei video, sulle magliette, nei giochi e negli eventi. Ma non sono solo costumi o pupazzi. Sono veri <strong>personaggi</strong>, con una storia da raccontare. Ogni mascotte rappresenta qualcosa: un'<strong>idea</strong>, un'<strong>emozione</strong>, un'<strong>identità</strong>. Può far sorridere, far riflettere o far sentire parte di un gruppo. E proprio per questo continuano a essere <strong>amate da grandi e piccoli</strong>, in tutto il mondo.</p>
+          </dd>
+        </div>
 
-  <div class="dropdown">
-    <dt tabindex="0" class="accordion-trigger">
-      <p>Il presente</p>
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="48" height="48" rx="24" fill="white"/>
-        <path d="M40.3254 20.3964C42.3162 20.3967 43.93 22.0105 43.9302 24.0012C43.9299 25.9922 42.3164 27.6062 40.3254 27.606L27.6031 27.602L27.6031 40.3203L27.5852 40.6888C27.401 42.5066 25.8667 43.9264 24.0003 43.9271C22.0092 43.9274 20.3938 42.3114 20.3935 40.3203L20.3916 27.6L7.68321 27.602C5.6924 27.6017 4.07859 25.9879 4.07843 23.9972C4.07871 22.0062 5.6922 20.3923 7.68321 20.3924L20.3916 20.3904L20.3896 7.67811L20.4075 7.30967C20.592 5.49187 22.1278 4.0736 23.9944 4.07333C25.861 4.07333 27.3967 5.4916 27.5812 7.30967L27.5991 7.67811L27.5991 20.3924L40.3254 20.3964Z" fill="#1B1B1B"/>
-      </svg>
-    </dt>
-    <dd class="dropdown-content">
-      <p>Le mascotte hanno fatto un <strong>lungo viaggio nel tempo</strong>. Ogni epoca ha lasciato un segno, ogni momento ha raccontato una storia. Dal passato fino a oggi, ogni passo ha contribuito a costruire ciò che sono diventate. Non sono solo costumi colorati, sono anche <strong>personaggi con un'anima</strong>, che rappresentano qualcosa di più grande. Sono parte di <strong>storie vere</strong>, legate alla <strong>cultura</strong>, allo <strong>sport</strong> e alla <strong>fantasia</strong>. Attraverso di loro possiamo vedere come la <strong>creatività unisce le persone</strong>. Le mascotte mostrano che anche nei momenti di gioco ci sono <strong>emozioni profonde</strong>, <strong>simboli importanti</strong> e <strong>identità condivise</strong>.</p>
-    </dd>
-  </div>
-</dl>
+        <div class="dropdown">
+          <dt tabindex="0" class="accordion-trigger">
+            <p>Il presente</p>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="48" height="48" rx="24" fill="white"/>
+              <path d="M40.3254 20.3964C42.3162 20.3967 43.93 22.0105 43.9302 24.0012C43.9299 25.9922 42.3164 27.6062 40.3254 27.606L27.6031 27.602L27.6031 40.3203L27.5852 40.6888C27.401 42.5066 25.8667 43.9264 24.0003 43.9271C22.0092 43.9274 20.3938 42.3114 20.3935 40.3203L20.3916 27.6L7.68321 27.602C5.6924 27.6017 4.07859 25.9879 4.07843 23.9972C4.07871 22.0062 5.6922 20.3923 7.68321 20.3924L20.3916 20.3904L20.3896 7.67811L20.4075 7.30967C20.592 5.49187 22.1278 4.0736 23.9944 4.07333C25.861 4.07333 27.3967 5.4916 27.5812 7.30967L27.5991 7.67811L27.5991 20.3924L40.3254 20.3964Z" fill="#1B1B1B"/>
+            </svg>
+          </dt>
+          <dd class="dropdown-content">
+            <p>Le mascotte hanno fatto un <strong>lungo viaggio nel tempo</strong>. Ogni epoca ha lasciato un segno, ogni momento ha raccontato una storia. Dal passato fino a oggi, ogni passo ha contribuito a costruire ciò che sono diventate. Non sono solo costumi colorati, sono anche <strong>personaggi con un'anima</strong>, che rappresentano qualcosa di più grande. Sono parte di <strong>storie vere</strong>, legate alla <strong>cultura</strong>, allo <strong>sport</strong> e alla <strong>fantasia</strong>. Attraverso di loro possiamo vedere come la <strong>creatività unisce le persone</strong>. Le mascotte mostrano che anche nei momenti di gioco ci sono <strong>emozioni profonde</strong>, <strong>simboli importanti</strong> e <strong>identità condivise</strong>.</p>
+          </dd>
+        </div>
+      </dl>
     </div>
   </section>
 
-  <!-- Vita da Mascot Section -->
+  <!-- ========== VITA DA MASCOT ========== -->
   <section id="vita" aria-labelledby="vita-title">
     <div class="layout-grid">
       <h2 id="vita-title">C'è molto di più dietro quel costume</h2>
       
-      <!-- Wrapper trasparente per i primi 2 box -->
       <div class="box-wrapper-top">
         <article class="contenitore-testo">
           <h3>Un ruolo che conta</h3>
@@ -375,7 +357,6 @@
         </article>
       </div>
 
-      <!-- Wrapper con background per gli ultimi 2 box -->
       <div class="box-wrapper-bottom">
         <div class="box-wrapper-bottom-inner">
           <article class="contenitore-testo">
@@ -406,12 +387,12 @@
     </div>
   </section>
 
-  <!-- NBA Mascot Top 5 Section -->
+  <!-- ========== NBA MASCOT TOP 5 ========== -->
   <section id="nba-mascot-top5" aria-labelledby="nba-title">
     <h2 id="nba-title">Le mascot NBA: la top 5</h2>
 
     <div class="mascot">
-      <!-- Carosello Desktop -->
+      <!-- Desktop Carousel -->
       <div class="carousel-desktop">
         <div class="carousel-container">
           <button class="carousel-nav-arrow left" type="button" aria-label="Mascotte precedente">‹</button>
@@ -453,7 +434,7 @@
         </div>
       </div>
 
-      <!-- Carosello Mobile -->
+      <!-- Mobile Carousel -->
       <div class="carousel-mobile">
         <div class="carousel-mobile-container">
           <div class="swiper swiper-mascot">
@@ -479,49 +460,48 @@
       </div>
     </div>
 
-    <!-- Grid per i contenitori testo -->
     <div class="layout-grid">
       <div class="nba-text-grid">
-<article class="contenitore-testo contenitore-grande">
-  <h3>Uno show nello show!</h3>
-  
-  <h4>Il cuore dello spettacolo</h4>
-  <p>Durante le pause, le mascotte entrano in campo. Ballano, saltano e fanno ridere tutti. Rendono lo spettacolo più <span class="important-text">divertente</span>. Il pubblico si rilassa e si diverte. Oggi, quasi tutte le squadre NBA hanno una mascotte. Questi personaggi piacciono a grandi e piccoli. Creano allegria e fanno parte dell'esperienza del basket.</p>
-  
-  <h4>Preparazione e allenamento</h4>
-  <p>Le mascotte NBA non improvvisano: ogni esibizione è preparata con cura. Si allenano per settimane su coreografie, acrobazie e gag comiche. Alcune si calano dal soffitto, altre saltano sui tappeti elastici per schiacciate spettacolari. Il loro obiettivo è uno solo: <span class="important-text">emozionare il pubblico</span> e rendere ogni partita indimenticabile.</p>
-  
-  <h4>Atleti sotto il costume</h4>
-  <p>Dietro ogni costume c'è un vero atleta. Deve essere agile, resistente e capace di intrattenere per ore sotto luci intense e temperature elevate. Non è un lavoro per tutti: servono talento, energia e tanta passione.</p>
-  
-  <h4>Ambasciatori fuori dal campo</h4>
-  <p>Le mascotte più famose hanno milioni di fan sui social media. Partecipano a eventi di beneficenza, visitano ospedali e scuole, e diventano <span class="important-text">ambasciatori</span> delle loro squadre fuori dal campo. Sono vere icone, riconosciute in tutto il mondo.</p>
-  
-  <h4>Le eccezioni</h4>
-  <p>Solo quattro squadre non hanno una mascotte: <span class="important-text">i Lakers, i Knicks, i Warriors e i Nets.</span></p>
-</article>
+        <article class="contenitore-testo contenitore-grande">
+          <h3>Uno show nello show!</h3>
+          
+          <h4>Il cuore dello spettacolo</h4>
+          <p>Durante le pause, le mascotte entrano in campo. Ballano, saltano e fanno ridere tutti. Rendono lo spettacolo più <span class="important-text">divertente</span>. Il pubblico si rilassa e si diverte. Oggi, quasi tutte le squadre NBA hanno una mascotte. Questi personaggi piacciono a grandi e piccoli. Creano allegria e fanno parte dell'esperienza del basket.</p>
+          
+          <h4>Preparazione e allenamento</h4>
+          <p>Le mascotte NBA non improvvisano: ogni esibizione è preparata con cura. Si allenano per settimane su coreografie, acrobazie e gag comiche. Alcune si calano dal soffitto, altre saltano sui tappeti elastici per schiacciate spettacolari. Il loro obiettivo è uno solo: <span class="important-text">emozionare il pubblico</span> e rendere ogni partita indimenticabile.</p>
+          
+          <h4>Atleti sotto il costume</h4>
+          <p>Dietro ogni costume c'è un vero atleta. Deve essere agile, resistente e capace di intrattenere per ore sotto luci intense e temperature elevate. Non è un lavoro per tutti: servono talento, energia e tanta passione.</p>
+          
+          <h4>Ambasciatori fuori dal campo</h4>
+          <p>Le mascotte più famose hanno milioni di fan sui social media. Partecipano a eventi di beneficenza, visitano ospedali e scuole, e diventano <span class="important-text">ambasciatori</span> delle loro squadre fuori dal campo. Sono vere icone, riconosciute in tutto il mondo.</p>
+          
+          <h4>Le eccezioni</h4>
+          <p>Solo quattro squadre non hanno una mascotte: <span class="important-text">i Lakers, i Knicks, i Warriors e i Nets.</span></p>
+        </article>
 
-  <div class="stacked-cards">
-    <article class="contenitore-testo">
-      <h3>Personaggi a bordo campo</h3>
-      <p>Sono parte dello <span class="important-text">spettacolo</span>, proprio come le cheerleader. Fanno balli, acrobazie, scherzi e numeri divertenti. Fanno ridere il pubblico e tengono alta l'energia durante la partita. Giocano con i tifosi, lanciano gadget e si fanno fotografare con i bambini.</p>
-    </article>
+        <div class="stacked-cards">
+          <article class="contenitore-testo">
+            <h3>Personaggi a bordo campo</h3>
+            <p>Sono parte dello <span class="important-text">spettacolo</span>, proprio come le cheerleader. Fanno balli, acrobazie, scherzi e numeri divertenti. Fanno ridere il pubblico e tengono alta l'energia durante la partita. Giocano con i tifosi, lanciano gadget e si fanno fotografare con i bambini.</p>
+          </article>
 
-    <article class="contenitore-testo">
-      <h3>Un ruolo importante nello sport americano</h3>
-      <p>Oggi le mascotte sono <span class="important-text">vere star</span>. Non sono comparse: sono atleti, attori e simboli delle squadre. Aiutano a creare entusiasmo, promuovono il marchio e attirano fan di tutte le età. Ogni squadra NBA investe su di loro: una mascotte può costare <span class="important-text">50.000 dollari</span> all'anno. Le più famose guadagnano molto di più, grazie a eventi e merchandising.</p>
-    </article>
-  </div>
-</div>
+          <article class="contenitore-testo">
+            <h3>Un ruolo importante nello sport americano</h3>
+            <p>Oggi le mascotte sono <span class="important-text">vere star</span>. Non sono comparse: sono atleti, attori e simboli delle squadre. Aiutano a creare entusiasmo, promuovono il marchio e attirano fan di tutte le età. Ogni squadra NBA investe su di loro: una mascotte può costare <span class="important-text">50.000 dollari</span> all'anno. Le più famose guadagnano molto di più, grazie a eventi e merchandising.</p>
+          </article>
+        </div>
+      </div>
 
       <a href="#hero" class="back-to-top">
         <span class="anchor-up-text">Torna su</span>
       </a>
     </div>
   </section>
+
 </main>
 
-<!-- Footer -->
 <footer class="site-footer">
   <div class="footer-image-bg">
     <div class="layout-grid">
@@ -538,5 +518,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="./carousel-mobile/carousel-init.js"></script>
 <script type="module" src="./index.js"></script>
+
 </body>
 </html>
