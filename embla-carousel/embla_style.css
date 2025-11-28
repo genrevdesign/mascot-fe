@@ -2,31 +2,92 @@
    EMBLA CAROUSEL - STORIA SECTION
    ======================================== */
 
+:root {
+  /* -------------------------
+     Colori
+     ------------------------- */
+  --color-primary: #FFCF57;
+  --color-secondary: #1B1B1B;
+  --color-accent: #1F1F1F;
+  --color-text-dark: #1B1B1B;
+  --color-text-light: #FFFFFF;
+  --color-bg-body: #1B1B1B;
+  --color-bg-dark: #1F1F1F;
+  --color-bg-light: #FFFFFF;
+  --color-border: #FFFFFF;
+}
+
 /* Container principale carousel */
 .embla {
   max-width: 100%;
   margin: auto;
-  --slide-height: 444px;
+  --slide-height: 440px; /* Ridotto da 460px */
   --slide-width: 343px;
   --slide-spacing: 16px;
 }
 
+/* Small Mobile (480px+) */
+@media (min-width: 480px) {
+  .embla {
+    --slide-height: 410px; /* Ridotto da 430px */
+    --slide-width: 300px;
+    --slide-spacing: 18px;
+  }
+}
+
+/* Large Mobile (640px+) */
+@media (min-width: 640px) {
+  .embla {
+    --slide-height: 390px; /* Ridotto da 410px */
+    --slide-width: 280px;
+    --slide-spacing: 19px;
+  }
+}
+
+/* Tablet (768px+) */
 @media (min-width: 768px) {
   .embla {
-    --slide-height: 326px;
+    --slide-height: 360px; /* Ridotto da 380px */
     --slide-width: 250px;
     --slide-spacing: 20px;
   }
 }
 
+/* Large Tablet (900px+) */
+@media (min-width: 900px) {
+  .embla {
+    --slide-height: 385px; /* Ridotto da 405px */
+    --slide-width: 270px;
+    --slide-spacing: 22px;
+  }
+}
+
+/* Desktop (1024px+) */
 @media (min-width: 1024px) {
   .embla {
-    --slide-height: 391px;
+    --slide-height: 410px; /* Ridotto da 430px */
     --slide-width: 302px;
     --slide-spacing: 25px;
   }
 }
 
+/* Large Desktop (1280px+) */
+@media (min-width: 1280px) {
+  .embla {
+    --slide-height: 430px; /* Ridotto da 450px */
+    --slide-width: 320px;
+    --slide-spacing: 28px;
+  }
+}
+
+/* Extra Large Desktop (1440px+) */
+@media (min-width: 1440px) {
+  .embla {
+    --slide-height: 450px; /* Ridotto da 470px */
+    --slide-width: 340px;
+    --slide-spacing: 30px;
+  }
+}
 
 /* ========================================
    STRUTTURA CAROUSEL
@@ -80,9 +141,9 @@
   height: 48px;
   min-width: 48px;
   min-height: 48px;
-  background-color: #FFFFFF;
+  background-color:var(--color-primary);
   border-radius: 50%;
-  color: #1B1B1B;
+  color:var(--color-secondary);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -106,14 +167,14 @@
 
 /* Stati Pulsanti */
 .embla__button:hover {
-  background-color: #FFCF57;
-  color: #1B1B1B;
+  background-color:var(--color-primary);
+  color: var(--color-bg-light);
   transform: translateY(-2px);
 }
 
 .embla__button:active {
-  background-color: #1B1B1B;
-  color: #FFFFFF;
+  background-color: var(--color-accent);
+  color: var(--color-primary);
   transform: translateY(0);
 }
 
@@ -122,13 +183,13 @@
 }
 
 .embla__button:focus-visible {
-  outline: 3px solid #FFCF57;
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
 }
 
 .embla__button:disabled {
-  background-color: #1F1F1F;
-  color: #666666;
+  background-color: var(--color-bg-dark);
+  color: #4e4e4e;
   cursor: not-allowed;
   opacity: 0.5;
 }
@@ -145,7 +206,7 @@
 
 @media (max-width: 479px) {
   .embla__controls {
-    justify-content: center;
+    justify-content:right;
     margin-top: 20px;
   }
   

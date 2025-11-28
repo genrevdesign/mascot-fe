@@ -1590,17 +1590,18 @@ hr {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 /* Area Immagine */
 .storia-card__image {
-  flex: 1;
+  flex: 1; /* Occupa tutto lo spazio disponibile */
   margin: 12px;
   margin-bottom: 0;
   background-color: var(--color-bg-light);
   border-radius: 16px;
   overflow: hidden;
-  min-height: 0; /* Fix per flex container */
+  min-height: 0;
 }
 
 .storia-card__image img {
@@ -1609,6 +1610,32 @@ hr {
   object-fit: cover;
   object-position: center;
   display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.storia-card:hover .storia-card__image img {
+  transform: scale(1.12);
+}
+
+/* Applica zoom solo su dispositivi con mouse */
+@media (hover: hover) and (pointer: fine) {
+  .storia-card:hover .storia-card__image img {
+    transform: scale(1.1);
+  }
+}
+
+.img-contain img
+{
+  object-fit: contain;
+  object-position: center;
+}
+
+
+/* Variante: contain con padding */
+.img-zoom  img {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.2);
 }
 
 /* Footer Card - Centrato */
@@ -1619,7 +1646,9 @@ hr {
   align-items: center;
   text-align: center;
   gap: 4px;
-  flex-shrink: 0; /* Impedisce al footer di restringersi */
+  flex-shrink: 0;
+  padding: 6px 10px 10px !important;
+  gap: 2px !important;
 }
 
 /* Titolo - WCAG: minimo 18px per headings */
@@ -1642,7 +1671,7 @@ hr {
 .storia-card__label {
   font-family: var(--font-body);
   font-weight: var(--weight-regular);
-  font-size: var(--text-sm);            /* 16px - WCAG minimum */
+  font-size: var(--text-xl);       
   color: var(--color-text-dark);
   line-height: var(--leading-normal);   /* 1.6 per leggibilità */
   margin: 0;
@@ -1716,7 +1745,7 @@ hr {
   }
   
   .storia-card__label {
-    font-size: var(--text-base);        /* 18px */
+    font-size: var(--text-xl);       
   }
 }
 
