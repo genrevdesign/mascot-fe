@@ -1,17 +1,30 @@
 /* =====================================================
    DESKTOP CAROUSEL - TEAM SECTION
    ===================================================== */
-
-/* 1. BLOCCO PRINCIPALE (MOBILE FIRST) */
-.carousel-desktop {
-  display: none; /* Nascosto su mobile (default) */
+:root {
+  /* Colori */
+  --color-primary: #FFCF57;
+  --color-secondary: #1B1B1B;
+  --color-accent: #1F1F1F;
+  --color-text-dark: #1B1B1B;
+  --color-text-light: #FFFFFF;
+  --color-bg-body: #1B1B1B;
+  --color-bg-dark: #1F1F1F;
+  --color-bg-light: #FFFFFF;
+  --color-border: #FFFFFF;
 }
 
 /* =====================================================
-   2. TABLET STYLES (768px - 1023px) - ESATTO RANGE
+   1. MOBILE FIRST - NASCOSTO DI DEFAULT
+   ===================================================== */
+.carousel-desktop {
+  display: none;
+}
+
+/* =====================================================
+   2. TABLET STYLES (768px - 1023px)
    ===================================================== */
 @media (min-width: 768px) and (max-width: 1023px) {
-  /* Mostra carousel desktop su tablet */
   .carousel-desktop {
     display: block;
     width: 100%;
@@ -20,10 +33,7 @@
 
   .carousel-mobile {
     display: none !important;
-  overflow: hidden; /* Importante per contenere i contenuti che escono */
-  width: 100%;
   }
-
 
   .carousel-container {
     width: 100%;
@@ -36,6 +46,7 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    overflow: hidden;
   }
 
   .carousel-track {
@@ -48,7 +59,7 @@
     transform-style: preserve-3d;
   }
 
-  /* CARTE (ELEMENTO: carousel-card) */
+  /* CARTE */
   .carousel-card {
     position: absolute;
     width: 240px;
@@ -56,9 +67,8 @@
     background: white;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     cursor: pointer;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.3s ease;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   }
 
   .carousel-card img {
@@ -73,21 +83,17 @@
     outline-offset: 4px;
   }
 
-  [aria-hidden="true"] {
+  .carousel-card[aria-hidden="true"] {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.5s ease-in-out;
   }
 
-  /* POSIZIONI TABLET (solo 3 card visibili) */
+  /* POSIZIONI TABLET (3 card visibili) */
   .carousel-card.center {
     z-index: 10;
     transform: scale(1.1) translateZ(0);
     opacity: 1;
-  }
-  .carousel-card.center img {
-    filter: none;
   }
 
   .carousel-card.right-1 {
@@ -95,20 +101,14 @@
     transform: translateX(180px) scale(0.85) translateZ(-80px);
     opacity: 0.85;
   }
-  .carousel-card.right-1 img {
-    filter: grayscale(100%);
-  }
 
   .carousel-card.left-1 {
     z-index: 5;
     transform: translateX(-180px) scale(0.85) translateZ(-80px);
     opacity: 0.85;
   }
-  .carousel-card.left-1 img {
-    filter: grayscale(100%);
-  }
 
-  /* Nascondi card laterali distanti su tablet */
+  /* Card nascoste su tablet */
   .carousel-card.right-2,
   .carousel-card.left-2,
   .carousel-card.hidden {
@@ -125,7 +125,7 @@
   }
 
   .member-name {
-    color: var(--primary-color);
+    color: var(--color-primary);
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 10px;
@@ -134,16 +134,8 @@
     transition: opacity 0.2s ease-in-out;
   }
 
-  .member-name::before {
-    left: -100px;
-  }
-
-  .member-name::after {
-    right: -100px;
-  }
-
   .member-role {
-    color: white;
+    color: var(--color-text-light);
     font-size: 1.25rem;
     font-weight: 500;
     opacity: 0.8;
@@ -167,13 +159,13 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: #1F1F1F;
+    background: var(--color-primary);
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
   .carousel-dot.active {
-    background: var(--primary-color);
+    background: var(--color-bg-dark);
     transform: scale(1.2);
   }
 
@@ -182,8 +174,8 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--primary-color);
-    color: var(--secondary-color);
+    background: var(--color-primary);
+    color: var(--color-secondary);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -194,13 +186,12 @@
     z-index: 20;
     font-size: 1.5rem;
     border: none;
-    outline: none;
     padding-bottom: 4px;
     transition: background 0.3s ease, transform 0.3s ease;
   }
 
   .carousel-nav-arrow:hover {
-    background: white;
+    background: var(--color-bg-light);
     transform: translateY(-50%) scale(1.1);
   }
 
@@ -219,14 +210,12 @@
    3. DESKTOP STYLES (min-width: 1024px)
    ===================================================== */
 @media (min-width: 1024px) {
-  /* Mostra carousel desktop su desktop */
   .carousel-desktop {
     display: block;
     width: 100%;
     padding: 80px 0;
   }
 
-  /* Nascondi carousel mobile su desktop */
   .carousel-mobile {
     display: none !important;
   }
@@ -242,6 +231,7 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    overflow: hidden;
   }
 
   .carousel-track {
@@ -254,7 +244,7 @@
     transform-style: preserve-3d;
   }
 
-  /* CARTE (ELEMENTO: carousel-card) - DESKTOP */
+  /* CARTE DESKTOP */
   .carousel-card {
     position: absolute;
     width: 280px;
@@ -262,9 +252,8 @@
     background: white;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     cursor: pointer;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.3s ease;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   }
 
   .carousel-card img {
@@ -279,11 +268,10 @@
     outline-offset: 4px;
   }
 
-  [aria-hidden="true"] {
+  .carousel-card[aria-hidden="true"] {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.5s ease-in-out;
   }
 
   /* POSIZIONI DESKTOP (5 card visibili) */
@@ -292,17 +280,11 @@
     transform: scale(1.1) translateZ(0);
     opacity: 1;
   }
-  .carousel-card.center img {
-    filter: none;
-  }
 
   .carousel-card.right-1 {
     z-index: 5;
     transform: translateX(200px) scale(0.9) translateZ(-100px);
     opacity: 0.9;
-  }
-  .carousel-card.right-1 img {
-    filter: grayscale(100%);
   }
 
   .carousel-card.left-1 {
@@ -310,20 +292,13 @@
     transform: translateX(-200px) scale(0.9) translateZ(-100px);
     opacity: 0.9;
   }
-  .carousel-card.left-1 img {
-    filter: grayscale(100%);
-  }
 
-  /* CARD LATERALI DISTANTI VISIBILI SU DESKTOP */
   .carousel-card.right-2 {
     z-index: 1;
     transform: translateX(400px) scale(0.8) translateZ(-300px);
     opacity: 0.7;
     visibility: visible;
     pointer-events: auto;
-  }
-  .carousel-card.right-2 img {
-    filter: grayscale(100%);
   }
 
   .carousel-card.left-2 {
@@ -333,9 +308,6 @@
     visibility: visible;
     pointer-events: auto;
   }
-  .carousel-card.left-2 img {
-    filter: grayscale(100%);
-  }
 
   .carousel-card.hidden {
     opacity: 0;
@@ -343,7 +315,7 @@
     visibility: hidden;
   }
 
-  /* INFORMAZIONI MEMBRO - DESKTOP */
+  /* INFORMAZIONI MEMBRO DESKTOP */
   .member-info {
     text-align: center;
     margin-top: 40px;
@@ -351,7 +323,7 @@
   }
 
   .member-name {
-    color: var(--primary-color);
+    color: var(--color-primary);
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 10px;
@@ -360,16 +332,8 @@
     transition: opacity 0.2s ease-in-out;
   }
 
-  .member-name::before {
-    left: -120px;
-  }
-
-  .member-name::after {
-    right: -120px;
-  }
-
   .member-role {
-    color: white;
+    color: var(--color-text-light);
     font-size: 1.5rem;
     font-weight: 500;
     opacity: 0.8;
@@ -381,7 +345,7 @@
     transition: opacity 0.2s ease-in-out;
   }
 
-  /* DOTS - DESKTOP */
+  /* DOTS DESKTOP */
   .carousel-dots {
     display: flex;
     justify-content: center;
@@ -393,25 +357,25 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: #1F1F1F;
+    background: var(--color-primary);
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
   .carousel-dot.active {
-    background: var(--primary-color);
+    background: var(--color-bg-dark);
     transform: scale(1.2);
   }
 
-  /* FRECCE DI NAVIGAZIONE */
+  /* FRECCE DI NAVIGAZIONE DESKTOP */
   .carousel-nav-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--primary-color);
-    color: var(--secondary-color);
-    width: 40px;
-    height: 40px;
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -420,13 +384,12 @@
     z-index: 20;
     font-size: 1.5rem;
     border: none;
-    outline: none;
     padding-bottom: 4px;
     transition: background 0.3s ease, transform 0.3s ease;
   }
 
   .carousel-nav-arrow:hover {
-    background: white;
+    background: var(--color-bg-light);
     transform: translateY(-50%) scale(1.1);
   }
 
@@ -442,15 +405,13 @@
 }
 
 /* =====================================================
-   4. MOBILE STYLES (massimo 767px)
+   4. MOBILE STYLES (max-width: 767px)
    ===================================================== */
 @media (max-width: 767px) {
-  /* Nascondi carousel desktop su mobile */
   .carousel-desktop {
     display: none !important;
   }
 
-  /* Mostra carousel mobile su mobile */
   .carousel-mobile {
     display: block;
   }

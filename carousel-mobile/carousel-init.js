@@ -6,12 +6,11 @@
 // TEAM MEMBERS DATA
 // =====================================================
 const teamMembers = [
-  { name: "Emily Kim", role: "Founder" },
-  { name: "Michael Steward", role: "Creative Director" },
-  { name: "Emma Rodriguez", role: "Lead Developer" },
-  { name: "Julia Gimmel", role: "UX Designer" },
-  { name: "Lisa Anderson", role: "Marketing Manager" },
-  { name: "James Wilson", role: "Product Manager" },
+  { name: "Rocky", role: "Denver Nuggets" },
+  { name: "Coyote", role: "San Antonio Spurs" },
+  { name: "Benny", role: "Chicago Bulls" },
+  { name: "Go", role: "Phoenix Suns" },
+  { name: "Clutch", role: "Houston Rockets" },
 ];
 
 // =====================================================
