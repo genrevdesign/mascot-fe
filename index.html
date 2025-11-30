@@ -107,10 +107,14 @@
   <div class="hero-content">
     <img src="assets/logo.svg" alt="Mascot Logo">
     <h1><span class="tagline">where life is better in a mascot suit.</span></h1>
-     <button class="hero-btn" onclick="document.getElementById('about-me').scrollIntoView({behavior: 'smooth'})">
-        Esplora
-        <img src="assets/vector-right arrow.svg" alt="icona esplora" class="btn-icon">
-      </button>
+<button class="hero-btn" onclick="document.getElementById('about-me').scrollIntoView({behavior: 'smooth'})">
+  Esplora
+  <span class="btn-icon-wrapper">
+      <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+      </svg>
+    </span>
+  </button>
   </div>
 </header>
 
@@ -174,7 +178,7 @@
               <div class="embla__slide">
                 <article class="storia-card">
                   <div class="storia-card__image img-zoom">
-                    <img src="images-storia-timeline/The-Name-Drop.jpg" alt="The Name Drop">
+                    <img src="images-storia-timeline/The-name-drop.jpg" alt="The Name Drop">
                   </div>
                   <div class="storia-card__footer">
                     <h3 class="storia-card__title">The Name Drop</h3>
@@ -375,19 +379,21 @@
         </div>
       </div>
 
-      <div class="video-container">
-        <h3 id="titoletto-video">Guarda il video!</h3>
-        <iframe 
-          class="video-player"
-          width="560" 
-          height="315" 
-          src="https://www.youtube.com/embed/bNRVYi37V54?si=xT27Tkm9JEQ8zxZv" 
-          title="Video sulle mascotte NBA" 
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          allowfullscreen>
-        </iframe>
-      </div>
+     <div class="video-container">
+  <div class="video-wrapper">
+    <h3 id="titoletto-video">Guarda il video!</h3>
+    <iframe 
+      class="video-player"
+      width="560" 
+      height="315" 
+      src="https://www.youtube.com/embed/bNRVYi37V54?si=xT27Tkm9JEQ8zxZv" 
+      title="Video sulle mascotte NBA" 
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
     </div>
   </section>
 
@@ -481,7 +487,7 @@
           <p>Le mascotte più famose hanno milioni di fan sui social media. Partecipano a eventi di beneficenza, visitano ospedali e scuole, e diventano <span class="important-text">ambasciatori</span> delle loro squadre fuori dal campo. Sono vere icone, riconosciute in tutto il mondo.</p>
           
           <h4>Le eccezioni</h4>
-          <p>Solo quattro squadre non hanno una mascotte: <span class="important-text">i Lakers, i Knicks, i Warriors e i Nets.</span></p>
+          <p>Solo quattro squadre non hanno una mascotte: <br> <span class="important-text">i Lakers, i Knicks, i Warriors e i Nets.</span></p>
         </article>
 
         <div class="stacked-cards">
@@ -497,10 +503,14 @@
         </div>
       </div>
 
-      <a href="#hero" class="back-to-top">
-        <span class="anchor-up-text">Torna su</span>
-      </a>
-    </div>
+<button class="back-to-top-btn" onclick="document.getElementById('hero').scrollIntoView({behavior: 'smooth'})">
+  Torna sù
+  <span class="btn-icon-wrapper">
+    <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+    </svg>
+  </span>
+</button>
   </section>
 
 </main>

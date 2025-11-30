@@ -1239,68 +1239,90 @@ hr {
   .hero-content img { width: 550px; }
 }
 
-/* button */
-/* Hero Button Base */
+/* Hero Buttonw */
 .hero-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 12px;
   font-family: var(--font-heading);
+  font-size: var(--text-sm);
   font-weight: var(--weight-bold);
-  font-size: 1rem;
-  color: var(--text-light);
-  background: var(--color-secondary);
-  border: none;
-  border-radius: 50px;
+  color: var(--color-text-light);
+  background-color: var(--color-secondary);
   padding: 12px 24px;
+  border-radius: 50px;
+  border: none;
   cursor: pointer;
-  transition: all var(--transition-speed) ease;
+  text-decoration: none;
+  min-height: 48px;
+  min-width: 48px;
   margin: auto;
   margin-top: 50px;
+  transition: 
+    background-color var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.hero-btn .btn-icon-wrapper {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: var(--color-primary);
+  transition: background-color var(--transition);
 }
 
 .hero-btn .btn-icon {
-  background-color: var(--color-primary);
-  width: 45px;
-  height: 45px;
-  fill: red;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  display: block;
   flex-shrink: 0;
-  transition: all var(--transition-speed) ease;
+  color: var(--color-text-dark);
+  transition: 
+    color var(--transition),
+    transform var(--transition);
 }
 
-/* Hero Button States */
 .hero-btn:hover {
-  background: var(--color-bg-light);
+  background-color: var(--color-bg-light);
   color: var(--color-text-dark);
   transform: translateY(-2px);
 }
 
+.hero-btn:hover .btn-icon-wrapper {
+  background-color: var(--color-secondary);
+}
+
 .hero-btn:hover .btn-icon {
-  filter: none;
+  color: var(--color-bg-light);
   transform: rotate(90deg);
-  transition: transform 0.3s ease;
 }
 
 .hero-btn:active {
-  transform: translateY(0);
   background-color: var(--color-secondary);
   color: var(--color-primary);
+  transform: translateY(0);
+}
+
+.hero-btn:active .btn-icon-wrapper {
+  background-color: var(--color-bg-light);
+}
+
+.hero-btn:active .btn-icon {
+  color: var(--color-text-dark);
 }
 
 .hero-btn:focus-visible {
-  outline: 2px solid var(--color-secondary);
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
-}
-
-.hero-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.hero-btn:disabled:hover {
-  background: var(--color-secondary);
-  transform: none;
-  box-shadow: none;
 }
 
 .hero-bg-image {
@@ -1657,13 +1679,37 @@ hr {
   margin-top: var(--space-lg);
 }
 
-#titoletto-video h3 {
+#vita .video-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
 
+#vita .video-wrapper #titoletto-video {
+  color: var(--color-text-dark);
+  background-color: var(--color-primary);
+  padding: 0.5rem 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin: 0;
+  width: fit-content;
+  font-weight: var(--weight-bold);
+  font-size: var(--text-sm);
+}
+
+#vita .video-wrapper .video-player {
+  width: 100%;
+  border-radius: var(--border-radius);
 }
 
 @media (min-width: 768px) {
-  #vita .video-container h3 { font-size: var(--text-2xl); }
-  #vita .box-wrapper-top .contenitore-testo { grid-column: span 4; }
+  #vita .box-wrapper-top .contenitore-testo { 
+    grid-column: span 4; 
+  }
   
   #vita .box-wrapper-bottom-inner {
     grid-template-columns: repeat(8, 1fr);
@@ -1671,11 +1717,22 @@ hr {
     padding: 0 32px;
   }
 
-  #vita .box-wrapper-bottom-inner .contenitore-testo { grid-column: span 4; }
+  #vita .box-wrapper-bottom-inner .contenitore-testo { 
+    grid-column: span 4; 
+  }
+
+  #vita .video-wrapper #titoletto-video {
+    font-size: var(--text-base);
+    padding: 0.6rem 1.25rem;
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+  }
 }
 
 @media (min-width: 1024px) {
-  #vita .box-wrapper-top .contenitore-testo { grid-column: span 6; }
+  #vita .box-wrapper-top .contenitore-testo { 
+    grid-column: span 6; 
+  }
 
   #vita .box-wrapper-bottom-inner {
     grid-template-columns: repeat(12, 1fr);
@@ -1683,8 +1740,20 @@ hr {
     padding: 0 80px;
   }
 
-  #vita .box-wrapper-bottom-inner .contenitore-testo { grid-column: span 6; }
-  #vita .video-container { grid-column: 3 / 11; }
+  #vita .box-wrapper-bottom-inner .contenitore-testo { 
+    grid-column: span 6; 
+  }
+  
+  #vita .video-container { 
+    grid-column: 3 / 11; 
+  }
+
+  #vita .video-wrapper #titoletto-video {
+    font-size: var(--text-lg);
+    padding: 0.65rem 1.4rem;
+    border-top-left-radius: 1.4rem;
+    border-top-right-radius: 1.4rem;
+  }
 }
 
 /* ========================================================================
@@ -1801,6 +1870,10 @@ hr {
   gap: 0;
 }
 
+.stacked-cards .contenitore-testo {
+  background-color: var(--color-accent);
+}
+
 @media (min-width: 768px) {
   #nba-mascot-top5 .nba-text-grid {
     flex-direction: row;
@@ -1816,23 +1889,91 @@ hr {
   #nba-mascot-top5 .nba-text-grid { gap: 24px; }
 }
 
-#nba-mascot-top5 .back-to-top {
+/* Back to Top Button */
+#nba-mascot-top5 .back-to-top-btn {
   grid-column: 1 / -1;
   display: inline-flex;
-  justify-content: flex-end;
   align-items: center;
-  margin-top: var(--space-lg);
-  padding: var(--space-sm);
-  min-height: 48px;
-  color: var(--color-primary);
-  font-weight: var(--weight-bold);
+  justify-content: center;
+  gap: 12px;
   font-family: var(--font-heading);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-dark);
+  background-color: var(--color-primary);
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  min-height: 48px;
+  min-width: 48px;
+  margin: var(--space-lg) auto 0;
+  transition: 
+    background-color var(--transition),
+    color var(--transition),
+    transform var(--transition);
 }
 
-#nba-mascot-top5 .back-to-top:hover,
-#nba-mascot-top5 .back-to-top:focus {
-  text-decoration-thickness: 2px;
+#nba-mascot-top5 .back-to-top-btn .btn-icon-wrapper {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: var(--color-accent);
+  transition: background-color var(--transition);
+}
+
+#nba-mascot-top5 .back-to-top-btn .btn-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  display: block;
+  flex-shrink: 0;
+  color: var(--color-bg-light);
+  transition: 
+    color var(--transition),
+    transform var(--transition);
+}
+
+#nba-mascot-top5 .back-to-top-btn:hover {
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+  transform: translateY(-2px);
+}
+
+#nba-mascot-top5 .back-to-top-btn:hover .btn-icon-wrapper {
+  background-color: var(--color-primary);
+}
+
+#nba-mascot-top5 .back-to-top-btn:hover .btn-icon {
+  color: var(--color-bg-body);
+  transform: rotate(-90deg);
+}
+
+#nba-mascot-top5 .back-to-top-btn:active {
+  background-color: var(--color-primary);
+  color: var(--color-text-dark);
+  transform: translateY(0);
+}
+
+#nba-mascot-top5 .back-to-top-btn:active .btn-icon-wrapper {
+  background-color: var(--color-bg-light);
+}
+
+#nba-mascot-top5 .back-to-top-btn:active .btn-icon {
+  color: var(--color-text-dark);
+}
+
+#nba-mascot-top5 .back-to-top-btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* ========================================================================
@@ -1843,6 +1984,7 @@ hr {
   padding-top: var(--space-xl);
   padding-bottom: var(--space-lg);
   position: relative;
+  background-color: var(--color-accent);
 }
 
 .site-footer .footer-illustration {
@@ -1892,6 +2034,17 @@ hr {
     justify-content: center;
     align-items: center;
     text-align: center;
+  }
+}
+
+/* Nascondi i pulsanti (scopri e torna su) su mobile */
+@media (max-width: 767px) {
+  .hero-btn {
+    display: none;
+  }
+  
+  #nba-mascot-top5 .back-to-top-btn {
+    display: none;
   }
 }
 

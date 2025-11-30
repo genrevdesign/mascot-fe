@@ -363,7 +363,7 @@
   }
 
   .carousel-dot.active {
-    background: var(--color-bg-dark);
+    background: var(--color-accent);
     transform: scale(1.2);
   }
 
